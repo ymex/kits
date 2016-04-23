@@ -36,5 +36,5 @@ captures/
 *.iml
 
 # eclipse
-.classpath 
-.project 
+.classpath
+.project
