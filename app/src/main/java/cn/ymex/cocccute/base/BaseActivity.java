@@ -1,10 +1,8 @@
-package cn.ymex.cute;
+package cn.ymex.cocccute.base;
 
-import android.app.Application;
-import android.content.Context;
-import android.widget.Toast;
-
-import cn.ymex.cute.widget.notice.Toaster;
+import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.support.v7.app.AppCompatActivity;
 
 /**
  * Copyright (c) 2015. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
@@ -16,17 +14,12 @@ import cn.ymex.cute.widget.notice.Toaster;
  * Email:ymex@foxmail.com  (www.ymex.cn)
  *
  * @author ymex
- * @date 16/4/21
+ * @date 16/4/23
  */
-public class Cute {
-    private static Context application;
+public class BaseActivity extends AppCompatActivity{
+    @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
 
-    private Cute() {
     }
-
-    public static void create(Context context){
-        Toaster.create(context);
-    }
-
-
 }

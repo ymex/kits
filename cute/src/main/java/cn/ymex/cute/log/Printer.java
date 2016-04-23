@@ -18,7 +18,8 @@ import java.lang.reflect.Method;
 public abstract class Printer {
     public static final int ENV_STACK = 7;
     public static final int JSON_INDENT = 4;
-    public static String TAG = "cute.L";
+    public static final String TAG_E = "cute.E";//打印错误信息tag
+    public static String TAG = "cute.L";//默认日志tag
     /**
      * 日志头部内容
      * @return

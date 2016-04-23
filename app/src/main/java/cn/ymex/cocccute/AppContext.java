@@ -1,10 +1,8 @@
-package cn.ymex.cute;
+package cn.ymex.cocccute;
 
 import android.app.Application;
-import android.content.Context;
-import android.widget.Toast;
 
-import cn.ymex.cute.widget.notice.Toaster;
+import cn.ymex.cute.Cute;
 
 /**
  * Copyright (c) 2015. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
@@ -16,17 +14,14 @@ import cn.ymex.cute.widget.notice.Toaster;
  * Email:ymex@foxmail.com  (www.ymex.cn)
  *
  * @author ymex
- * @date 16/4/21
+ * @date 16/4/24
+ *
+ * application 实例 在 manifest.mxl 声明
  */
-public class Cute {
-    private static Context application;
-
-    private Cute() {
+public class AppContext extends Application {
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        Cute.create(this);//实例化相关类
     }
-
-    public static void create(Context context){
-        Toaster.create(context);
-    }
-
-
 }

@@ -1,5 +1,7 @@
 package cn.ymex.cocccute.entity;
 
+import java.util.List;
+
 /**
  * Copyright (c) 2015. ymex
  * Email:ymex@foxmail.com  (www.ymex.cn)
