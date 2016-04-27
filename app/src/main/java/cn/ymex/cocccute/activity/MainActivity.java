@@ -5,6 +5,8 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
+import com.google.gson.Gson;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,7 +14,9 @@ import cn.ymex.cocccute.R;
 import cn.ymex.cocccute.adapter.ItemViewHolderAdapter;
 import cn.ymex.cocccute.base.BaseActivity;
 import cn.ymex.cocccute.entity.ItemEntity;
+import cn.ymex.cocccute.entity.Student;
 import cn.ymex.cute.kits.Finder;
+import cn.ymex.cute.log.L;
 import cn.ymex.cute.widget.notice.Toaster;
 
 public class MainActivity extends BaseActivity implements AdapterView.OnItemClickListener{
@@ -39,7 +43,11 @@ public class MainActivity extends BaseActivity implements AdapterView.OnItemClic
 
         switch (position){
             case 0:
-
+                L.v("this is v log");
+                L.i(new Student("ymex",12,"hello world !"));
+                L.d(new Student("Jay",32,"Hi mars"));
+                L.w(new Gson().toJson(new Student("Mars",32,"你好")));
+                L.e("this error log ");
                 break;
 
             case 1:

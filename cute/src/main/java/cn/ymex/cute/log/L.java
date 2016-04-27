@@ -107,7 +107,7 @@ public final class L {
      */
     public static void p(Object message){
         if (LOG){
-            new XPrinter().log(Log.DEBUG,message);
+            new SamplePrinter().log(Log.DEBUG,message);
         }
     }
 
@@ -118,7 +118,7 @@ public final class L {
      */
     public static void p(String tag,Object message){
         if (LOG){
-            new XPrinter().log(Log.DEBUG,tag,message);
+            new SamplePrinter().log(Log.DEBUG,tag,message);
         }
     }
 

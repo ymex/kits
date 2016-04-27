@@ -20,6 +20,12 @@ public abstract class Printer {
     public static final int JSON_INDENT = 4;
     public static final String TAG_E = "cute.E";//打印错误信息tag
     public static String TAG = "cute.L";//默认日志tag
+
+    public static String SINGLE_ARROW_RIGHT = ">>>";
+    public static String        SINGLE_DIVIDER  = "─────────────────────────────────────────────────────────";
+    public static String SINGLE_DOTTED_DIVIDER  = "─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─";
+    public static final String NEXT_LINE = "\n";
+    public static final String TAB = "\t";
     /**
      * 日志头部内容
      * @return
@@ -44,7 +50,7 @@ public abstract class Printer {
      * @param ob 日志内容
      */
     public  void log(int leve, Object ob) {
-        log(Log.DEBUG,"", ob);
+        log(leve,"", ob);
     }
 
     /**
