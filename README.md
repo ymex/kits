@@ -28,7 +28,7 @@ File->Settings 或Ctrl + Alt +S 找到 Editor -> Colors &Fonts -> Android Logcat
 
 样例配色:
 |标签|色值|
-| :---- |  :---: |
+| ---- |  --- |
 |Verbose |\#F9BDBB|
 |Info    |\#B39DDB|
 |Debug   |\#738FFE|
