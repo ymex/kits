@@ -37,7 +37,13 @@ File->Settings 或Ctrl + Alt +S 找到 Editor -> Colors &Fonts -> Android Logcat
 |Error   |\#E00032|
 |Assert  |\#FF1696|
 
+| First Header  | Second Header |
 
+| ------------- | ------------- |
+
+| Content Cell  | Content Cell  |
+
+| Content Cell  | Content Cell  |
 
 ##变更记录：
 
