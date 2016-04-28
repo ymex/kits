@@ -28,22 +28,15 @@ File->Settings 或Ctrl + Alt +S 找到 Editor -> Colors &Fonts -> Android Logcat
 去掉Use Inberited attributes的勾选框，  再将 Foreground 前的复选框选上，勾选Foreground选择框，点击Foreground后面颜色选择框。就可以选颜色了。 选好颜色点击Apply–>OK就能保存到android studio 中。
 
 样例配色:
-|标签|色值|
-| ---- |  --- |
-|Verbose |\#F9BDBB|
-|Info    |\#B39DDB|
-|Debug   |\#738FFE|
-|warning |\#EF6C00|
-|Error   |\#E00032|
-|Assert  |\#FF1696|
+  |标签|色值|
+  | ---- |  --- |
+  |Verbose |\#F9BDBB|
+  |Info    |\#B39DDB|
+  |Debug   |\#738FFE|
+  |warning |\#EF6C00|
+  |Error   |\#E00032|
+  |Assert  |\#FF1696|
 
-| First Header  | Second Header |
-
-| ------------- | ------------- |
-
-| Content Cell  | Content Cell  |
-
-| Content Cell  | Content Cell  |
 
 ##变更记录：
 
