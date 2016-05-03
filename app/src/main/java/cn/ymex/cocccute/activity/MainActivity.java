@@ -1,5 +1,6 @@
 package cn.ymex.cocccute.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -57,6 +58,9 @@ public class MainActivity extends BaseActivity implements AdapterView.OnItemClic
             case 2:
                 Toaster.show(Toaster.inflate(R.layout.view_toast));
                 break;
+            case 3:
+                startActivity(new Intent(this,SAMFActivity.class));
+                break;
         }
     }
 
@@ -65,6 +69,7 @@ public class MainActivity extends BaseActivity implements AdapterView.OnItemClic
             add(new ItemEntity("Log打印","举个栗子"));
             add(new ItemEntity("默认Toast","Toast多次弹出，只显示最后一条"));
             add(new ItemEntity("定制Toast","自定义Toast布局，只显示最后一条"));
+            add(new ItemEntity("SAMFActivity","single activity mutl Fragments"));
         }
     };
 }

@@ -27,7 +27,7 @@ public class Device {
 
 	public static void init(Context context) {
 		if (sInitialed || context == null) {
-			return;
+			throw new IllegalArgumentException("context not allow null");
 		}
 		mContext = context;
 		sInitialed = true;

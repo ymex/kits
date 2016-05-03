@@ -34,7 +34,7 @@ import javax.crypto.spec.IvParameterSpec;
 /**
  * 编码(MD5/DES/Base64) 及 解码(base64 des )
  */
-public class Encrypt {
+public final class Encrypt {
 	private Encrypt() {
 	}
 

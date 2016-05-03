@@ -13,7 +13,7 @@ import android.util.Patterns;
 public class TextCheck {
 	/**
 	 * @Title: subtextWithApostrophe
-	 * @Description: TODO 返回指定长度的字串并追回 省略号
+	 * @Description: 返回指定长度的字串并追回 省略号
 	 * @param text
 	 * @param wordCount
 	 * @return
@@ -29,7 +29,7 @@ public class TextCheck {
 
 	/**
 	 * @Title: text2num
-	 * @Description: TODO 字串转为数字
+	 * @Description:  字串转为数字
 	 * @param text
 	 * @param defaultValue
 	 * @return
@@ -99,7 +99,7 @@ public class TextCheck {
 
 	/**
 	 * @Title: isWebUrl
-	 * @Description: TODO url 地址
+	 * @Description:  url 地址
 	 * @param text
 	 * @return
 	 * @return: boolean
