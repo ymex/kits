@@ -22,8 +22,8 @@ public abstract class Printer {
     public static String TAG = "cute.L";//默认日志tag
 
     public static String SINGLE_ARROW_RIGHT = ">>>";
-    public static String        SINGLE_DIVIDER  = "─────────────────────────────────────────────────────────";
-    public static String SINGLE_DOTTED_DIVIDER  = "─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─";
+    public static String        SINGLE_DIVIDER  = "─────────────────────────────────────────";
+    public static String SINGLE_DOTTED_DIVIDER  = "─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ";
     public static final String NEXT_LINE = "\n";
     public static final String TAB = "\t";
     /**

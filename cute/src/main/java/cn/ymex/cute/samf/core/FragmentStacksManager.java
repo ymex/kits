@@ -3,25 +3,27 @@ package cn.ymex.cute.samf.core;
 import android.support.annotation.IntDef;
 import android.support.v7.app.AppCompatActivity;
 
+import java.util.LinkedList;
 import java.util.Stack;
 
 
-import cn.ymex.cute.samf.SamfFragment;
+import cn.ymex.cute.samf.FragmentAction;
 
 /**
- * http://blog.csdn.net/guolin_blog/article/details/41087993#t5
  * Created by ymexc on 2016/5/3.
  */
 public class FragmentStacksManager {
+
     private AppCompatActivity mContext;
-    private Stack<Stack<SamfFragment>> mFragmentTaskStacks;
-    private Stack<SamfFragment> mFragmentStack;
+
+    private Stack<LinkedList<FragmentAction>> mFragmentTaskStacks;
+    private LinkedList<FragmentAction> mFragmentStack;
 
 
     {
-        mFragmentTaskStacks =new Stack<Stack<SamfFragment>>();
+        mFragmentTaskStacks =new Stack<LinkedList<FragmentAction>>();
         if (null == mFragmentStack) {
-            mFragmentStack = new Stack<>();
+            mFragmentStack = new LinkedList<>();
         }
         mFragmentTaskStacks.add(mFragmentStack);
 
@@ -37,7 +39,7 @@ public class FragmentStacksManager {
      *
      * @param fragment
      */
-    public void putStandard(SamfFragment fragment) {
+    public void putStandard(FragmentAction fragment) {
         getCurrentTask().add(fragment);
     }
 
@@ -48,13 +50,13 @@ public class FragmentStacksManager {
      * @param fragment Added fragment
      * @return Whether to contain the current instance
      */
-    public boolean putSingleTop(SamfFragment fragment) {
-        Stack<SamfFragment> currentTask = getCurrentTask();
-        if (currentTask.empty()) {
+    public boolean putSingleTop(FragmentAction fragment) {
+        LinkedList<FragmentAction> currentTask = getCurrentTask();
+        if (currentTask.isEmpty()) {
             currentTask.add(fragment);
             return false;
         } else {
-            SamfFragment lastItem = currentTask.peek();
+            FragmentAction lastItem = currentTask.peek();
             if (lastItem.getClass().getName().equals(fragment.getClass().getName())) {
                 lastItem.OnNewIntent(fragment.getArguments());
                 return true;
@@ -72,8 +74,8 @@ public class FragmentStacksManager {
      * @param fragment Added fragment
      * @return Whether to contain the current instance
      */
-    public boolean putSingleTask(SamfFragment fragment) {
-        Stack<SamfFragment>lastList = getCurrentTask();
+    public boolean putSingleTask(FragmentAction fragment) {
+        LinkedList<FragmentAction>lastList = getCurrentTask();
         if (lastList.isEmpty()) {
             lastList.push(fragment);
             return false;
@@ -93,8 +95,8 @@ public class FragmentStacksManager {
      *
      * @param fragment
      */
-    public void putSingleInstance(SamfFragment fragment) {
-        Stack<SamfFragment> frags = new Stack<SamfFragment>();
+    public void putSingleInstance(FragmentAction fragment) {
+        LinkedList<FragmentAction> frags = new LinkedList<>();
         frags.push(fragment);
         mFragmentTaskStacks.push(frags);
     }
@@ -103,12 +105,12 @@ public class FragmentStacksManager {
     /**
      * pop stack item
      */
-    public void onBackStack() {
+    public void backStack() {
         if (mFragmentTaskStacks.empty()){
             mFragmentTaskStacks.clear();
             return;
         }
-        //// TODO: 2016/5/4
+
 
     }
 
@@ -116,7 +118,7 @@ public class FragmentStacksManager {
      * get current task stack
      * @return
      */
-    private Stack<SamfFragment> getCurrentTask() {
+    private LinkedList<FragmentAction> getCurrentTask() {
         return mFragmentTaskStacks.peek();
     }
 
@@ -125,8 +127,8 @@ public class FragmentStacksManager {
      * @param fragment
      * @return  if not find return -0x1 else return position
      */
-    private int getPositionInStack(SamfFragment fragment){
-        Stack<SamfFragment> stack = getCurrentTask();
+    private int getPositionInStack(FragmentAction fragment){
+        LinkedList<FragmentAction> stack = getCurrentTask();
         for (int i = 0; i<stack.size(); i++){
             if (stack.get(i).getClass().getName().equals(fragment.getClass().getName())) {
                 return i;

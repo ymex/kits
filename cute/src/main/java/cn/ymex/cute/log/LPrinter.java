@@ -29,9 +29,9 @@ import java.util.Set;
  * @date 15/11/30
  */
 public  class LPrinter extends Printer {
-    private static String CLASS_DETAIL = "CLASS_DETAIL │ ";
-    private static String STACK_DETAIL = "STACK_DETAIL │ ";
-    private static String THREAD_DETAIL = "THREAD_DETAIL│ ";
+    private static String CLASS_DETAIL  = "class │ ";
+    private static String STACK_DETAIL  = "call  │ ";
+    private static String THREAD_DETAIL = "thread│ ";
     private static String ARROW_RIGHT = " ⥤ ";
     private final static String[] types = {"int", "java.lang.String", "boolean", "char",
             "float", "double", "long", "short", "byte"};
