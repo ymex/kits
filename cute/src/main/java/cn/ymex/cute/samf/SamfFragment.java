@@ -8,9 +8,9 @@ import cn.ymex.cute.samf.core.FragmentAction;
 /**
  * Created by ymexc on 2016/5/3.
  */
-public class FragmentAction extends Fragment implements cn.ymex.cute.samf.core.FragmentAction {
+public class SamfFragment extends Fragment implements FragmentAction {
 
-    public FragmentAction() {
+    public SamfFragment() {
         super();
     }
 
