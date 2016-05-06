@@ -1,12 +1,3 @@
-/** 
- * Copyright © 2015网域互联. All rights reserved.
- *
- * @Package: cn.ymex.cute.toolbox
- * @Description: TODO
- * @author: ymex email:ymex@foxmail.com
- * @date: 2015-4-24 下午8:47:46
- * @version: V1.0
- */
 package cn.ymex.cute.kits;
 
 import android.annotation.SuppressLint;
@@ -18,7 +9,7 @@ import java.util.TimeZone;
 
 /**
  * @ClassName: Formater
- * @Description: TODO 提供有限的 时间/单体格式相关转换
+ * @Description:  提供有限的 时间/单体格式相关转换
  * @author: ymex
  * @date: 2015-4-24 下午8:47:46
  */
