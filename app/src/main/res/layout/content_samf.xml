@@ -12,5 +12,15 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:showIn="@layout/activity_samf"
     tools:context="cn.ymex.cocccute.activity.SAMFActivity">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:background="@android:color/darker_gray"
+        android:layout_height="56dp">
+        <cn.ymex.cute.widget.bottomtab.BottomTabView
+            android:id="@+id/bt_item"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+    </LinearLayout>
+
 
 </RelativeLayout>
