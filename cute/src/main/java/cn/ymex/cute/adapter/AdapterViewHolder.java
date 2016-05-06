@@ -1,4 +1,4 @@
-package cn.ymex.cute.widget.adapter;
+package cn.ymex.cute.adapter;
 
 import android.view.View;
 

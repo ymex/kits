@@ -10,8 +10,8 @@ import java.util.List;
 import cn.ymex.cocccute.R;
 import cn.ymex.cocccute.entity.ItemEntity;
 import cn.ymex.cute.kits.Finder;
-import cn.ymex.cute.widget.adapter.AdapterViewHolder;
-import cn.ymex.cute.widget.adapter.ViewHolderAdapter;
+import cn.ymex.cute.adapter.AdapterViewHolder;
+import cn.ymex.cute.adapter.ViewHolderAdapter;
 
 /**
  * Copyright (c) 2015. Lorem ipsum dolor sit amet, consectetur adipiscing elit.

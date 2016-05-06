@@ -7,8 +7,6 @@ import java.util.LinkedList;
 import java.util.Stack;
 
 
-import cn.ymex.cute.samf.FragmentAction;
-
 /**
  * Created by ymexc on 2016/5/3.
  */
@@ -58,7 +56,7 @@ public class FragmentStacksManager {
         } else {
             FragmentAction lastItem = currentTask.peek();
             if (lastItem.getClass().getName().equals(fragment.getClass().getName())) {
-                lastItem.OnNewIntent(fragment.getArguments());
+                //lastItem.OnNewIntent(fragment.getArguments());
                 return true;
             } else {
                 currentTask.push(fragment);
