@@ -2,7 +2,6 @@ package cn.ymex.cute.widget.bottomtab;
 
 import android.annotation.TargetApi;
 import android.content.Context;
-import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.ShapeDrawable;
@@ -42,7 +41,7 @@ public class BottomTabView extends LinearLayout implements View.OnClickListener{
     private Drawable mDrawableNormal ;
     private Drawable mDrawableSelect ;
     private int mMessageTextColor = 000;
-    private int mMessageTextBGColor =000;//
+    private Drawable mMessageTextBGDrawable;//
 
     private BottomTab mBottomTab;
 
@@ -75,38 +74,42 @@ public class BottomTabView extends LinearLayout implements View.OnClickListener{
         px2dp(context);
         setGravity(Gravity.CENTER);
         setOrientation(LinearLayout.VERTICAL);
-        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
+        LayoutParams params = new LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
         setLayoutParams(params);
 
-        FrameLayout frameLayout = new FrameLayout(context);
-        FrameLayout.LayoutParams frameLayoutParams = new FrameLayout.LayoutParams(DP_24+DP_16, DP_24+DP_6);
-        frameLayout.setLayoutParams(frameLayoutParams);
 
-        FrameLayout.LayoutParams messageParams = new FrameLayout.LayoutParams(DP_16, DP_16,Gravity.RIGHT);
+
+        FrameLayout.LayoutParams messageParams = new FrameLayout.LayoutParams(DP_16+DP_2, DP_16+DP_2,Gravity.RIGHT);
         mMessageTextView = new TextView(context);
-        //mMessageTextView.setPadding(DP_2,DP_2,DP_2,DP_2);
         mMessageTextView.setGravity(Gravity.CENTER);
         mMessageTextView.setTextSize(TypedValue.COMPLEX_UNIT_SP, SP_12);
-
         mMessageTextView.setLayoutParams(messageParams);
-//        mMessageTextView.setBackground(getCircleShape());
-        mMessageTextView.setBackgroundDrawable(getCircleShape(Color.rgb(255,0,0)));
-//        mMessageTextView.setBackgroundColor(Color.rgb(255, 0, 0));
-        mMessageTextView.setText("8");
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+            mMessageTextView.setBackground(getCircleShape(Color.rgb(255,0,0)));
+        }else {
+            mMessageTextView.setBackgroundDrawable(getCircleShape(Color.rgb(255,0,0)));
+        }
+        mMessageTextView.setText("88");
         mMessageTextView.setTextColor(Color.rgb(255, 255, 255));
 
 
-        FrameLayout.LayoutParams imageViewParams = new FrameLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT,Gravity.CENTER);
+        FrameLayout.LayoutParams imageViewParams = new FrameLayout.LayoutParams(DP_24+DP_8, DP_24+DP_8,Gravity.CENTER_HORIZONTAL|Gravity.BOTTOM);
         mImageView = new ImageView(context);
         mImageView.setLayoutParams(imageViewParams);
         mImageView.setScaleType(ImageView.ScaleType.FIT_XY);
         mImageView.setColorFilter(Color.rgb(23, 43, 255));
 
-        LinearLayout.LayoutParams textViewParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        FrameLayout frameLayout = new FrameLayout(context);
+        FrameLayout.LayoutParams frameLayoutParams = new FrameLayout.LayoutParams(DP_24+DP_24, DP_24+DP_8+DP_6);
+        frameLayout.setLayoutParams(frameLayoutParams);
+
+
+        LayoutParams textViewParams = new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         mTextView = new TextView(context);
         mTextView.setLayoutParams(textViewParams);
         mTextView.setTextSize(TypedValue.COMPLEX_UNIT_SP, SP_14);
         mTextView.setTextColor(Color.rgb(23, 43, 255));
+
         frameLayout.addView(mImageView);
         frameLayout.addView(mMessageTextView);
         addView(frameLayout);
@@ -131,13 +134,14 @@ public class BottomTabView extends LinearLayout implements View.OnClickListener{
     public void setData(BottomTab bottomTab) {
         mImageView.setImageDrawable(bottomTab.getIcon(getContext()));
         mTextView.setText(bottomTab.getTitle(getContext()));
-        mTextView.setVisibility(GONE);
-        mMessageTextView.setVisibility(GONE);
+        //mTextView.setVisibility(GONE);
+        //mMessageTextView.setVisibility(GONE);
     }
 
 
     @Override
     public void onClick(View v) {
+
 
     }
 

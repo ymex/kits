@@ -1,5 +1,6 @@
 package cn.ymex.cute.widget.bottomtab;
 
+import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.support.annotation.DrawableRes;
 import android.support.annotation.NonNull;
@@ -10,50 +11,73 @@ import android.support.annotation.StringRes;
  */
 public class BottomTab extends BaseBottomTab {
 
+    private Context context;
 
-    /**
-     * Creates a new Tab for the BottomTab.
-     *
-     * @param iconResource a resource for the Tab icon.
-     * @param title        title for the Tab.
-     */
-    public BottomTab( @DrawableRes int iconResource, @NonNull String title) {
-        this.iconResource = iconResource;
-        this.title = title;
-//        this.id = id;
+    private BottomTab(Context context){
+        this.context = context;
     }
 
-    /**
-     * Creates a new Tab for the BottomTab.
-     *
-     * @param icon          an icon for the Tab.
-     * @param titleResource resource for the title.
-     */
-    public BottomTab(Drawable icon, @StringRes int titleResource) {
+    public void setIcon(int icon , int selectIcon){
+        this.icon = getIcon(context,icon);
+        this.selectIcon = getIcon(context,selectIcon);
+    }
+
+    public void setIcon(Drawable icon , Drawable selectIcon){
         this.icon = icon;
-        this.titleResource = titleResource;
+        this.selectIcon = selectIcon;
     }
 
-    /**
-     * Creates a new Tab for the BottomTab.
-     *
-     * @param icon  an icon for the Tab.
-     * @param title title for the Tab.
-     */
-    public BottomTab(Drawable icon, @NonNull String title) {
-        this.icon = icon;
+
+
+    public void setTextColor(int textColor, int selectTextColor ){
+        this.textColor = textColor;
+        this.selectTextColor = selectTextColor;
+    }
+
+    public void setTextColorRes(int textColorRes, int selectTextColorRes ){
+        this.textColor = textColor;
+        this.selectTextColor = selectTextColor;
+    }
+
+
+    public void setTitle(int textRes){
+        this.title = getTitle(context,textRes);
+    }
+
+    public void setTitle(String title){
         this.title = title;
     }
 
 
-    /**
-     * Creates a new Tab for the BottomTab.
-     *
-     * @param iconResource  a resource for the Tab icon.
-     * @param titleResource resource for the title.
-     */
-    public BottomTab(@DrawableRes int iconResource, @StringRes int titleResource) {
-        this.iconResource = iconResource;
-        this.titleResource = titleResource;
+    public static class Bulider{
+        BottomTab bottomTab;
+
+
+        public Bulider(Context context){
+            this.bottomTab= new BottomTab(context);
+        }
+
+        public BottomTab icon(int icon){
+            bottomTab.setIcon(icon, 0);
+            return this.bottomTab;
+        }
+
+        public BottomTab icon(int icon , int selectIcon){
+            bottomTab.setIcon(icon,selectIcon);
+            return bottomTab;
+        }
+
+        public BottomTab titleColor(int textColor, int selectTextColor){
+            bottomTab.setTextColor(textColor,selectTextColor);
+            return bottomTab;
+        }
+
+        public BottomTab title(int titleRes){
+            bottomTab.setTitle(titleRes);
+            return bottomTab;
+        }
+
+
+
     }
 }
