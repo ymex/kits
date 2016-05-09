@@ -15,7 +15,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:background="@android:color/darker_gray"
-        android:layout_height="56dp">
+        android:layout_height="56dip">
         <cn.ymex.cute.widget.bottomtab.BottomTabView
             android:id="@+id/bt_item"
             android:layout_width="match_parent"
