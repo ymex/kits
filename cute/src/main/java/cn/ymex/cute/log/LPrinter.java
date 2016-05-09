@@ -1,6 +1,7 @@
 package cn.ymex.cute.log;
 
 import android.text.TextUtils;
+import android.util.Log;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -26,13 +27,17 @@ import java.util.Set;
  * Email:ymex@foxmail.com  (www.ymex.cn)
  *
  * @author ymex
- * @date 15/11/30
+ * @date 15/03/29
  */
 public  class LPrinter extends Printer {
     private static String CLASS_DETAIL  = "class │ ";
     private static String STACK_DETAIL  = "call  │ ";
     private static String THREAD_DETAIL = "thread│ ";
     private static String ARROW_RIGHT = " ⥤ ";
+    public static String SINGLE_ARROW_RIGHT = ">>>";
+    public static String SINGLE_DIVIDER = "─────────────────────────────────────────";
+    public static String SINGLE_DOTTED_DIVIDER = "─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ";
+
     private final static String[] types = {"int", "java.lang.String", "boolean", "char",
             "float", "double", "long", "short", "byte"};
 
@@ -100,7 +105,7 @@ public  class LPrinter extends Printer {
 
         builder.append(NEXT_LINE);
         builder.append(SINGLE_DOTTED_DIVIDER+SINGLE_DOTTED_DIVIDER);
-        return builder.toString().trim() + "\n";
+        return builder.toString();
     }
 
     @Override
@@ -108,7 +113,7 @@ public  class LPrinter extends Printer {
         StringBuilder builder = new StringBuilder();
         builder.append(NEXT_LINE);
         builder.append(SINGLE_DOTTED_DIVIDER+SINGLE_DOTTED_DIVIDER);
-        return builder.toString().trim() + NEXT_LINE;
+        return builder.toString();
     }
 
     @Override
@@ -116,7 +121,7 @@ public  class LPrinter extends Printer {
         String content = new String();
         if (message != null) {
             if (message instanceof Throwable) {
-                content = message.toString();
+                content = Log.getStackTraceString((Throwable)message);
             } else if (message instanceof String) {
                 String me = message.toString();
                 if (me.startsWith("{") || me.startsWith("[")) {
@@ -140,7 +145,7 @@ public  class LPrinter extends Printer {
         }else {
             content = object(message);
         }
-        return content+NEXT_LINE;
+        return content;
     }
 
 

@@ -12,7 +12,7 @@ import android.util.Log;
  * Email:ymex@foxmail.com  (www.ymex.cn)
  *
  * @author ymex
- * @date 15/11/29
+ * @date 15/03/29
  */
 public final class L {
 
@@ -102,24 +102,12 @@ public final class L {
     }
 
     /**
-     * 打印 带有详细信息的Log
+     * 获得日志内容
      * @param message
      */
-    public static void p(Object message){
-        if (LOG){
-            new SamplePrinter().log(Log.DEBUG,message);
-        }
+    public static String getLog(Object message){
+          return  printer.logContent(message);
     }
 
-    /**
-     * 打印 带有详细信息的Log
-     * @param tag
-     * @param message
-     */
-    public static void p(String tag,Object message){
-        if (LOG){
-            new SamplePrinter().log(Log.DEBUG,tag,message);
-        }
-    }
 
 }

@@ -2,6 +2,7 @@ package cn.ymex.cocccute.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -45,10 +46,13 @@ public class MainActivity extends BaseActivity implements AdapterView.OnItemClic
         switch (position){
             case 0:
                 L.v("this is v log");
-                L.i(new Student("ymex",12,"hello world !"));
-                L.d(new Student("Jay",32,"Hi mars"));
-                L.w(new Gson().toJson(new Student("Mars",32,"你好")));
+                L.i(new Student("ymex", 12, "hello world !"));
+                L.d(new Student("Jay", 32, "Hi mars"));
+                L.w(new Gson().toJson(new Student("Mars", 32, "你好")));
                 L.e("this error log ");
+                L.w(new Exception("--ht"));
+
+//                Log.w("cute.L","heel",new Exception());
                 break;
 
             case 1:

@@ -1,7 +1,7 @@
 package cn.ymex.cute.log;
 
 /**
- * Copyright (c) 2015. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+ * Copyright (c) 2016. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
  * Morbi non lorem porttitor neque feugiat blandit. Ut vitae ipsum eget quam lacinia accumsan.
  * Etiam sed turpis ac ipsum condimentum fringilla. Maecenas magna.
  * Proin dapibus sapien vel ante. Aliquam erat volutpat. Pellentesque sagittis ligula eget metus.
@@ -10,9 +10,12 @@ package cn.ymex.cute.log;
  * Email:ymex@foxmail.com  (www.ymex.cn)
  *
  * @author ymex
- * @date 15/12/7
+ * @date 16/05/01
  */
 public final class SamplePrinter extends Printer {
+    public static String SINGLE_ARROW_RIGHT = ">>>";
+    public static String SINGLE_DIVIDER = "─────────────────────────────────────────";
+
     @Override
     public String logHeader() {
         StackTraceElement element = getLayerStackTrace(ENV_STACK);
