@@ -2,9 +2,6 @@ package cn.ymex.cute.widget.bottomtab;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
-import android.support.annotation.DrawableRes;
-import android.support.annotation.NonNull;
-import android.support.annotation.StringRes;
 
 /**
  * Created by ymexc on 2016/5/6.
@@ -15,6 +12,11 @@ public class BottomTab extends BaseBottomTab {
 
     private BottomTab(Context context){
         this.context = context;
+    }
+
+    public BottomTab(Drawable icon,String title){
+        this.icon = icon;
+        this.title = title;
     }
 
     public void setIcon(int icon , int selectIcon){

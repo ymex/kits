@@ -95,8 +95,7 @@ public class BottomTabBar extends FrameLayout {
 
         for (int i = 0; i < menuSize; i++) {
             MenuItem item = menu.getItem(i);
-            BottomTab tab = new BottomTab(item.getIcon(),
-                    String.valueOf(item.getTitle()));
+            BottomTab tab = new BottomTab(item.getIcon(), String.valueOf(item.getTitle()));
             tab.id = item.getItemId();
             tabs.add(tab);
         }
