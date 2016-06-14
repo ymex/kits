@@ -132,8 +132,8 @@ public class BottomTabView extends LinearLayout implements View.OnClickListener{
     }
 
     public void setData(BottomTab bottomTab) {
-        mImageView.setImageDrawable(bottomTab.getIcon(getContext()));
-        mTextView.setText(bottomTab.getTitle(getContext()));
+//        mImageView.setImageDrawable(bottomTab.getIcon(getContext()));
+//        mTextView.setText(bottomTab.getTitle(getContext()));
         //mTextView.setVisibility(GONE);
         //mMessageTextView.setVisibility(GONE);
     }

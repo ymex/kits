@@ -1,16 +1,15 @@
 package cn.ymex.cute.adapter;
 
 
-import java.util.ArrayList;
-import java.util.List;
-
 import android.content.Context;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 
-import cn.ymex.cute.log.L;
-import cn.ymex.cute.log.Printer;
+import java.util.ArrayList;
+import java.util.List;
+
 
 
 /**
@@ -24,7 +23,6 @@ import cn.ymex.cute.log.Printer;
  *
  * @author ymex
  * @date 16/4/23
- * 计时器
  */
 
 /**
@@ -38,6 +36,7 @@ public abstract class ViewHolderAdapter<E extends Object, V extends AdapterViewH
 
     protected List<E> mDataList; //数据列表
     protected Context mContext;
+    private String  TAG_E = "cute.E";
 
     public ViewHolderAdapter(Context context) {
         this(context, null);
@@ -55,7 +54,7 @@ public abstract class ViewHolderAdapter<E extends Object, V extends AdapterViewH
      */
     public void appendDataList(List<E> dataList) {
         if (null == dataList) {
-            L.e(Printer.TAG_E, "At BaseCuteAdapter.appendDataList(): java.lang.NullPointerException: Attempt to invoke interface method 'java.lang.Object[] java.util.Collection.toArray()' on a null ");
+            Log.e(TAG_E, "At BaseCuteAdapter.appendDataList(): java.lang.NullPointerException: Attempt to invoke interface method 'java.lang.Object[] java.util.Collection.toArray()' on a null ");
             return;
         }
         if (null == this.mDataList) {
@@ -72,7 +71,7 @@ public abstract class ViewHolderAdapter<E extends Object, V extends AdapterViewH
      */
     public void resetDataList(List<E> dataList) {
         if (null == dataList) {
-            L.e(Printer.TAG_E, "At BaseCuteAdapter.resetDataList(): java.lang.NullPointerException: Attempt to invoke interface method 'java.lang.Object[] java.util.Collection.toArray()' on a null ");
+            Log.e(TAG_E, "At BaseCuteAdapter.resetDataList(): java.lang.NullPointerException: Attempt to invoke interface method 'java.lang.Object[] java.util.Collection.toArray()' on a null ");
             return;
         }
         if (null == mDataList) {
@@ -91,7 +90,7 @@ public abstract class ViewHolderAdapter<E extends Object, V extends AdapterViewH
      */
     public void appendDataItem(E data) {
         if (null == data) {
-            L.e(Printer.TAG_E, "At BaseCuteAdapter.appendData(): java.lang.NullPointerException: Attempt to invoke interface method 'java.lang.Object[] java.util.Collection.toArray()' on a null ");
+            Log.e(TAG_E, "At BaseCuteAdapter.appendData(): java.lang.NullPointerException: Attempt to invoke interface method 'java.lang.Object[] java.util.Collection.toArray()' on a null ");
             return;
         }
         if (null == this.mDataList) {

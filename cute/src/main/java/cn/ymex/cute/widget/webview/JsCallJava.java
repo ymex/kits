@@ -1,10 +1,8 @@
 package cn.ymex.cute.widget.webview;
 
 import android.text.TextUtils;
-import android.webkit.WebView;
 import android.util.Log;
-
-import com.google.gson.Gson;
+import android.webkit.WebView;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -19,7 +17,6 @@ public class JsCallJava {
     private HashMap<String, Method> mMethodsMap;
     private String mInjectedName;
     private String mPreloadInterfaceJS;
-    private Gson mGson;
 
     public JsCallJava (String injectedName, Class injectedCls) {
         try {
@@ -180,10 +177,7 @@ public class JsCallJava {
                 && !(result instanceof Float)
                 && !(result instanceof Double)
                 && !(result instanceof JSONObject)) {    // 非数字或者非字符串的构造对象类型都要序列化后再拼接
-            if (mGson == null) {
-                mGson = new Gson();
-            }
-            insertRes = mGson.toJson(result);
+            insertRes =String.valueOf(result);
         } else {  //数字直接转化
             insertRes = String.valueOf(result);
         }
