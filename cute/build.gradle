@@ -28,7 +28,7 @@ dependencies {
 publish {
     userOrg = 'ymex'
     groupId = 'cn.ymex'
-    artifactId = 'cocc.cute'
+    artifactId = 'cute'
     publishVersion = '0.0.1'
     desc = 'Android rapid development framework'
     website = 'https://github.com/ymex/cocc.cute'
