@@ -29,7 +29,7 @@ publish {
     userOrg = 'ymex'
     groupId = 'cn.ymex'
     artifactId = 'cute'
-    publishVersion = '0.0.1'
+    publishVersion = '0.0.2'
     desc = 'Android rapid development framework'
     website = 'https://github.com/ymex/cocc.cute'
 }
