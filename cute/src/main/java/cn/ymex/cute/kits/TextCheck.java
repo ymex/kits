@@ -13,7 +13,7 @@ import android.util.Patterns;
 public class TextCheck {
 	/**
 	 * @Title: subtextWithApostrophe
-	 * @Description: 返回指定长度的字串并追回 省略号
+	 * @Description: 返回指定长度的字串并追加 省略号
 	 * @param text
 	 * @param wordCount
 	 * @return

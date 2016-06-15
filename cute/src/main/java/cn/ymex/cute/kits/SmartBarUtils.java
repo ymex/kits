@@ -13,6 +13,9 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 
+/**
+ * mx3 版本 及以下的smartBar隐藏工具
+ */
 public class SmartBarUtils {
 
 	public static final int SMART_BAR_HEIGH = 96;

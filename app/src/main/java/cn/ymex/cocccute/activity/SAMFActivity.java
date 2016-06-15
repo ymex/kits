@@ -14,9 +14,6 @@ public class SAMFActivity extends SamfActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_samf);
-        BottomTabView bottomTabView = Finder.find(this,R.id.bt_item);
-        BottomTab bottomTab = new BottomTab(R.mipmap.ic_toast,"标题");
-        bottomTabView.setData(bottomTab);
     }
 }
 
