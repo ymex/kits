@@ -6,11 +6,11 @@ package cn.ymex.cute;
  * Etiam sed turpis ac ipsum condimentum fringilla. Maecenas magna.
  * Proin dapibus sapien vel ante. Aliquam erat volutpat. Pellentesque sagittis ligula eget metus.
  * Vestibulum commodo. Ut rhoncus gravida arcu.
- * <p/>
+
  * Email:ymex@foxmail.com  (www.ymex.cn)
  *
  * @author ymex
- * @date 16/4/21
+ * date: 16/4/21
  *
  * 关于 app 异常处理机制
  */

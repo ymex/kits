@@ -17,11 +17,6 @@
             </intent-filter>
         </activity>
         <activity android:name=".activity.BrowserActivity" />
-        <activity
-            android:name=".activity.SAMFActivity"
-            android:label="@string/title_activity_samf"
-            android:theme="@style/AppTheme.NoActionBar" >
-        </activity>
     </application>
 
 </manifest>

@@ -10,11 +10,11 @@ import cn.ymex.cute.Cute;
  * Etiam sed turpis ac ipsum condimentum fringilla. Maecenas magna.
  * Proin dapibus sapien vel ante. Aliquam erat volutpat. Pellentesque sagittis ligula eget metus.
  * Vestibulum commodo. Ut rhoncus gravida arcu.
- * <p/>
+
  * Email:ymex@foxmail.com  (www.ymex.cn)
  *
  * @author ymex
- * @date 16/4/24
+ * date: 16/4/24
  *
  * application 实例 在 manifest.mxl 声明
  */

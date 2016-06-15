@@ -12,17 +12,17 @@ import android.view.ViewGroup;
  * Etiam sed turpis ac ipsum condimentum fringilla. Maecenas magna.
  * Proin dapibus sapien vel ante. Aliquam erat volutpat. Pellentesque sagittis ligula eget metus.
  * Vestibulum commodo. Ut rhoncus gravida arcu.
- * <p/>
+
  * Email:ymex@foxmail.com  (www.ymex.cn)
  *
  * @author ymex
- * @date 16/4/20
+ * date: 16/4/20
  * 更优雅的控件查找及加载xml布局文件
  */
 public class Finder {
     /**
-     * @Title: find
-     * @Description: find view by id from view
+     * Title: find
+     * Description:: find view by id from view
      * @param view
      * @param id
      * @return
@@ -35,8 +35,8 @@ public class Finder {
     }
 
     /**
-     * @Title: find
-     * @Description: TODO find view by id from activity
+     * Title: find
+     * Description:: TODO find view by id from activity
      * @param act
      * @param id
      * @return
@@ -47,7 +47,7 @@ public class Finder {
     }
 
     /**
-     * @Description加载布局文件
+     * Description:加载布局文件
      * @param context
      * @param resource
      * @return
@@ -56,7 +56,7 @@ public class Finder {
         return (T) LayoutInflater.from(context).inflate(resource, null);
     }
     /**
-     * @Description加载布局文件
+     * Description:加载布局文件
      * @param context
      * @param resource
      * @param viewGroup

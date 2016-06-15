@@ -17,7 +17,7 @@ import android.util.Log;
 
 /**
  * @author ymex@foxmail.com
- * @Description: TODO 文件操作
+ * Description:: TODO 文件操作
  */
 public class FileManager {
 	/**
@@ -498,8 +498,8 @@ public class FileManager {
 	}
 	
 	/**
-	 * @Title: getFileSuffix
-	 * @Description: TODO 得到文件的后缀名
+	 * Title: getFileSuffix
+	 * Description:: TODO 得到文件的后缀名
 	 * @param filePath
 	 * @return
 	 * @return: String
@@ -600,7 +600,7 @@ public class FileManager {
 	/**
 	 * 创建目录
 	 * 
-	 * @param path
+	 * @param newPath
 	 */
 	public static PathStatus createPath(String newPath) {
 		File path = new File(newPath);

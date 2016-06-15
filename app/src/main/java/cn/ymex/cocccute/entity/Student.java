@@ -6,8 +6,8 @@ import java.util.List;
  * Copyright (c) 2015. ymex
  * Email:ymex@foxmail.com  (www.ymex.cn)
  * @author ymex
- * @Description: TODO
- * @date 2015/12/3 0003
+ * Description:: TODO
+ * date: 2015/12/3 0003
  **/
 public class Student {
     private String name ;

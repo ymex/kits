@@ -76,7 +76,6 @@ public final class Encrypt {
 	 * @param key
 	 *            加密私钥，长度不能够小于8位
 	 * @return 加密后的字节数组，一般结合Base64编码使用
-	 * @throws Exception
 	 */
 	@SuppressLint("TrulyRandom")
 	public static String des(String data, String key) {
@@ -107,7 +106,6 @@ public final class Encrypt {
 	 * @param key
 	 *            解码私钥，长度不能够小于8位
 	 * @return 解码后的字节数组
-	 * @throws Exception
 	 *             异常
 	 */
 	public static String decodeDES(String data, String key) {

@@ -13,7 +13,7 @@ import android.os.Message;
 /**
  * 
  * @author ymex@foxmail.com
- * @Description 网络状态 ， 及其变化事件监听
+ * Description: 网络状态 ， 及其变化事件监听
  */
 @SuppressLint("HandlerLeak")
 public class AppNetworkStatus {
@@ -111,7 +111,7 @@ public class AppNetworkStatus {
 
 	/**
 	 * 
-	 * @Description: 检查是否有wifi 联接
+	 * Description:: 检查是否有wifi 联接
 	 * @param context
 	 * @return
 	 * @return: boolean
@@ -199,14 +199,14 @@ public class AppNetworkStatus {
 	public interface NetworkStatusListener {
 		/**
 		 * @param networkInfo 
-		 * @Description 网络断开事件
+		 * Description: 网络断开事件
 		 */
 		public void onStateNotConnected(NetworkInfo networkInfo);
 		/**
 		 * 
 		 * @param networkInfo
 		 * @param isWIFI
-		 * @Description 网络连接事件
+		 * Description: 网络连接事件
 		 */
 		public void onStateConnected(NetworkInfo networkInfo, boolean isWIFI);
 	}

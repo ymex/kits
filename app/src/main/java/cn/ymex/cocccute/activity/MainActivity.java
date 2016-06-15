@@ -1,8 +1,6 @@
 package cn.ymex.cocccute.activity;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -62,7 +60,7 @@ public class MainActivity extends BaseActivity implements AdapterView.OnItemClic
                 Toaster.show(Toaster.inflate(R.layout.view_toast));
                 break;
             case 3:
-                startActivity(new Intent(this, SAMFActivity.class));
+
                 break;
         }
     }

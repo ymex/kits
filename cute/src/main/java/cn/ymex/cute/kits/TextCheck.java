@@ -6,18 +6,17 @@ import android.os.Build;
 import android.util.Patterns;
 
 /**
- * @Description: 字符串检查
+ * Description:: 字符串检查
  * @author ymex@foxmail.com
  * 
  */
 public class TextCheck {
 	/**
-	 * @Title: subtextWithApostrophe
-	 * @Description: 返回指定长度的字串并追加 省略号
+	 * Title: subtextWithApostrophe
+	 * Description:: 返回指定长度的字串并追加 省略号
 	 * @param text
 	 * @param wordCount
 	 * @return
-	 * @return: CharSequence
 	 */
 	public static CharSequence subtextWithApostrophe(CharSequence text,
 			int wordCount) {
@@ -28,12 +27,11 @@ public class TextCheck {
 	}
 
 	/**
-	 * @Title: text2num
-	 * @Description:  字串转为数字
+	 * Title: text2num
+	 * Description::  字串转为数字
 	 * @param text
 	 * @param defaultValue
 	 * @return
-	 * @return: int
 	 */
 	public static int text2num(CharSequence text, int defaultValue) {
 		int value = defaultValue;
@@ -63,7 +61,7 @@ public class TextCheck {
 	}
 
 	/**
-	 * @Description 字符串为null或空字符串，返回true
+	 * Description: 字符串为null或空字符串，返回true
 	 * @param text
 	 * @return
 	 */
@@ -75,11 +73,10 @@ public class TextCheck {
 	}
 
 	/**
-	 * @Title: isEmail
-	 * @Description: 邮件地址
+	 * Title: isEmail
+	 * Description:: 邮件地址
 	 * @param text
 	 * @return
-	 * @return: boolean
 	 */
 	public boolean isEmail(String text) {
 		return matches(text,
@@ -98,11 +95,10 @@ public class TextCheck {
 	}
 
 	/**
-	 * @Title: isWebUrl
-	 * @Description:  url 地址
+	 * Title: isWebUrl
+	 * Description::  url 地址
 	 * @param text
 	 * @return
-	 * @return: boolean
 	 */
 	public static boolean isWebUrl(String text) {
 		return matches(text, Build.VERSION.SDK_INT >= 8 ? Patterns.WEB_URL

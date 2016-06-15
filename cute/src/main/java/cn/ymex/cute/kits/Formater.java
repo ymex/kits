@@ -8,10 +8,9 @@ import java.util.Date;
 import java.util.TimeZone;
 
 /**
- * @ClassName: Formater
- * @Description:  提供有限的 时间/单体格式相关转换
+ * ClassName: Formater
+ * Description::  提供有限的 时间/单体格式相关转换
  * @author: ymex
- * @date: 2015-4-24 下午8:47:46
  */
 @SuppressLint("SimpleDateFormat")
 public class Formater {
