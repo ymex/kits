@@ -1,3 +1,13 @@
+/*
+ * Copyright (c) 2015. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+ * Morbi non lorem porttitor neque feugiat blandit. Ut vitae ipsum eget quam lacinia accumsan.
+ * Etiam sed turpis ac ipsum condimentum fringilla. Maecenas magna.
+ * Proin dapibus sapien vel ante. Aliquam erat volutpat. Pellentesque sagittis ligula eget metus.
+ * Vestibulum commodo. Ut rhoncus gravida arcu.
+ * <p>
+ * Email:ymex@foxmail.com  (www.ymex.cn)
+ * @author ymex
+ */
 package cn.ymex.cute.kits;
 
 import android.annotation.SuppressLint;
@@ -8,12 +18,10 @@ import java.util.Date;
 import java.util.TimeZone;
 
 /**
- * ClassName: Formater
- * Description::  提供有限的 时间/单体格式相关转换
- * @author: ymex
+ * 提供有限的 时间/单体格式相关转换
  */
 @SuppressLint("SimpleDateFormat")
-public class Formater {
+public class TimeKit {
 	private static String DEFAULT_TIME_ZONE = "GMT+08";
 	/**
 	 * 判断用户的设备时区是否为某一时区
@@ -187,5 +195,9 @@ public class Formater {
 		String curDate = dateFormater.get().format(cal.getTime());
 		curDate = curDate.replace("-", "");
 		return Long.parseLong(curDate);
+	}
+
+	public static long currentTimeMillis(){
+		return System.currentTimeMillis();
 	}
 }

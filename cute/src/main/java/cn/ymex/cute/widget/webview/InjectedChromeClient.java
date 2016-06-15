@@ -1,10 +1,3 @@
-/**
- * Summary: 应用中使用的WebChromeClient基类
- * Version 1.0
- * Date: 13-11-8
- * Time: 下午2:31
- * Copyright: Copyright (c) 2013
- */
 
 package cn.ymex.cute.widget.webview;
 

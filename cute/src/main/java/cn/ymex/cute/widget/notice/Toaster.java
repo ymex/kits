@@ -25,7 +25,7 @@ public final class Toaster {
     private static Toast mToast;
 
 
-    public static void create(Context context){
+    public static void init(Context context){
         if (null == sApplication){
             sApplication = context;
         }

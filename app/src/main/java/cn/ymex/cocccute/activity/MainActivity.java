@@ -16,6 +16,7 @@ import cn.ymex.cocccute.base.BaseActivity;
 import cn.ymex.cocccute.entity.ItemEntity;
 import cn.ymex.cocccute.entity.Student;
 import cn.ymex.cute.kits.Finder;
+import cn.ymex.cute.kits.TextKit;
 import cn.ymex.cute.log.L;
 import cn.ymex.cute.widget.notice.Toaster;
 
@@ -32,7 +33,7 @@ public class MainActivity extends BaseActivity implements AdapterView.OnItemClic
         setContentView(R.layout.activity_main);
         listView = Finder.find(this, R.id.lv_listview);
         listView.setOnItemClickListener(this);
-        adapter = new ItemViewHolderAdapter(this);
+        adapter = new ItemViewHolderAdapter();
         adapter.appendDataList(items);
         listView.setAdapter(adapter);
     }
@@ -60,7 +61,7 @@ public class MainActivity extends BaseActivity implements AdapterView.OnItemClic
                 Toaster.show(Toaster.inflate(R.layout.view_toast));
                 break;
             case 3:
-
+                TextKit.toNum("1abc",0);
                 break;
         }
     }

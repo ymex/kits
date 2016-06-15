@@ -1,12 +1,4 @@
-package cn.ymex.cute.kits;
-
-import android.app.Activity;
-import android.content.Context;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-
-/**
+/*
  * Copyright (c) 2015. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
  * Morbi non lorem porttitor neque feugiat blandit. Ut vitae ipsum eget quam lacinia accumsan.
  * Etiam sed turpis ac ipsum condimentum fringilla. Maecenas magna.
@@ -16,27 +8,33 @@ import android.view.ViewGroup;
  * Email:ymex@foxmail.com  (www.ymex.cn)
  *
  * @author ymex
- * date: 16/4/20
- * 更优雅的控件查找及加载xml布局文件
+ */
+package cn.ymex.cute.kits;
+
+import android.app.Activity;
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+
+/**
+ * find view
  */
 public class Finder {
     /**
-     * Title: find
-     * Description:: find view by id from view
+     * find view by id from view
      * @param view
      * @param id
      * @return
      * @return: T
      */
 
-
     public static <T extends View> T find(View view, int id) {
         return (T) view.findViewById(id);
     }
 
     /**
-     * Title: find
-     * Description:: TODO find view by id from activity
+     * find view by id from activity
      * @param act
      * @param id
      * @return
@@ -47,7 +45,7 @@ public class Finder {
     }
 
     /**
-     * Description:加载布局文件
+     * inflate xml layout
      * @param context
      * @param resource
      * @return
@@ -56,7 +54,7 @@ public class Finder {
         return (T) LayoutInflater.from(context).inflate(resource, null);
     }
     /**
-     * Description:加载布局文件
+     * inflate xml layout
      * @param context
      * @param resource
      * @param viewGroup

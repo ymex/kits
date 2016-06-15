@@ -1,3 +1,14 @@
+/*
+ * Copyright (c) 2015. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+ * Morbi non lorem porttitor neque feugiat blandit. Ut vitae ipsum eget quam lacinia accumsan.
+ * Etiam sed turpis ac ipsum condimentum fringilla. Maecenas magna.
+ * Proin dapibus sapien vel ante. Aliquam erat volutpat. Pellentesque sagittis ligula eget metus.
+ * Vestibulum commodo. Ut rhoncus gravida arcu.
+ * <p>
+ * Email:ymex@foxmail.com  (www.ymex.cn)
+ *
+ * @author ymex
+ */
 package cn.ymex.cute.adapter;
 
 
@@ -10,20 +21,7 @@ import android.widget.BaseAdapter;
 import java.util.ArrayList;
 import java.util.List;
 
-
-
-/**
- * Copyright (c) 2015. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
- * Morbi non lorem porttitor neque feugiat blandit. Ut vitae ipsum eget quam lacinia accumsan.
- * Etiam sed turpis ac ipsum condimentum fringilla. Maecenas magna.
- * Proin dapibus sapien vel ante. Aliquam erat volutpat. Pellentesque sagittis ligula eget metus.
- * Vestibulum commodo. Ut rhoncus gravida arcu.
-
- * Email:ymex@foxmail.com  (www.ymex.cn)
- *
- * @author ymex
- * date: 16/4/23
- */
+import cn.ymex.cute.Cute;
 
 /**
  * 替代系统的BaseAdapter
@@ -35,26 +33,48 @@ public abstract class ViewHolderAdapter<E extends Object, V extends AdapterViewH
 
 
     protected List<E> mDataList; //数据列表
-    protected Context mContext;
-    private String  TAG_E = "cute.E";
 
-    public ViewHolderAdapter(Context context) {
-        this(context, null);
+    public ViewHolderAdapter() {
+        this(null);
     }
 
-    public ViewHolderAdapter(Context context, List<E> dataList) {
-        this.mContext = context;
+    public ViewHolderAdapter(List<E> dataList) {
+        super();
         this.mDataList = dataList;
     }
 
     /**
-     * 添加数据列表
+     * inflate Item View layout
+     * @return
+     */
+    public abstract View inflateItemView(Context context);
+
+
+    /**
+     * viewHolder
+     * @return
+     */
+    public abstract V instanceViewHolder(View view);
+
+    /**
+     * like baseAdapter.getView()
+     * @param position
+     * @param convertView
+     * @param parent
+     * @param hold
+     */
+    public abstract void getView(int position, View convertView, ViewGroup parent, V hold);
+
+
+
+    /**
+     * append entities
      *
      * @param dataList
      */
     public void appendDataList(List<E> dataList) {
         if (null == dataList) {
-            Log.e(TAG_E, "At BaseCuteAdapter.appendDataList(): java.lang.NullPointerException: Attempt to invoke interface method 'java.lang.Object[] java.util.Collection.toArray()' on a null ");
+            Log.e(Cute.TAG_E, "At BaseCuteAdapter.appendDataList(): java.lang.NullPointerException: Attempt to invoke interface method 'java.lang.Object[] java.util.Collection.toArray()' on a null ");
             return;
         }
         if (null == this.mDataList) {
@@ -65,13 +85,13 @@ public abstract class ViewHolderAdapter<E extends Object, V extends AdapterViewH
     }
 
     /**
-     * 重置数据源
+     * reset entities
      *
      * @param dataList
      */
     public void resetDataList(List<E> dataList) {
         if (null == dataList) {
-            Log.e(TAG_E, "At BaseCuteAdapter.resetDataList(): java.lang.NullPointerException: Attempt to invoke interface method 'java.lang.Object[] java.util.Collection.toArray()' on a null ");
+            Log.e(Cute.TAG_E, "At BaseCuteAdapter.resetDataList(): java.lang.NullPointerException: Attempt to invoke interface method 'java.lang.Object[] java.util.Collection.toArray()' on a null ");
             return;
         }
         if (null == mDataList) {
@@ -84,13 +104,13 @@ public abstract class ViewHolderAdapter<E extends Object, V extends AdapterViewH
     }
 
     /**
-     * 添加单条数据
+     * add single data entity
      *
      * @param data
      */
     public void appendDataItem(E data) {
         if (null == data) {
-            Log.e(TAG_E, "At BaseCuteAdapter.appendData(): java.lang.NullPointerException: Attempt to invoke interface method 'java.lang.Object[] java.util.Collection.toArray()' on a null ");
+            Log.e(Cute.TAG_E, "At BaseCuteAdapter.appendData(): java.lang.NullPointerException: Attempt to invoke interface method 'java.lang.Object[] java.util.Collection.toArray()' on a null ");
             return;
         }
         if (null == this.mDataList) {
@@ -126,40 +146,13 @@ public abstract class ViewHolderAdapter<E extends Object, V extends AdapterViewH
     public View getView(int position, View convertView, ViewGroup parent) {
         V viewHolder = null;
         if (convertView == null) {
-            convertView = inflateItemView();
+            convertView = inflateItemView(parent.getContext());
             viewHolder = instanceViewHolder(convertView);
             convertView.setTag(viewHolder);
         } else {
             viewHolder = (V) convertView.getTag();
         }
-        getItem(position, convertView, parent, viewHolder);
+        getView(position, convertView, parent, viewHolder);
         return convertView;
     }
-
-
-    /**
-     * 实例子布局
-     *
-     * @return
-     */
-    public abstract View inflateItemView();
-
-
-    /**
-     * viewHolder view hold
-     *
-     * @return
-     */
-    public abstract V instanceViewHolder(View view);
-
-    /**
-     * 绑定数据 与 baseAdapter getitem 功能相同
-     * @param position
-     * @param convertView
-     * @param parent
-     * @param hold viewHolder 持有itemview实例
-     */
-    public abstract void getItem(int position, View convertView, ViewGroup parent, V hold);
-
-
 }

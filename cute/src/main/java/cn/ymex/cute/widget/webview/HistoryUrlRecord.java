@@ -5,9 +5,7 @@ import java.util.List;
 import java.util.Stack;
 
 /**
- * ClassName: HistoryRecordMan
- * Description:: 访问历史记录器
- * @author: ymex 2016年4月23日 下午2:17:52
+ * 访问历史记录器
  */
 public class HistoryUrlRecord {
 
