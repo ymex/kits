@@ -18,21 +18,12 @@ import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
 import android.provider.Settings;
 import android.telephony.TelephonyManager;
-import android.util.DisplayMetrics;
-import android.view.View;
-import android.view.WindowManager;
 
 /**
  * 设备相关 （系统版本号  手机屏幕 版本号）
  */
 public class Device {
-    public static int SCREEN_WIDTH_PX;
-    public static int SCREEN_HEIGHT_PX;
-    public static float SCREEN_DENSITY;
-    public static int SCREEN_WIDTH_DP;
-    public static int SCREEN_HEIGHT_DP;
     private static boolean sInitialed;
-
     private static Context mContext;
 
     private Device() {
@@ -44,44 +35,8 @@ public class Device {
         }
         mContext = context;
         sInitialed = true;
-        DisplayMetrics dm = new DisplayMetrics();
-        WindowManager wm = (WindowManager) context
-                .getSystemService(Context.WINDOW_SERVICE);
-        wm.getDefaultDisplay().getMetrics(dm);
-        SCREEN_WIDTH_PX = dm.widthPixels;
-        SCREEN_HEIGHT_PX = dm.heightPixels;
-        SCREEN_DENSITY = dm.density;
-        SCREEN_WIDTH_DP = (int) (SCREEN_WIDTH_PX / dm.density);
-        SCREEN_HEIGHT_DP = (int) (SCREEN_HEIGHT_PX / dm.density);
     }
 
-    /**
-     * @param dp to px
-     * @return
-     */
-    public static int dp2px(float dp) {
-        final float scale = SCREEN_DENSITY;
-        return (int) (dp * scale + 0.5f);
-    }
-
-    public static int designedDP2px(float designedDp) {
-        // density = 160 时 w=320 * h 480 1dp = 1px
-        if (SCREEN_WIDTH_DP != 320) {
-            designedDp = designedDp * SCREEN_WIDTH_DP / 320f;
-        }
-        return dp2px(designedDp);
-    }
-
-    public static float px2dp(int px) {
-        final float scale = SCREEN_DENSITY;
-        return (px / scale + 0.5f);
-    }
-
-    public static void setPadding(final View view, float left, float top,
-                                  float right, float bottom) {
-        view.setPadding(designedDP2px(left), dp2px(top), designedDP2px(right),
-                dp2px(bottom));
-    }
 
     private static RuntimeException exception = new RuntimeException("mContext is null , pulese call Cute onCreate() in application onCreate()");
 

@@ -9,7 +9,6 @@ import cn.ymex.cocccute.R;
 import cn.ymex.cocccute.entity.ItemEntity;
 import cn.ymex.cute.adapter.AdapterViewHolder;
 import cn.ymex.cute.adapter.ViewHolderAdapter;
-import cn.ymex.cute.kits.Finder;
 
 public class ItemViewHolderAdapter extends ViewHolderAdapter<ItemEntity,ItemViewHolderAdapter.ViewHoder> {
 

@@ -14,18 +14,20 @@ package cn.ymex.cute;
 import android.content.Context;
 
 import cn.ymex.cute.kits.Device;
+import cn.ymex.cute.kits.UIKit;
 import cn.ymex.cute.widget.notice.Toaster;
 public class Cute {
     public static String TAG_E = "cute.E";
     private static Context application;
 
     private Cute() {
+
     }
 
-    public static void create(Context context){
-        Device.init(context);
+    public static void insert(Context context){
+        application = context;
+        UIKit.init(context);
         Toaster.init(context);
+        Device.init(context);
     }
-
-
 }

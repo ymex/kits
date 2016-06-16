@@ -15,7 +15,6 @@ import cn.ymex.cocccute.adapter.ItemViewHolderAdapter;
 import cn.ymex.cocccute.base.BaseActivity;
 import cn.ymex.cocccute.entity.ItemEntity;
 import cn.ymex.cocccute.entity.Student;
-import cn.ymex.cute.kits.Finder;
 import cn.ymex.cute.kits.TextKit;
 import cn.ymex.cute.log.L;
 import cn.ymex.cute.widget.notice.Toaster;
