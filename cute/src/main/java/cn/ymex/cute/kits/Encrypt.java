@@ -40,7 +40,6 @@ public final class Encrypt {
 
     /**
      * md5编码
-     *
      * @param text
      * @return
      */
@@ -70,7 +69,6 @@ public final class Encrypt {
 
     /**
      * DES算法，编码
-     *
      * @param data 待加密字符串
      * @param key  加密私钥，长度不能够小于8位
      * @return 加密后的字节数组，一般结合Base64编码使用
@@ -230,7 +228,6 @@ public final class Encrypt {
 
     /**
      * base64 解码
-     *
      * @param s
      * @return
      */
