@@ -132,7 +132,7 @@ public class UiKit {
      * set actionbar title in center
      * @param toolbar
      */
-    static void setToolbarTitleInCenter(@NonNull final Toolbar toolbar) {
+    public static void setToolbarTitleInCenter(@NonNull final Toolbar toolbar) {
         CharSequence title = toolbar.getTitle();
         ArrayList<View> outViews = new ArrayList<>(1);
         toolbar.findViewsWithText(outViews, title, View.FIND_VIEWS_WITH_TEXT);
