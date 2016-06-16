@@ -13,7 +13,6 @@ package cn.ymex.cute.kits;
 import android.app.Activity;
 import android.content.Context;
 import android.support.annotation.IdRes;
-import android.support.annotation.IntegerRes;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.Toolbar;
@@ -29,7 +28,7 @@ import java.util.ArrayList;
 /**
  * Created by ymexc on 2016/6/16.
  */
-public class UIKit {
+public class UiKit {
     private static boolean sInitialed;
     private static Context mContext;
 
@@ -50,11 +49,11 @@ public class UIKit {
         WindowManager wm = (WindowManager) context
                 .getSystemService(Context.WINDOW_SERVICE);
         wm.getDefaultDisplay().getMetrics(dm);
-        UIKit.SCREEN_WIDTH_PX = dm.widthPixels;
-        UIKit.SCREEN_HEIGHT_PX = dm.heightPixels;
-        UIKit.SCREEN_DENSITY = dm.density;
-        UIKit.SCREEN_WIDTH_DP = (int) (UIKit.SCREEN_WIDTH_PX / dm.density);
-        UIKit.SCREEN_HEIGHT_DP = (int) (UIKit.SCREEN_HEIGHT_PX / dm.density);
+        UiKit.SCREEN_WIDTH_PX = dm.widthPixels;
+        UiKit.SCREEN_HEIGHT_PX = dm.heightPixels;
+        UiKit.SCREEN_DENSITY = dm.density;
+        UiKit.SCREEN_WIDTH_DP = (int) (UiKit.SCREEN_WIDTH_PX / dm.density);
+        UiKit.SCREEN_HEIGHT_DP = (int) (UiKit.SCREEN_HEIGHT_PX / dm.density);
     }
 
     /**

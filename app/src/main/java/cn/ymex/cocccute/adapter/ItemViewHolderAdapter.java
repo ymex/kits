@@ -9,12 +9,13 @@ import cn.ymex.cocccute.R;
 import cn.ymex.cocccute.entity.ItemEntity;
 import cn.ymex.cute.adapter.AdapterViewHolder;
 import cn.ymex.cute.adapter.ViewHolderAdapter;
+import cn.ymex.cute.kits.UiKit;
 
 public class ItemViewHolderAdapter extends ViewHolderAdapter<ItemEntity,ItemViewHolderAdapter.ViewHoder> {
 
     @Override
     public View inflateItemView(Context context) {
-        return Finder.inflate(context,R.layout.item_main);
+        return UiKit.inflate(context,R.layout.item_main);
     }
 
     @Override
@@ -37,8 +38,8 @@ public class ItemViewHolderAdapter extends ViewHolderAdapter<ItemEntity,ItemView
 
         public ViewHoder(View convertView) {
             super(convertView);
-            tvTitle = Finder.find(convertView,R.id.tv_title);
-            tvDetail = Finder.find(convertView,R.id.tv_detail);
+            tvTitle = UiKit.find(convertView,R.id.tv_title);
+            tvDetail = UiKit.find(convertView,R.id.tv_detail);
         }
     }
 }
