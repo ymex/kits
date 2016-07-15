@@ -28,7 +28,7 @@ import java.util.ArrayList;
 /**
  * Created by ymexc on 2016/6/16.
  */
-public class UiKit {
+public class ViewKit {
     private static boolean sInitialed;
     private static Context mContext;
 
@@ -49,11 +49,11 @@ public class UiKit {
         WindowManager wm = (WindowManager) context
                 .getSystemService(Context.WINDOW_SERVICE);
         wm.getDefaultDisplay().getMetrics(dm);
-        UiKit.SCREEN_WIDTH_PX = dm.widthPixels;
-        UiKit.SCREEN_HEIGHT_PX = dm.heightPixels;
-        UiKit.SCREEN_DENSITY = dm.density;
-        UiKit.SCREEN_WIDTH_DP = (int) (UiKit.SCREEN_WIDTH_PX / dm.density);
-        UiKit.SCREEN_HEIGHT_DP = (int) (UiKit.SCREEN_HEIGHT_PX / dm.density);
+        ViewKit.SCREEN_WIDTH_PX = dm.widthPixels;
+        ViewKit.SCREEN_HEIGHT_PX = dm.heightPixels;
+        ViewKit.SCREEN_DENSITY = dm.density;
+        ViewKit.SCREEN_WIDTH_DP = (int) (ViewKit.SCREEN_WIDTH_PX / dm.density);
+        ViewKit.SCREEN_HEIGHT_DP = (int) (ViewKit.SCREEN_HEIGHT_PX / dm.density);
     }
 
     /**

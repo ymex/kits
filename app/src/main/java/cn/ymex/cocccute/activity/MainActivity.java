@@ -15,9 +15,8 @@ import cn.ymex.cocccute.adapter.ItemViewHolderAdapter;
 import cn.ymex.cocccute.base.BaseActivity;
 import cn.ymex.cocccute.entity.ItemEntity;
 import cn.ymex.cocccute.entity.Student;
-import cn.ymex.cute.kits.SharedPrekit;
 import cn.ymex.cute.kits.TextKit;
-import cn.ymex.cute.kits.UiKit;
+import cn.ymex.cute.kits.ViewKit;
 import cn.ymex.cute.log.L;
 import cn.ymex.cute.widget.notice.Toaster;
 
@@ -32,7 +31,8 @@ public class MainActivity extends BaseActivity implements AdapterView.OnItemClic
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        listView = UiKit.find(this, R.id.lv_listview);
+        listView = ViewKit.find(this, R.id.lv_listview);
+
         listView.setOnItemClickListener(this);
         adapter = new ItemViewHolderAdapter();
         adapter.appendDataList(items);

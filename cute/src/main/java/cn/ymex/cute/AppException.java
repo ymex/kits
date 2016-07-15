@@ -19,6 +19,6 @@ public class AppException extends Exception implements Thread.UncaughtExceptionH
 
     @Override
     public void uncaughtException(Thread thread, Throwable ex) {
-
+        
     }
 }
