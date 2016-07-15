@@ -17,12 +17,13 @@ import cn.ymex.cute.kits.Device;
 import cn.ymex.cute.kits.SharedPrekit;
 import cn.ymex.cute.kits.ViewKit;
 import cn.ymex.cute.widget.notice.Toaster;
-public class Cute {
+
+public final class Cute {
     public static String TAG_E = "cute.E";
     private static Context application;
 
     private Cute() {
-
+        throw new RuntimeException("Cute not allow instance");
     }
 
     public static void create(Context context){
