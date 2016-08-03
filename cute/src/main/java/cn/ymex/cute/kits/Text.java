@@ -18,7 +18,7 @@ import android.util.Patterns;
 
 import cn.ymex.cute.Cute;
 
-public class TextKit {
+public class Text {
     /**
      * Returns the String value of the subsequence from the start index with suffix
      * @param text

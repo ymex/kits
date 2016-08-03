@@ -21,7 +21,7 @@ import java.util.TimeZone;
  * 提供有限的 时间/单体格式相关转换
  */
 @SuppressLint("SimpleDateFormat")
-public class TimeKit {
+public class TimeFormat {
 	private static String DEFAULT_TIME_ZONE = "GMT+08";
 	/**
 	 * 判断用户的设备时区是否为某一时区

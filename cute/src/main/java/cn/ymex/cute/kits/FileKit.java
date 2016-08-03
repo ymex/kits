@@ -137,7 +137,7 @@ public class FileKit {
      * @return
      */
     public static String getFileName(String filePath) {
-        if (TextKit.isEmpty(filePath))
+        if (Text.isEmpty(filePath))
             return "";
         return filePath.substring(filePath.lastIndexOf(File.separator) + 1);
     }
@@ -149,7 +149,7 @@ public class FileKit {
      * @return
      */
     public static String getFileNameNoFormat(String filePath) {
-        if (TextKit.isEmpty(filePath)) {
+        if (Text.isEmpty(filePath)) {
             return "";
         }
         int point = filePath.lastIndexOf('.');
@@ -164,7 +164,7 @@ public class FileKit {
      * @return
      */
     public static String getFileFormat(String fileName) {
-        if (TextKit.isEmpty(fileName))
+        if (Text.isEmpty(fileName))
             return "";
 
         int point = fileName.lastIndexOf('.');

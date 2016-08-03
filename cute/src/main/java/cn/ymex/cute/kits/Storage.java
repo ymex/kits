@@ -11,15 +11,15 @@ import java.util.Set;
 /**
  * Created by ymexc on 2016/6/16.
  */
-public final class Keeper {
+public final class Storage {
 
     private static Context mContext;
     private SharedPreferences mSharedPreferences;
 
     private static boolean sInitialed;
-    private static Keeper keeper;
+    private static Storage storage;
 
-    private Keeper(){
+    private Storage(){
         String spname = "cute_sp";
         mSharedPreferences = mContext.getSharedPreferences(spname, Context.MODE_PRIVATE);
     }
@@ -32,21 +32,21 @@ public final class Keeper {
         sInitialed = true;
     }
 
-    public static Keeper instance() {
+    public static Storage instance() {
         if (mContext==null){
-            throw new IllegalArgumentException("context is null, please init Keeper in application!");
+            throw new IllegalArgumentException("context is null, please init Storage in application!");
         }
-        Keeper sp = keeper;
-        if (keeper == null) {
-            synchronized (Keeper.class) {
-                sp = keeper;
+        Storage sp = storage;
+        if (storage == null) {
+            synchronized (Storage.class) {
+                sp = storage;
                 if (sp == null) {
-                    sp = new Keeper();
-                    keeper =sp;
+                    sp = new Storage();
+                    storage =sp;
                 }
             }
         }
-        return keeper;
+        return storage;
     }
 
     /**
