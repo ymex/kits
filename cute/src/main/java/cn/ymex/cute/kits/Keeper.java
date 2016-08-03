@@ -11,15 +11,15 @@ import java.util.Set;
 /**
  * Created by ymexc on 2016/6/16.
  */
-public final class SharedPrekit{
+public final class Keeper {
 
     private static Context mContext;
     private SharedPreferences mSharedPreferences;
 
     private static boolean sInitialed;
-    private static SharedPrekit sharedPrekit;
+    private static Keeper keeper;
 
-    private SharedPrekit(){
+    private Keeper(){
         String spname = "cute_sp";
         mSharedPreferences = mContext.getSharedPreferences(spname, Context.MODE_PRIVATE);
     }
@@ -32,21 +32,21 @@ public final class SharedPrekit{
         sInitialed = true;
     }
 
-    public static SharedPrekit instance() {
+    public static Keeper instance() {
         if (mContext==null){
-            throw new IllegalArgumentException("context is null, please init SharedPrekit in application!");
+            throw new IllegalArgumentException("context is null, please init Keeper in application!");
         }
-        SharedPrekit sp = sharedPrekit;
-        if (sharedPrekit == null) {
-            synchronized (SharedPrekit.class) {
-                sp = sharedPrekit;
+        Keeper sp = keeper;
+        if (keeper == null) {
+            synchronized (Keeper.class) {
+                sp = keeper;
                 if (sp == null) {
-                    sp = new SharedPrekit();
-                    sharedPrekit =sp;
+                    sp = new Keeper();
+                    keeper =sp;
                 }
             }
         }
-        return sharedPrekit;
+        return keeper;
     }
 
     /**
@@ -139,7 +139,7 @@ public final class SharedPrekit{
      * a String.
      */
     @Nullable
-    String getString(String key, @Nullable String defValue){
+    public String getString(String key, @Nullable String defValue){
         return mSharedPreferences.getString(key,defValue);
     }
 
@@ -158,7 +158,7 @@ public final class SharedPrekit{
      * that is not a Set.
      */
     @Nullable
-    Set<String> getStringSet(String key, @Nullable Set<String> defValues){
+    public Set<String> getStringSet(String key, @Nullable Set<String> defValues){
         return mSharedPreferences.getStringSet(key,defValues);
     }
 

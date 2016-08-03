@@ -14,7 +14,7 @@ package cn.ymex.cute;
 import android.content.Context;
 
 import cn.ymex.cute.kits.Device;
-import cn.ymex.cute.kits.SharedPrekit;
+import cn.ymex.cute.kits.Keeper;
 import cn.ymex.cute.kits.ViewKit;
 import cn.ymex.cute.widget.notice.Toaster;
 
@@ -29,7 +29,7 @@ public final class Cute {
     public static void create(Context context){
         application = context;
         ViewKit.init(context);
-        SharedPrekit.init(context);
+        Keeper.init(context);
         Toaster.init(context);
         Device.init(context);
     }
