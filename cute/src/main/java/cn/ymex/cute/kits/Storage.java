@@ -15,13 +15,13 @@ public final class Storage {
 
     private static Context mContext;
     private SharedPreferences mSharedPreferences;
+    private final String SHAREDPREFERENCES_NAME = "CUTE_SP_STORAGE";
 
     private static boolean sInitialed;
     private static Storage storage;
 
     private Storage(){
-        String spname = "cute_sp";
-        mSharedPreferences = mContext.getSharedPreferences(spname, Context.MODE_PRIVATE);
+        mSharedPreferences = mContext.getSharedPreferences(SHAREDPREFERENCES_NAME, Context.MODE_PRIVATE);
     }
 
     public static void init(@NonNull Context context) {

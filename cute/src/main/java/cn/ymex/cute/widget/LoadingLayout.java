@@ -13,7 +13,7 @@ import android.widget.LinearLayout;
  * Email:ymex@foxmail.com
  *
  * @author ymex
- * @date 2016/6/19
+ * 2016/6/19
  */
 public class LoadingLayout extends LinearLayout {
     public LoadingLayout(Context context) {

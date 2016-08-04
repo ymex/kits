@@ -80,7 +80,7 @@ public class FileKit {
         if (!destDir.exists()) {
             destDir.mkdirs();
         }
-        return new File(folderPath, fileName + fileName);
+        return new File(folderPath, fileName);
     }
 
     /**
@@ -204,6 +204,7 @@ public class FileKit {
             return df.format(temp) + "K";
         }
     }
+
 
     /**
      * 转换文件大小
