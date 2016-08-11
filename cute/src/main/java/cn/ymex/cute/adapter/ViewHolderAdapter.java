@@ -45,6 +45,7 @@ public abstract class ViewHolderAdapter<E extends Object, V extends AdapterViewH
 
     /**
      * inflate Item View layout
+     * @param context
      * @return
      */
     public abstract View inflateItemView(Context context);
@@ -52,9 +53,10 @@ public abstract class ViewHolderAdapter<E extends Object, V extends AdapterViewH
 
     /**
      * viewHolder
+     * @param view item view
      * @return
      */
-    public abstract V instanceViewHolder(View view);
+    public abstract V createViewHolder(View view);
 
     /**
      * like baseAdapter.getView()
@@ -63,7 +65,7 @@ public abstract class ViewHolderAdapter<E extends Object, V extends AdapterViewH
      * @param parent
      * @param hold
      */
-    public abstract void getView(int position, View convertView, ViewGroup parent, V hold);
+    public abstract void onBindItemView(int position, View convertView, ViewGroup parent, V hold);
 
 
 
@@ -147,12 +149,12 @@ public abstract class ViewHolderAdapter<E extends Object, V extends AdapterViewH
         V viewHolder = null;
         if (convertView == null) {
             convertView = inflateItemView(parent.getContext());
-            viewHolder = instanceViewHolder(convertView);
+            viewHolder = createViewHolder(convertView);
             convertView.setTag(viewHolder);
         } else {
             viewHolder = (V) convertView.getTag();
         }
-        getView(position, convertView, parent, viewHolder);
+        onBindItemView(position, convertView, parent, viewHolder);
         return convertView;
     }
 }

@@ -19,12 +19,12 @@ public class ItemViewHolderAdapter extends ViewHolderAdapter<ItemEntity,ItemView
     }
 
     @Override
-    public ViewHoder instanceViewHolder(View view) {
+    public ViewHoder createViewHolder(View view) {
         return new ViewHoder(view);
     }
 
     @Override
-    public void getView(int position, View convertView, ViewGroup parent, ViewHoder hold) {
+    public void onBindItemView(int position, View convertView, ViewGroup parent, ViewHoder hold) {
         ItemEntity entity = getItem(position);
         hold.tvTitle.setText(entity.getTitle());
         hold.tvDetail.setText(entity.getDetail());

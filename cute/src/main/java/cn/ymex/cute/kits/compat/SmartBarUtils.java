@@ -8,7 +8,7 @@
  * Email:ymex@foxmail.com  (www.ymex.cn)
  * @author ymex
  */
-package cn.ymex.cute.compat;
+package cn.ymex.cute.kits.compat;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
