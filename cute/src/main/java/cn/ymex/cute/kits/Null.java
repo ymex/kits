@@ -5,6 +5,7 @@ package cn.ymex.cute.kits;
  * Created by ymexc on 2016/8/12.
  */
 public class Null {
+
     /**
      * 检查对象是否为空，为空抛出 NullPointerException
      *
@@ -48,4 +49,27 @@ public class Null {
         return false;
     }
 
+    /**
+     * 检查对象是否为空， 不为空将返回原值 、为空则抛出异常
+     * @param value
+     * @param <T>
+     * @return
+     */
+    public static <T> T get(final T value) {
+        return checkNull(value,null);
+    }
+
+    /**
+     * 对象是否为空， 返回默认值。不为空将返回原值。
+     * @param value
+     * @param defValue
+     * @param <T>
+     * @return
+     */
+    public static <T> T or(final T value, T defValue) {
+        if (isNull(value)) {
+            return defValue;
+        }
+        return value;
+    }
 }
