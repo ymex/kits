@@ -4,18 +4,18 @@ package cn.ymex.cute.kits;
  * null 处理
  * Created by ymexc on 2016/8/12.
  */
-public class Null {
-
+public class Optional {
 
     /**
-     * 判断字符是否为空
+     * Description: 字符串为null或空字符串，返回true
+     *
      * @param text
      * @return
      */
     public static boolean isEmpty(CharSequence text) {
-        if (text == null || text.length() == 0) return true;
-        return false;
+        return text == null || text.length() == 0 ? true : false;
     }
+
 
     /**
      * 检查对象是否为空，为空抛出 NullPointerException
