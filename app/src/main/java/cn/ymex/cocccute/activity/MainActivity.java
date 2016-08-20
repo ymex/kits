@@ -15,7 +15,7 @@ import cn.ymex.cocccute.adapter.ItemViewHolderAdapter;
 import cn.ymex.cocccute.base.BaseActivity;
 import cn.ymex.cocccute.entity.ItemEntity;
 import cn.ymex.cocccute.entity.Student;
-import cn.ymex.cute.kits.Text;
+import cn.ymex.cute.kits.Texter;
 import cn.ymex.cute.kits.ViewKit;
 import cn.ymex.cute.log.L;
 import cn.ymex.cute.widget.notice.Toaster;
@@ -62,7 +62,7 @@ public class MainActivity extends BaseActivity implements AdapterView.OnItemClic
                 Toaster.show(Toaster.inflate(R.layout.view_toast));
                 break;
             case 3:
-                Text.toNum("1abc",0);
+                Texter.toNum("1abc",0);
                 break;
         }
     }

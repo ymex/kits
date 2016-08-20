@@ -16,7 +16,6 @@ import android.content.Context;
 import cn.ymex.cute.kits.Device;
 import cn.ymex.cute.kits.Storage;
 import cn.ymex.cute.kits.ViewKit;
-import cn.ymex.cute.net.SocketClient;
 import cn.ymex.cute.widget.notice.Toaster;
 
 public final class Cute {
