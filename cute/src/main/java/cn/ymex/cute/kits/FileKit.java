@@ -28,7 +28,6 @@ public class FileKit {
     public static void write(Context context, String fileName, String content) {
         if (content == null)
             content = "";
-
         try {
             FileOutputStream fos = context.openFileOutput(fileName,
                     Context.MODE_PRIVATE);
@@ -137,7 +136,7 @@ public class FileKit {
      * @return
      */
     public static String getFileName(String filePath) {
-        if (Text.isEmpty(filePath))
+        if (Optional.isEmpty(filePath))
             return "";
         return filePath.substring(filePath.lastIndexOf(File.separator) + 1);
     }
@@ -149,7 +148,7 @@ public class FileKit {
      * @return
      */
     public static String getFileNameNoFormat(String filePath) {
-        if (Text.isEmpty(filePath)) {
+        if (Optional.isEmpty(filePath)) {
             return "";
         }
         int point = filePath.lastIndexOf('.');
@@ -164,7 +163,7 @@ public class FileKit {
      * @return
      */
     public static String getFileFormat(String fileName) {
-        if (Text.isEmpty(fileName))
+        if (Optional.isEmpty(fileName))
             return "";
 
         int point = fileName.lastIndexOf('.');

@@ -18,7 +18,7 @@ import android.util.Patterns;
 
 import cn.ymex.cute.Cute;
 
-public class Text {
+public class Texter {
     /**
      * Returns the String value of the subsequence from the start index with suffix
      * @param text
@@ -69,21 +69,8 @@ public class Text {
     }
 
     /**
-     * Description: 字符串为null或空字符串，返回true
-     *
-     * @param text
-     * @return
-     */
-    public static boolean isEmpty(CharSequence text) {
-        if (text == null || text.length() == 0) {
-            return true;
-        }
-        return false;
-    }
-
-    /**
      * Title: isEmail
-     * Description:: 邮件地址
+     * Description: 邮件地址
      *
      * @param text
      * @return

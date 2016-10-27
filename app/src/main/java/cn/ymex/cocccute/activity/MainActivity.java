@@ -17,6 +17,7 @@ import cn.ymex.cocccute.base.BaseActivity;
 import cn.ymex.cocccute.entity.ItemEntity;
 import cn.ymex.cocccute.entity.Student;
 import cn.ymex.cocccute.flux.FluxActivity;
+import cn.ymex.cute.kits.Texter;
 import cn.ymex.cute.kits.ViewKit;
 import cn.ymex.cute.log.L;
 import cn.ymex.cute.widget.notice.Toaster;
@@ -64,7 +65,6 @@ public class MainActivity extends BaseActivity implements AdapterView.OnItemClic
                 L.w(new Gson().toJson(new Student("Mars", 32, "你好")));
                 L.e("this error log ");
                 L.w(new Exception("--ht"));
-
                 break;
         }
     }
