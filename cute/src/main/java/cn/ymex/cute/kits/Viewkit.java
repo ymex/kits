@@ -15,15 +15,11 @@ import android.content.Context;
 import android.support.annotation.IdRes;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.NonNull;
-import android.support.v7.widget.Toolbar;
 import android.util.DisplayMetrics;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
-import android.widget.TextView;
-import java.util.ArrayList;
 
 /**
  * Created by ymexc on 2016/6/16.
@@ -128,22 +124,4 @@ public class ViewKit {
     }
 
 
-    /**
-     * set actionbar title in center
-     * @param toolbar
-     */
-    public static void setToolbarTitleInCenter(@NonNull final Toolbar toolbar) {
-        CharSequence title = toolbar.getTitle();
-        ArrayList<View> outViews = new ArrayList<>(1);
-        toolbar.findViewsWithText(outViews, title, View.FIND_VIEWS_WITH_TEXT);
-        if (!outViews.isEmpty()) {
-            final TextView titleView = (TextView) outViews.get(0);
-            Toolbar.LayoutParams params = new Toolbar.LayoutParams(
-                    Toolbar.LayoutParams.WRAP_CONTENT, Toolbar.LayoutParams.WRAP_CONTENT);
-            params.gravity = Gravity.CENTER;
-            titleView.setGravity(Gravity.CENTER);
-            titleView.setLayoutParams(params);
-            toolbar.requestLayout();
-        }
-    }
 }

@@ -8,7 +8,7 @@ import cn.ymex.cute.kits.Optional;
  * Copyright (c) ymexc(www.ymex.cn)
  * Email:ymex@foxmail.com
  * date 2016/01/27
- * Flux 设置event bus 和初化操作
+ * Flux seted event bus and inistance
  *
  * @author ymex
  */

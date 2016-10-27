@@ -6,7 +6,7 @@ import java.util.Vector;
  * Copyright (c) ymexc(www.ymex.cn)
  * Email:ymex@foxmail.com
  * date 2016/01/27
- * instance 事件分发器
+ * Flux Dispatcher
  * @author ymex
  */
 public class Dispatcher {

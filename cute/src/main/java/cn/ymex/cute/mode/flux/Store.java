@@ -6,7 +6,7 @@ import android.support.annotation.NonNull;
  * Copyright (c) ymexc(www.ymex.cn)
  * Email:ymex@foxmail.com
  * date 2016/01/27
- * Flux store
+ * Flux Store
  *
  * @author ymex
  */
