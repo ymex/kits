@@ -1,4 +1,4 @@
-package cn.ymex.cocccute.flux;
+package cn.ymex.cocccute.flux.action;
 
 
 import cn.ymex.cute.mode.flux.Action;

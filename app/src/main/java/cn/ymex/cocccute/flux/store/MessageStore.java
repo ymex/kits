@@ -1,6 +1,7 @@
-package cn.ymex.cocccute.flux;
+package cn.ymex.cocccute.flux.store;
 
 
+import cn.ymex.cocccute.flux.action.MessageAction;
 import cn.ymex.cocccute.flux.model.Message;
 import cn.ymex.cute.kits.Optional;
 import cn.ymex.cute.mode.flux.Action;

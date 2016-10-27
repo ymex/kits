@@ -10,6 +10,8 @@ import com.squareup.otto.Subscribe;
 
 import cn.ymex.cocccute.R;
 import cn.ymex.cocccute.base.BaseActivity;
+import cn.ymex.cocccute.flux.action.MessageAction;
+import cn.ymex.cocccute.flux.store.MessageStore;
 import cn.ymex.cute.kits.Optional;
 import cn.ymex.cute.kits.ViewKit;
 import cn.ymex.cute.mode.flux.Store;
