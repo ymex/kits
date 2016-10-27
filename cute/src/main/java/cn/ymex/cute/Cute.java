@@ -11,12 +11,15 @@
  */
 package cn.ymex.cute;
 
+import android.app.Application;
 import android.content.Context;
+import android.support.annotation.NonNull;
 
 import cn.ymex.cute.kits.Device;
+import cn.ymex.cute.kits.Optional;
 import cn.ymex.cute.kits.Storage;
 import cn.ymex.cute.kits.ViewKit;
-import cn.ymex.cute.net.SocketClient;
+import cn.ymex.cute.mode.flux.Flux;
 import cn.ymex.cute.widget.notice.Toaster;
 
 public final class Cute {
@@ -28,10 +31,27 @@ public final class Cute {
     }
 
     public static void create(Context context){
+        all(context);
+    }
+
+    public static void all(Context context) {
         application = context;
         ViewKit.init(context);
         Storage.init(context);
         Toaster.init(context);
         Device.init(context);
+    }
+
+    /**
+     * 使用flux 模式开发app
+     * @param busAdapter
+     */
+    public static void setFluxBusAdapter(@NonNull Flux.BusAdapter busAdapter) {
+        Flux.instance().setBusAdapter(busAdapter);
+    }
+
+    public Application getContent() {
+        Optional.checkNull(application,"application is null!");
+        return (Application) application;
     }
 }

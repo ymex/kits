@@ -1,10 +1,10 @@
 package cn.ymex.cute.kits;
 
 /**
- * null 处理
+ * Optional null 处理
  * Created by ymexc on 2016/8/12.
  */
-public class Null {
+public class Optional {
 
 
     /**

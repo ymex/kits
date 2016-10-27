@@ -1,7 +1,7 @@
 package cn.ymex.cocccute;
 
-import android.app.Application;
-
+import cn.ymex.cocccute.flux.eventbus.OttoBusAdapter;
+import cn.ymex.cute.AppContent;
 import cn.ymex.cute.Cute;
 
 /**
@@ -18,10 +18,11 @@ import cn.ymex.cute.Cute;
  *
  * application 实例 在 manifest.mxl 声明
  */
-public class AppContext extends Application {
+public class AppContext extends AppContent {
     @Override
     public void onCreate() {
         super.onCreate();
         Cute.create(this);//实例化相关类
+        Cute.setFluxBusAdapter(OttoBusAdapter.get());//使用flux框架
     }
 }

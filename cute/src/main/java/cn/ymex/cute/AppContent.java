@@ -15,7 +15,6 @@ public class AppContent extends Application implements Application.ActivityLifec
     public void onCreate() {
         super.onCreate();
         registerActivityLifecycleCallbacks(this);
-        Cute.create(this);
     }
 
     @Override

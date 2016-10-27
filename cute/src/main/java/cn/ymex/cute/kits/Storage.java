@@ -9,6 +9,7 @@ import java.util.Map;
 import java.util.Set;
 
 /**
+ * SharedPreferences 帮助类
  * Created by ymexc on 2016/6/16.
  */
 public final class Storage {
@@ -18,7 +19,7 @@ public final class Storage {
     private final String SHAREDPREFERENCES_NAME = "CUTE_SP_STORAGE";
 
     private static boolean sInitialed;
-    private static Storage storage;
+    private static volatile Storage instance;
 
     private Storage(){
         mSharedPreferences = mContext.getSharedPreferences(SHAREDPREFERENCES_NAME, Context.MODE_PRIVATE);
@@ -36,17 +37,17 @@ public final class Storage {
         if (mContext==null){
             throw new IllegalArgumentException("context is null, please init Storage in application!");
         }
-        Storage sp = storage;
-        if (storage == null) {
+        Storage sp = instance;
+        if (sp == null) {
             synchronized (Storage.class) {
-                sp = storage;
+                sp = instance;
                 if (sp == null) {
                     sp = new Storage();
-                    storage =sp;
+                    instance =sp;
                 }
             }
         }
-        return storage;
+        return sp;
     }
 
     /**

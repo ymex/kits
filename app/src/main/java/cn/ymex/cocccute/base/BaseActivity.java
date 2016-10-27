@@ -3,6 +3,7 @@ package cn.ymex.cocccute.base;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 
 /**
  * Copyright (c) 2015. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
@@ -16,10 +17,15 @@ import android.support.v7.app.AppCompatActivity;
  * @author ymex
  * date: 16/4/23
  */
-public class BaseActivity extends AppCompatActivity{
+public class BaseActivity extends AppCompatActivity implements View.OnClickListener{
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+    }
+
+    @Override
+    public void onClick(View v) {
 
     }
 }

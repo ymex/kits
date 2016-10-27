@@ -65,7 +65,7 @@ public abstract class ViewHolderAdapter<E extends Object, V extends AdapterViewH
      * @param parent
      * @param hold
      */
-    public abstract void onBindItemView(int position, View convertView, ViewGroup parent, V hold);
+    public abstract void getItemView(int position, View convertView, ViewGroup parent, V hold);
 
 
 
@@ -154,7 +154,7 @@ public abstract class ViewHolderAdapter<E extends Object, V extends AdapterViewH
         } else {
             viewHolder = (V) convertView.getTag();
         }
-        onBindItemView(position, convertView, parent, viewHolder);
+        getItemView(position, convertView, parent, viewHolder);
         return convertView;
     }
 }
