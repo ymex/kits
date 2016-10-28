@@ -1,11 +1,21 @@
 package cn.ymex.cocccute.flux.store;
 
 
+import cn.ymex.cocccute.flux.Params;
 import cn.ymex.cocccute.flux.action.MessageAction;
+import cn.ymex.cocccute.flux.action.RequestAction;
 import cn.ymex.cocccute.flux.model.Message;
+import cn.ymex.cocccute.flux.store.entity.MovieEntity;
+import cn.ymex.cocccute.flux.store.service.MovieService;
 import cn.ymex.cute.kits.Optional;
 import cn.ymex.cute.mode.flux.Action;
 import cn.ymex.cute.mode.flux.Store;
+import cn.ymex.cute.mode.flux.StoreAlter;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
  * Copyright (c) ymexc(www.ymex.cn)
@@ -17,20 +27,58 @@ import cn.ymex.cute.mode.flux.Store;
 public class MessageStore extends Store {
 
     private Message message;
+    private MovieEntity movieEntity;
 
     public Message getMessage() {
-        this.message = Optional.isNull(this.message)?new Message():this.message;
+        this.message = Optional.isNull(this.message) ? new Message() : this.message;
         return message;
     }
 
+    public MovieEntity getMovieEntity() {
+        return movieEntity;
+    }
 
     @Override
     public boolean onStoreAction(Action action) {
+        Params params = (Params) action.getData();
         switch (action.getType()) {
             case MessageAction.ACTION_SEND_MESSAGE:
-                getMessage().setContent(action.getData().toString());
-            break;
+                getMessage().setContent(params.get("message").toString());
+                return true;
+
+            case MessageAction.ACTION_GET_TOP250_MOVIES:
+                emitStoreChange(RequestAction.Start());
+                getMovie((Params) action.getData());
+                return false;
         }
-       return true;
+        return false;
+    }
+
+    //进行网络请求
+    private void getMovie(Params params) {
+        int start = (int) params.get("start");
+        int count = (int) params.get("count");
+
+        String baseUrl = "https://api.douban.com/v2/movie/";
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(baseUrl)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        MovieService movieService = retrofit.create(MovieService.class);
+        Call<MovieEntity> call = movieService.getTopMovie(start, count);
+        call.enqueue(new Callback<MovieEntity>() {
+            @Override
+            public void onResponse(Call<MovieEntity> call, Response<MovieEntity> response) {
+                movieEntity = response.body();
+                emitStoreChange(StoreAlter.bulid().action(new MessageAction(MessageAction.ACTION_GET_TOP250_MOVIES, null)).result("成功"));
+            }
+
+            @Override
+            public void onFailure(Call<MovieEntity> call, Throwable t) {
+                emitStoreChange(RequestAction.FAILURE());
+            }
+        });
     }
 }

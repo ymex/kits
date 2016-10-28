@@ -31,30 +31,18 @@ public abstract class Store {
      */
     public abstract boolean onStoreAction(Action action);
 
-    protected void emitStoreChange(StoreChangeEvent event) {
-        Flux.instance().getBusAdapter().post(event);
-    }
-
     public void onAction(Action action) {
         if (onStoreAction(action)) {
-            emitStoreChange(changeEvent(action));
+            emitStoreChange(action);
         }
     }
 
-    public StoreChangeEvent changeEvent(Action action) {
-        return new StoreChangeEvent(action);
+    protected void emitStoreChange(Action action) {
+        emitStoreChange(StoreAlter.bulid().action(action));
+    }
+    protected void emitStoreChange(StoreAlter alter) {
+        Flux.instance().getBusAdapter().post(alter);
     }
 
-    public class StoreChangeEvent {
-        private Action action;
 
-        public StoreChangeEvent(Action action) {
-            super();
-            this.action = action;
-        }
-
-        public Action getAction() {
-            return action;
-        }
-    }
 }

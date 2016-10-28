@@ -52,6 +52,6 @@ public final class Flux {
 
         void unregister(@NonNull Object target);
 
-        void post(@NonNull Object event);
+        void post(@NonNull Object alert);
     }
 }

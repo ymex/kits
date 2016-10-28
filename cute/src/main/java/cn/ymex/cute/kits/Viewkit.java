@@ -89,6 +89,7 @@ public class ViewKit {
      */
 
     public static <T extends View> T find(@NonNull View view,@IdRes int id) {
+        Optional.checkNull(view);
         return (T) view.findViewById(id);
     }
 
@@ -100,8 +101,35 @@ public class ViewKit {
      * @return: T
      */
     public static <T extends View> T find(@NonNull Activity act,@IdRes  int id) {
+        Optional.checkNull(act);
         return (T) act.findViewById(id);
     }
+
+    /**
+     * find view and set click event for it
+     * @param view
+     * @param id
+     * @param listener
+     */
+    public static  <T extends View> T findClick(@NonNull View view, @IdRes int id, View.OnClickListener listener) {
+        T t = find(view,id);
+        t.setOnClickListener(listener);
+        return t;
+    }
+
+    /**
+     * find view and set click event for it
+     * @param act
+     * @param id
+     * @param listener
+     */
+    public static  <T extends View> T findClick(@NonNull Activity act, @IdRes int id, View.OnClickListener listener) {
+        T t = find(act,id);
+        t.setOnClickListener(listener);
+        return t;
+    }
+
+
 
     /**
      * inflate xml layout

@@ -14,6 +14,10 @@ public class Action<T> {
     private final String type;
     private final T data;
 
+    public Action(@NonNull String type) {
+        this(type,null);
+    }
+
     public Action(@NonNull String type, @NonNull T data) {
         this.type = type;
         this.data = data;
