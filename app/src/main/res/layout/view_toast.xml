@@ -13,6 +13,6 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="#ee000000"
-        android:text="元素之力将毁灭你！" />
+        android:text="元素之力将毁灭你！"
+        android:textColor="#ee000000" />
 </LinearLayout>

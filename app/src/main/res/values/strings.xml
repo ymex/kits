@@ -1,4 +1,4 @@
 <resources>
     <string name="app_name">cocc.cute</string>
-    <string name="title_activity_samf">SAMFActivity</string>
+    <string name="cancel">取消请求</string>
 </resources>

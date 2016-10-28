@@ -55,6 +55,8 @@ public class MovieEntity {
         this.subjects = subjects;
     }
 
+
+
     @Override
     public String toString() {
         StringBuffer sb = new StringBuffer();
@@ -65,7 +67,7 @@ public class MovieEntity {
         return sb.toString();
     }
 
-    private class Subject{
+    public static class Subject{
         private String id;
         private String alt;
         private String year;

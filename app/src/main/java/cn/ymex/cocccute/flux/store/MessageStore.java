@@ -1,13 +1,15 @@
 package cn.ymex.cocccute.flux.store;
 
 
+import android.support.annotation.NonNull;
+
+import java.util.ArrayList;
+
 import cn.ymex.cocccute.flux.Params;
-import cn.ymex.cocccute.flux.action.MessageAction;
+import cn.ymex.cocccute.flux.action.FluxActAction;
 import cn.ymex.cocccute.flux.action.RequestAction;
-import cn.ymex.cocccute.flux.store.entity.Message;
 import cn.ymex.cocccute.flux.store.entity.MovieEntity;
 import cn.ymex.cocccute.flux.store.service.MovieService;
-import cn.ymex.cute.kits.Optional;
 import cn.ymex.cute.mode.flux.Action;
 import cn.ymex.cute.mode.flux.Store;
 import cn.ymex.cute.mode.flux.StoreAlter;
@@ -26,27 +28,39 @@ import retrofit2.converter.gson.GsonConverterFactory;
  */
 public class MessageStore extends Store {
 
-    private Message message;
     private MovieEntity movieEntity;
+    private ArrayList<Call> calls;
 
-    public Message getMessage() {
-        this.message = Optional.isNull(this.message) ? new Message() : this.message;
-        return message;
+    private void addCall(@NonNull Call call) {
+        if (calls == null) {
+            calls = new ArrayList<>();
+        }
+        calls.add(call);
+    }
+
+    private void cancel() {
+        if (calls == null || calls.size() <= 0) {
+            return;
+        }
+        for (Call call : calls) {
+            call.cancel();
+        }
     }
 
     public MovieEntity getMovieEntity() {
         return movieEntity;
     }
 
+
     @Override
     public boolean onStoreAction(Action action) {
         Params params = (Params) action.getData();
         switch (action.getType()) {
-            case MessageAction.ACTION_SEND_MESSAGE:
-                getMessage().setContent(params.get("message").toString());
-                return true;
+            case FluxActAction.ACTION_CACEL_REQUEST:
+                cancel();
+                break;
 
-            case MessageAction.ACTION_GET_TOP250_MOVIES:
+            case FluxActAction.ACTION_GET_TOP250_MOVIES:
                 emitStoreChange(RequestAction.Start());
                 getMovie((Params) action.getData());
                 return false;
@@ -68,11 +82,12 @@ public class MessageStore extends Store {
 
         MovieService movieService = retrofit.create(MovieService.class);
         Call<MovieEntity> call = movieService.getTopMovie(start, count);
+        addCall(call);
         call.enqueue(new Callback<MovieEntity>() {
             @Override
             public void onResponse(Call<MovieEntity> call, Response<MovieEntity> response) {
                 movieEntity = response.body();
-                emitStoreChange(StoreAlter.bulid().action(new MessageAction(MessageAction.ACTION_GET_TOP250_MOVIES, null)).result("成功"));
+                emitStoreChange(StoreAlter.bulid().action(new FluxActAction(FluxActAction.ACTION_GET_TOP250_MOVIES, null)).result("成功"));
             }
 
             @Override

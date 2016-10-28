@@ -40,6 +40,11 @@ public abstract class Store {
     protected void emitStoreChange(Action action) {
         emitStoreChange(StoreAlter.bulid().action(action));
     }
+
+    /**
+     *
+     * @param alter
+     */
     protected void emitStoreChange(StoreAlter alter) {
         Flux.instance().getBusAdapter().post(alter);
     }
