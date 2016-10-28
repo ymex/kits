@@ -4,7 +4,7 @@ package cn.ymex.cocccute.flux.store;
 import cn.ymex.cocccute.flux.Params;
 import cn.ymex.cocccute.flux.action.MessageAction;
 import cn.ymex.cocccute.flux.action.RequestAction;
-import cn.ymex.cocccute.flux.model.Message;
+import cn.ymex.cocccute.flux.store.entity.Message;
 import cn.ymex.cocccute.flux.store.entity.MovieEntity;
 import cn.ymex.cocccute.flux.store.service.MovieService;
 import cn.ymex.cute.kits.Optional;

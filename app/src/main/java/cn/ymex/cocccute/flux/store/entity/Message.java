@@ -1,4 +1,4 @@
-package cn.ymex.cocccute.flux.model;
+package cn.ymex.cocccute.flux.store.entity;
 
 /**
  * Copyright (c) ymexc(www.ymex.cn)
