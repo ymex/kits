@@ -13,6 +13,8 @@ import android.webkit.WebView;
 
 import java.io.File;
 
+import cn.ymex.cute.Cute;
+
 public class WebKitView extends WebView {
     private HistoryUrlRecord historyRecordMan;
     private static final String APP_CACHE_DIRNAME = "/webcache"; // web缓存目录
@@ -109,7 +111,6 @@ public class WebKitView extends WebView {
     // 初始化 历史记录器
     private void initHistoryRecordMan() {
         historyRecordMan = HistoryUrlRecord.getInstance();
-        //historyRecordMan.addExceptUrl(Constants.WEB_ERROR_URL);
     }
 
 
@@ -153,38 +154,8 @@ public class WebKitView extends WebView {
     /**
      * 清除WebView缓存
      */
-    public void clearWebViewCache2(Context context) {
-
-        this.clearCache(true);
-
-        // 清理WebView缓存数据库
-        try {
-            context.deleteDatabase("webview.db");
-            context.deleteDatabase("webviewCache.db");
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        // WebView缓存文件
-        File appCacheDir = new File(context.getFilesDir().getAbsolutePath()
-                + APP_CACHE_DIRNAME);
-
-        File webviewCacheDir = new File(context.getCacheDir().getAbsolutePath()
-                + "/webviewCache");
-        // 删除webView缓存目录
-        if (webviewCacheDir.exists()) {
-            deleteFile(webviewCacheDir);
-        }
-        // 删除webView缓存，缓存目录
-        if (appCacheDir.exists()) {
-            deleteFile(appCacheDir);
-        }
-    }
-
-    /**
-     * 清除WebView缓存
-     */
-    public static void clearWebViewCache(Context context) {
+    public static void clearWebViewCache() {
+        Context context = Cute.getApplication();
         // 清理WebView缓存数据库
 		try {
 			context.deleteDatabase("webview.db");

@@ -50,8 +50,9 @@ public final class Cute {
         Flux.instance().setBusAdapter(busAdapter);
     }
 
-    public Application getContent() {
+    public static  Application getApplication() {
         Optional.checkNull(application,"application is null!");
         return (Application) application;
     }
+
 }
