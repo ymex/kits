@@ -1,8 +1,8 @@
 package cn.ymex.cute.widget.webview;
 
 import android.text.TextUtils;
-import android.util.Log;
 import android.webkit.WebView;
+import android.util.Log;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -177,7 +177,7 @@ public class JsCallJava {
                 && !(result instanceof Float)
                 && !(result instanceof Double)
                 && !(result instanceof JSONObject)) {    // 非数字或者非字符串的构造对象类型都要序列化后再拼接
-            insertRes =String.valueOf(result);
+            insertRes = String.valueOf(result);
         } else {  //数字直接转化
             insertRes = String.valueOf(result);
         }

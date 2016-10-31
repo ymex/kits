@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+  <declare-styleable name="cute">
+    <attr name="lv_loadingView" format="reference" />
+    <attr name="lv_errorView" format="reference" />
+    <attr name="lv_emptyView" format="reference" />
+    <attr name="lv_cancelable" format="boolean"/>
+    <attr name="lv_across_click_able" format="boolean" />
+  </declare-styleable>
+
+</resources>

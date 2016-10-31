@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">cute</string>
+    <string name="empty_data">Have no Data...</string>
+    <string name="retry">Retry</string>
+    <string name="error">Ooop...Error</string>
+    <string name="dialog_default_title">Here\'s a message!</string>
+    <string name="ok">OK</string>
+    <string name="cancel">Cancel</string>
+    <string name="loading">Loading...</string>
 </resources>

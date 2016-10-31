@@ -1,6 +1,14 @@
+/**
+ * Summary: 应用中使用的WebChromeClient基类
+ * Version 1.0
+ * Date: 13-11-8
+ * Time: 下午2:31
+ * Copyright: Copyright (c) 2013
+ */
 
 package cn.ymex.cute.widget.webview;
 
+import android.util.Log;
 import android.webkit.JsPromptResult;
 import android.webkit.JsResult;
 import android.webkit.WebChromeClient;
@@ -8,6 +16,7 @@ import android.webkit.WebView;
 
 
 public class InjectedChromeClient extends WebChromeClient {
+    private final String TAG = "InjectedChromeClient";
     private JsCallJava mJsCallJava;
     private boolean mIsInjectedJS;
 
@@ -38,6 +47,7 @@ public class InjectedChromeClient extends WebChromeClient {
         } else if (!mIsInjectedJS) {
             view.loadUrl(mJsCallJava.getPreloadInterfaceJS());
             mIsInjectedJS = true;
+            Log.d(TAG, " inject js interface completely on progress " + newProgress);
 
         }
         super.onProgressChanged(view, newProgress);

@@ -6,13 +6,12 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
-        android:name="cn.ymex.cocccute.AppContext"
+        android:name=".AppContext"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
         <activity android:name=".activity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -21,7 +20,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".activity.BrowserActivity" />
-        <activity android:name=".flux.FluxActivity"></activity>
+        <activity android:name=".flux.FluxActivity" />
+        <activity android:name=".activity.LoadingActivity"></activity>
     </application>
 
 </manifest>
