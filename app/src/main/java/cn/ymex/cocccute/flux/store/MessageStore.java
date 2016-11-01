@@ -54,7 +54,6 @@ public class MessageStore extends Store {
 
     @Override
     public boolean onStoreAction(Action action) {
-        Params params = (Params) action.getData();
         switch (action.getType()) {
             case FluxActAction.ACTION_CACEL_REQUEST:
                 cancel();

@@ -10,7 +10,6 @@ import retrofit2.http.Query;
  */
 
 public interface MovieService {
-    //    http://gank.io/post/56e80c2c677659311bed9841
     @GET("top250")
     Call<MovieEntity> getTopMovie(@Query("start") int start, @Query("count") int count);
 }
