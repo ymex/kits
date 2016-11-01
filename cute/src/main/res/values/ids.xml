@@ -2,4 +2,8 @@
 <resources>
     <item type="id" name="framLayoutId">false</item>
     <item type="id" name="v_retry">false</item>
+
+    <item name="swipe_target" type="id" />
+    <item name="swipe_refresh_header" type="id" />
+    <item name="swipe_refresh_footer" type="id" />
 </resources>
