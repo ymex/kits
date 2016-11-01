@@ -2,7 +2,6 @@ package cn.ymex.cocccute.flux;
 
 import android.os.Bundle;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.TextView;
 
 import com.squareup.otto.Subscribe;

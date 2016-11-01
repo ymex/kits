@@ -10,6 +10,7 @@ import cn.ymex.cocccute.flux.action.FluxActAction;
 import cn.ymex.cocccute.flux.action.RequestAction;
 import cn.ymex.cocccute.flux.store.entity.MovieEntity;
 import cn.ymex.cocccute.flux.store.service.MovieService;
+import cn.ymex.cute.log.L;
 import cn.ymex.cute.mode.flux.Action;
 import cn.ymex.cute.mode.flux.Store;
 import cn.ymex.cute.mode.flux.StoreAlter;
@@ -17,7 +18,12 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
+import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
+import rx.Observable;
+import rx.Subscriber;
+import rx.android.schedulers.AndroidSchedulers;
+import rx.schedulers.Schedulers;
 
 /**
  * Copyright (c) ymexc(www.ymex.cn)
@@ -56,18 +62,21 @@ public class MessageStore extends Store {
     public boolean onStoreAction(Action action) {
         switch (action.getType()) {
             case FluxActAction.ACTION_CACEL_REQUEST:
-                cancel();
+                //cancel();
+                if (observable != null) {
+                    observable.unsubscribeOn(Schedulers.io());
+                }
                 break;
 
             case FluxActAction.ACTION_GET_TOP250_MOVIES:
                 emitStoreChange(RequestAction.Start());
-                getMovie((Params) action.getData());
+                getMovewWithRxRetrofit((Params) action.getData());
                 return false;
         }
         return false;
     }
 
-    //进行网络请求
+    //进行网络请求 retrofit
     private void getMovie(Params params) {
         int start = (int) params.get("start");
         int count = (int) params.get("count");
@@ -94,5 +103,43 @@ public class MessageStore extends Store {
                 emitStoreChange(RequestAction.FAILURE());
             }
         });
+    }
+    Observable<MovieEntity> observable;
+
+    private void getMovewWithRxRetrofit(Params params) {
+        int start = (int) params.get("start");
+        int count = (int) params.get("count");
+
+        String baseUrl = "https://api.douban.com/v2/movie/";
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(baseUrl)
+                .addConverterFactory(GsonConverterFactory.create())
+                .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
+                .build();
+        MovieService movieService = retrofit.create(MovieService.class);
+        observable = movieService.getTopMoview(start, count);
+
+        observable.subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Subscriber<MovieEntity>() {
+                    @Override
+                    public void onCompleted() {
+                        L.d("onCompleted....");
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        L.d("onError:" + e.getMessage());
+                    }
+
+                    @Override
+                    public void onNext(MovieEntity entity) {
+                        L.d("onNext:" + entity.getTitle());
+                        movieEntity = entity;
+                        emitStoreChange(StoreAlter.bulid().action(new FluxActAction(FluxActAction.ACTION_GET_TOP250_MOVIES, null)).result("成功"));
+                    }
+                });
+
     }
 }

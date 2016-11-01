@@ -66,6 +66,10 @@ public class MainActivity extends BaseActivity implements AdapterView.OnItemClic
                 L.e("this error log ");
                 L.w(new Exception("--ht"));
                 break;
+            case 4:
+                Intent loadingIntent = new Intent(this, LoadingActivity.class);
+                startActivity(loadingIntent);
+                break;
         }
     }
 
@@ -75,6 +79,7 @@ public class MainActivity extends BaseActivity implements AdapterView.OnItemClic
             add(new ItemEntity("默认Toast", "Toast多次弹出，只显示最后一条"));
             add(new ItemEntity("定制Toast", "自定义Toast布局，只显示最后一条"));
             add(new ItemEntity("Log打印", "举个栗子,在Logcat查看"));
+            add(new ItemEntity("LoadingView","view for loading "));
         }
     };
 }
