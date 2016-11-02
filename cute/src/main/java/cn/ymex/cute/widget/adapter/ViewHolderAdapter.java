@@ -9,7 +9,7 @@
  *
  * @author ymex
  */
-package cn.ymex.cute.adapter;
+package cn.ymex.cute.widget.adapter;
 
 
 import android.content.Context;
@@ -29,7 +29,7 @@ import cn.ymex.cute.Cute;
  * @param <E>
  * @param <V>
  */
-public abstract class ViewHolderAdapter<E extends Object, V extends AdapterViewHolder> extends BaseAdapter {
+public abstract class ViewHolderAdapter<E extends Object, V extends ViewHolderAdapter.ViewHolder> extends BaseAdapter {
 
 
     protected List<E> mDataList; //数据列表
@@ -156,5 +156,12 @@ public abstract class ViewHolderAdapter<E extends Object, V extends AdapterViewH
         }
         getItemView(position, convertView, parent, viewHolder);
         return convertView;
+    }
+
+    /**
+     * 布局缓存类
+     */
+    public abstract static class ViewHolder {
+        public ViewHolder(View view) {}
     }
 }
