@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <item type="id" name="framLayoutId">false</item>
-    <item type="id" name="v_retry">false</item>
+    <item name="framLayoutId" type="id">false</item>
+    <item name="cute_recyclerview_click_tag" type="id">false</item>
+    <item name="v_retry" type="id">false</item>
 
     <item name="swipe_target" type="id" />
     <item name="swipe_refresh_header" type="id" />

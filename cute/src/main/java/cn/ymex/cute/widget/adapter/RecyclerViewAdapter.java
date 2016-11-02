@@ -14,11 +14,12 @@ import cn.ymex.cute.Cute;
  * Copyright (c) ymexc(www.ymex.cn)
  * Email:ymex@foxmail.com
  * date 2016/11/2
+ * RecyclerView.Adapter 实现点击事件
  *
  * @author ymexc
  */
 public abstract class RecyclerViewAdapter<E extends Object, VH extends RecyclerView.ViewHolder>
-        extends RecyclerView.Adapter<VH> implements View.OnClickListener,View.OnLongClickListener {
+        extends RecyclerView.Adapter<VH> implements View.OnClickListener, View.OnLongClickListener {
 
     protected List<E> mData; //数据列表
 
@@ -38,9 +39,17 @@ public abstract class RecyclerViewAdapter<E extends Object, VH extends RecyclerV
 
     @Override
     public void onBindViewHolder(VH holder, int position) {
-        holder.itemView.setTag(position);
-        holder.itemView.setOnClickListener(this);
-        holder.itemView.setOnLongClickListener(this);
+        itemClickSupport(holder, position, onItemClickListener != null , onItemLongClickListener != null);
+    }
+
+    private void itemClickSupport(VH holder, int position, boolean flag,boolean longflag) {
+        if (flag || longflag) {
+            holder.itemView.setTag(position);
+            holder.itemView.setOnClickListener(this);
+            holder.itemView.setOnLongClickListener(this);
+        }
+        return;
+
     }
 
 
@@ -63,7 +72,6 @@ public abstract class RecyclerViewAdapter<E extends Object, VH extends RecyclerV
     public int getItemCount() {
         return mData == null ? 0 : mData.size();
     }
-
 
 
     /**
@@ -129,20 +137,29 @@ public abstract class RecyclerViewAdapter<E extends Object, VH extends RecyclerV
 
     private OnItemClickListener onItemClickListener;
 
+    private OnItemLongClickListener onItemLongClickListener;
+
+    /**
+     * @param onItemClickListener
+     * @deprecated
+     */
     public void setOnItemClickListener(OnItemClickListener onItemClickListener) {
         this.onItemClickListener = onItemClickListener;
     }
 
-    private OnItemLongClickListener onItemLongClickListener;
-
+    /**
+     * @param onItemLongClickListener
+     * @deprecated
+     */
     public void setOnItemLongClickListener(OnItemLongClickListener onItemLongClickListener) {
         this.onItemLongClickListener = onItemLongClickListener;
     }
 
-    public interface OnItemClickListener{
+    public interface OnItemClickListener {
         void OnItemClick(View itemView, int position);
     }
-    public interface OnItemLongClickListener{
+
+    public interface OnItemLongClickListener {
         void onItemLongClick(View itemView, int position);
     }
 }
