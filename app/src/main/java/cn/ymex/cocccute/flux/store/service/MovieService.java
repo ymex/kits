@@ -11,6 +11,7 @@ import rx.Observable;
  */
 
 public interface MovieService {
+
     //only retrofit
     @GET("top250")
     Call<MovieEntity> getTopMovie(@Query("start") int start, @Query("count") int count);
