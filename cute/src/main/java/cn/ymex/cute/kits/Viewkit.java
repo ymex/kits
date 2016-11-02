@@ -138,7 +138,7 @@ public class ViewKit {
      * @return
      */
     public static <T extends  View>View inflate(@NonNull Context context, @LayoutRes int resource) {
-        return (T) LayoutInflater.from(context).inflate(resource, null);
+        return (T)inflate(context,resource, null, false);
     }
     /**
      * inflate xml layout
@@ -148,8 +148,10 @@ public class ViewKit {
      * @return
      */
     public static <T extends  View>View inflate(@NonNull Context context, @NonNull int resource, ViewGroup viewGroup) {
-        return (T) LayoutInflater.from(context).inflate(resource, viewGroup);
+        return (T)inflate(context,resource,viewGroup,false);
     }
 
-
+    public static <T extends View>View inflate(@NonNull Context context, @NonNull int resource, ViewGroup viewGroup, boolean flag) {
+        return (T) LayoutInflater.from(context).inflate(resource, viewGroup,flag);
+    }
 }
