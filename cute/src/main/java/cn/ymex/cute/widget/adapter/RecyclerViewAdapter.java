@@ -320,7 +320,6 @@ public abstract class RecyclerViewAdapter<E, VH extends RecyclerViewAdapter.View
 
         @Override
         public void onMeasure(RecyclerView.Recycler recycler, RecyclerView.State state, int widthSpec, int heightSpec) {
-            //Log.d(TAG, "item count = " + getItemCount());
             for (int i = 0; i < getItemCount(); i++) {
 
                 if (mSpanSizeLookup.getSpanSize(i) > 1) {
@@ -329,10 +328,6 @@ public abstract class RecyclerViewAdapter<E, VH extends RecyclerViewAdapter.View
                         //fix 动态添加时报IndexOutOfBoundsException
                         View view = recycler.getViewForPosition(i);
                         if (view != null) {
-                            /**
-                             *占用所有的列
-                             * @see https://plus.google.com/+EtienneLawlor/posts/c5T7fu9ujqi
-                             */
                             StaggeredGridLayoutManager.LayoutParams lp = (StaggeredGridLayoutManager.LayoutParams) view.getLayoutParams();
                             lp.setFullSpan(true);
                         }
