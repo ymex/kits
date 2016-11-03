@@ -176,7 +176,7 @@ public class RecyclerViewVerticalDivider extends RecyclerViewDividerDecoration {
     }
 
     public static RecyclerViewDividerDecoration def(Context context) {
-        return new RecyclerViewHorizontalDivider.Builder(context).color(Color.parseColor("#DEDEDE"))
+        return new RecyclerViewVerticalDivider.Builder(context).color(Color.parseColor("#DEDEDE"))
                 .margin(8)
                 .size(3)
                 .build();

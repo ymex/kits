@@ -70,6 +70,10 @@ public class MainActivity extends BaseActivity implements AdapterView.OnItemClic
                 Intent loadingIntent = new Intent(this, LoadingActivity.class);
                 startActivity(loadingIntent);
                 break;
+            case 5:
+                Intent rvIntent = new Intent(this, RvActivity.class);
+                startActivity(rvIntent);
+                break;
         }
     }
 
@@ -80,6 +84,7 @@ public class MainActivity extends BaseActivity implements AdapterView.OnItemClic
             add(new ItemEntity("定制Toast", "自定义Toast布局，只显示最后一条"));
             add(new ItemEntity("Log打印", "举个栗子,在Logcat查看"));
             add(new ItemEntity("LoadingView","view for loading "));
+            add(new ItemEntity("RecyclerView","click , header,footer"));
         }
     };
 }

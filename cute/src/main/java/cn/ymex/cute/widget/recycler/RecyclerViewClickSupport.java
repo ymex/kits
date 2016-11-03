@@ -8,7 +8,7 @@ import android.view.View;
 import cn.ymex.cute.R;
 
 
-public class RecyclerItemClickSupport {
+public class RecyclerViewClickSupport {
     /**
      * Interface definition for a callback to be invoked when an item in the
      * RecyclerView has been clicked.
@@ -53,7 +53,7 @@ public class RecyclerItemClickSupport {
     private OnItemClickListener mItemClickListener;
     private OnItemLongClickListener mItemLongClickListener;
 
-    private RecyclerItemClickSupport(RecyclerView recyclerView) {
+    private RecyclerViewClickSupport(RecyclerView recyclerView) {
         mRecyclerView = recyclerView;
 
         mTouchListener = new TouchListener(recyclerView);
@@ -84,35 +84,35 @@ public class RecyclerItemClickSupport {
         mItemLongClickListener = listener;
     }
 
-    public static RecyclerItemClickSupport addTo(RecyclerView recyclerView) {
-        RecyclerItemClickSupport recyclerItemClickSupport = from(recyclerView);
-        if (recyclerItemClickSupport == null) {
-            recyclerItemClickSupport = new RecyclerItemClickSupport(recyclerView);
-            recyclerView.setTag(tag, recyclerItemClickSupport);
+    public static RecyclerViewClickSupport addTo(RecyclerView recyclerView) {
+        RecyclerViewClickSupport recyclerViewClickSupport = from(recyclerView);
+        if (recyclerViewClickSupport == null) {
+            recyclerViewClickSupport = new RecyclerViewClickSupport(recyclerView);
+            recyclerView.setTag(tag, recyclerViewClickSupport);
         } else {
             // TODO: Log warning
         }
 
-        return recyclerItemClickSupport;
+        return recyclerViewClickSupport;
     }
 
     public static void removeFrom(RecyclerView recyclerView) {
-        final RecyclerItemClickSupport recyclerItemClickSupport = from(recyclerView);
-        if (recyclerItemClickSupport == null) {
+        final RecyclerViewClickSupport recyclerViewClickSupport = from(recyclerView);
+        if (recyclerViewClickSupport == null) {
             // TODO: Log warning
             return;
         }
 
-        recyclerView.removeOnItemTouchListener(recyclerItemClickSupport.mTouchListener);
+        recyclerView.removeOnItemTouchListener(recyclerViewClickSupport.mTouchListener);
         recyclerView.setTag(tag, null);
     }
 
-    public static RecyclerItemClickSupport from(RecyclerView recyclerView) {
+    public static RecyclerViewClickSupport from(RecyclerView recyclerView) {
         if (recyclerView == null) {
             return null;
         }
 
-        return (RecyclerItemClickSupport) recyclerView.getTag(tag);
+        return (RecyclerViewClickSupport) recyclerView.getTag(tag);
     }
 
     private class TouchListener extends ClickItemTouchListener {
