@@ -22,6 +22,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import cn.ymex.cute.Cute;
+import cn.ymex.cute.kits.Optional;
 
 /**
  * 替代系统的BaseAdapter
@@ -32,7 +33,7 @@ import cn.ymex.cute.Cute;
 public abstract class ViewHolderAdapter<E extends Object, V extends ViewHolderAdapter.ViewHolder> extends BaseAdapter {
 
 
-    protected List<E> mDataList; //数据列表
+    protected List<E> mData; //数据列表
 
     public ViewHolderAdapter() {
         this(null);
@@ -40,11 +41,19 @@ public abstract class ViewHolderAdapter<E extends Object, V extends ViewHolderAd
 
     public ViewHolderAdapter(List<E> dataList) {
         super();
-        this.mDataList = dataList;
+        this.mData = dataList;
+    }
+
+    public List<E> getData() {
+        if (mData == null) {
+            mData = new ArrayList<E>();
+        }
+        return mData;
     }
 
     /**
      * inflate Item View layout
+     *
      * @param context
      * @return
      */
@@ -53,55 +62,50 @@ public abstract class ViewHolderAdapter<E extends Object, V extends ViewHolderAd
 
     /**
      * viewHolder
+     *
      * @param view item view
      * @return
      */
-    public abstract V createViewHolder(View view);
+    public abstract V onCreateViewHolder(View view);
 
     /**
      * like baseAdapter.getView()
+     *
      * @param position
      * @param convertView
      * @param parent
      * @param hold
      */
-    public abstract void getItemView(int position, View convertView, ViewGroup parent, V hold);
-
+    public abstract void onBindViewHolder(int position, View convertView, ViewGroup parent, V hold);
 
 
     /**
      * append entities
      *
-     * @param dataList
+     * @param data
      */
-    public void appendDataList(List<E> dataList) {
-        if (null == dataList) {
-            Log.e(Cute.TAG_E, "At BaseCuteAdapter.appendDataList(): java.lang.NullPointerException: Attempt to invoke interface method 'java.lang.Object[] java.util.Collection.toArray()' on a null ");
+    public void appendData(List<E> data) {
+        if (Optional.isNull(data)) {
+            Log.e(Cute.TAG_E, "At BaseCuteAdapter.appendData(): java.lang.NullPointerException: Attempt to invoke interface method 'java.lang.Object[] java.util.Collection.toArray()' on a null ");
             return;
         }
-        if (null == this.mDataList) {
-            this.mDataList = new ArrayList<E>();
-        }
-        this.mDataList.addAll(dataList);
+        this.getData().addAll(data);
         this.notifyDataSetChanged();
     }
 
     /**
      * reset entities
      *
-     * @param dataList
+     * @param data
      */
-    public void resetDataList(List<E> dataList) {
-        if (null == dataList) {
-            Log.e(Cute.TAG_E, "At BaseCuteAdapter.resetDataList(): java.lang.NullPointerException: Attempt to invoke interface method 'java.lang.Object[] java.util.Collection.toArray()' on a null ");
+    public void resetData(List<E> data) {
+        if (Optional.isNull(data)) {
+            Log.e(Cute.TAG_E, "At BaseCuteAdapter.resetData(): java.lang.NullPointerException: Attempt to invoke interface method 'java.lang.Object[] java.util.Collection.toArray()' on a null ");
             return;
         }
-        if (null == mDataList) {
-            this.mDataList = new ArrayList<E>();
-        } else {
-            this.mDataList.clear();
-        }
-        this.mDataList.addAll(dataList);
+
+        this.getData().clear();
+        this.mData.addAll(data);
         this.notifyDataSetChanged();
     }
 
@@ -110,22 +114,19 @@ public abstract class ViewHolderAdapter<E extends Object, V extends ViewHolderAd
      *
      * @param data
      */
-    public void appendDataItem(E data) {
-        if (null == data) {
+    public void appendData(E data) {
+        if (Optional.isNull(data)) {
             Log.e(Cute.TAG_E, "At BaseCuteAdapter.appendData(): java.lang.NullPointerException: Attempt to invoke interface method 'java.lang.Object[] java.util.Collection.toArray()' on a null ");
             return;
         }
-        if (null == this.mDataList) {
-            this.mDataList = new ArrayList<E>();
-        }
-        this.mDataList.add(data);
+        this.getData().add(data);
         this.notifyDataSetChanged();
     }
 
 
     @Override
     public int getCount() {
-        return null == mDataList ? 0 : mDataList.size();
+        return getData().size();
     }
 
 
@@ -134,7 +135,7 @@ public abstract class ViewHolderAdapter<E extends Object, V extends ViewHolderAd
         if (position > getCount() || position < 0) {
             throw new ArrayIndexOutOfBoundsException(position);//数组越界
         }
-        return null != mDataList ? mDataList.get(position) : null;
+        return getData().get(position);
     }
 
     @Override
@@ -149,12 +150,12 @@ public abstract class ViewHolderAdapter<E extends Object, V extends ViewHolderAd
         V viewHolder = null;
         if (convertView == null) {
             convertView = inflateItemView(parent.getContext());
-            viewHolder = createViewHolder(convertView);
+            viewHolder = onCreateViewHolder(convertView);
             convertView.setTag(viewHolder);
         } else {
             viewHolder = (V) convertView.getTag();
         }
-        getItemView(position, convertView, parent, viewHolder);
+        onBindViewHolder(position, convertView, parent, viewHolder);
         return convertView;
     }
 
@@ -162,6 +163,7 @@ public abstract class ViewHolderAdapter<E extends Object, V extends ViewHolderAd
      * 布局缓存类
      */
     public abstract static class ViewHolder {
-        public ViewHolder(View view) {}
+        public ViewHolder(View view) {
+        }
     }
 }

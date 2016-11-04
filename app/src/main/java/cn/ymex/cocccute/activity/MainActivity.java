@@ -17,7 +17,6 @@ import cn.ymex.cocccute.base.BaseActivity;
 import cn.ymex.cocccute.entity.ItemEntity;
 import cn.ymex.cocccute.entity.Student;
 import cn.ymex.cocccute.flux.FluxActivity;
-import cn.ymex.cute.kits.Texter;
 import cn.ymex.cute.kits.ViewKit;
 import cn.ymex.cute.log.L;
 import cn.ymex.cute.widget.notice.Toaster;
@@ -37,7 +36,7 @@ public class MainActivity extends BaseActivity implements AdapterView.OnItemClic
 
         listView.setOnItemClickListener(this);
         adapter = new ItemViewHolderAdapter();
-        adapter.appendDataList(items);
+        adapter.appendData(items);
         listView.setAdapter(adapter);
     }
 
