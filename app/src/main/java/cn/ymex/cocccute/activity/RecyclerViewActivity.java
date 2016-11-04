@@ -21,7 +21,7 @@ import cn.ymex.cute.widget.recycler.RecyclerViewClickSupport;
 import cn.ymex.cute.widget.recycler.RecyclerViewHorizontalDivider;
 import cn.ymex.cute.widget.recycler.RecyclerViewVerticalDivider;
 
-public class RvActivity extends AppCompatActivity implements RecyclerViewClickSupport.OnItemClickListener {
+public class RecyclerViewActivity extends AppCompatActivity implements RecyclerViewClickSupport.OnItemClickListener {
     RecyclerView recyclerView;
     SwipeRefreshLayout srlRefresh;
     @Override

@@ -1,5 +1,9 @@
 package cn.ymex.cocccute.entity;
 
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,13 +22,19 @@ import java.util.List;
 public class ItemEntity {
     private String title;
     private String detail;
+    private Class activity;
 
     public ItemEntity() {
     }
 
     public ItemEntity(String title, String detail) {
+        this(title,detail,null);
+    }
+
+    public ItemEntity(String title, String detail, Class activity) {
         this.title = title;
         this.detail = detail;
+        this.activity = activity;
     }
 
     public String getTitle() {
@@ -41,5 +51,13 @@ public class ItemEntity {
 
     public void setDetail(String detail) {
         this.detail = detail;
+    }
+
+    public void startActivity(Context context) {
+        if (this.activity == null) {
+            return;
+        }
+        Intent intent = new Intent(context, this.activity);
+        context.startActivity(intent);
     }
 }

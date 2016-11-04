@@ -22,7 +22,8 @@
         <activity android:name=".activity.BrowserActivity" />
         <activity android:name=".flux.FluxActivity" />
         <activity android:name=".activity.LoadingActivity" />
-        <activity android:name=".activity.RvActivity"></activity>
+        <activity android:name=".activity.RecyclerViewActivity" />
+        <activity android:name=".activity.RefreshLayoutActivity"></activity>
     </application>
 
 </manifest>

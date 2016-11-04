@@ -46,10 +46,6 @@ public class MainActivity extends BaseActivity implements AdapterView.OnItemClic
 
         switch (position) {
 
-            case 0:
-                Intent fluxIntent = new Intent(this, FluxActivity.class);
-                startActivity(fluxIntent);
-                break;
             case 1:
                 toastClickCount++;
                 Toaster.show("点击:" + adapter.getItem(position).getTitle() + " " + toastClickCount + "次");
@@ -65,25 +61,21 @@ public class MainActivity extends BaseActivity implements AdapterView.OnItemClic
                 L.e("this error log ");
                 L.w(new Exception("--ht"));
                 break;
-            case 4:
-                Intent loadingIntent = new Intent(this, LoadingActivity.class);
-                startActivity(loadingIntent);
-                break;
-            case 5:
-                Intent rvIntent = new Intent(this, RvActivity.class);
-                startActivity(rvIntent);
+            default:
+                items.get(position).startActivity(this);
                 break;
         }
     }
 
     List<ItemEntity> items = new ArrayList() {
         {
-            add(new ItemEntity("Flux For Android", "使用Flux模式设计App"));
+            add(new ItemEntity("Flux For Android", "使用Flux模式设计App", FluxActivity.class));
             add(new ItemEntity("默认Toast", "Toast多次弹出，只显示最后一条"));
             add(new ItemEntity("定制Toast", "自定义Toast布局，只显示最后一条"));
             add(new ItemEntity("Log打印", "举个栗子,在Logcat查看"));
-            add(new ItemEntity("LoadingView","view for loading "));
-            add(new ItemEntity("RecyclerView","click , header,footer"));
+            add(new ItemEntity("LoadingView", "view for loading ", LoadingActivity.class));
+            add(new ItemEntity("RecyclerView", "click , header,footer", RecyclerViewActivity.class));
+            add(new ItemEntity("RefreshLayout", "swipeLayout", RefreshLayoutActivity.class));
         }
     };
 }
