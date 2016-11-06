@@ -26,4 +26,5 @@ public class RefreshLayoutActivity extends AppCompatActivity {
 }
 /**
  scrollBy() 与 scrollTo()移动的是view 内容位置，不改变view 自己的位置。
+ view.setTranslationX()方法移动本view 的位置
  **/
