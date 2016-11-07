@@ -1136,6 +1136,7 @@ public class SwipeRefreshLayout extends ViewGroup {
     }
 
     private void fixCurrentStatusLayout() {
+
         if (STATUS.isRefreshing(mStatus)) {
             mTargetOffset = (int) (mRefreshTriggerOffset + 0.5f);
             mHeaderOffset = mTargetOffset;
