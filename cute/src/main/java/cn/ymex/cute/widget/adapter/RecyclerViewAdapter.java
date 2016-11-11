@@ -309,7 +309,7 @@ public abstract class RecyclerViewAdapter<E, VH extends RecyclerViewAdapter.View
 
         /**
          * 设置某个位置的item的跨列程度，这里和GridLayoutManager有点不一样，
-         * 如果你设置某个位置的item的span>1了，那么这个item会占据所有列
+         * 如果你设置某个位置的item的span大于1了，那么这个item会占据所有列
          *
          * @param spanSizeLookup instance to be used to query number of spans
          *                       occupied by each item

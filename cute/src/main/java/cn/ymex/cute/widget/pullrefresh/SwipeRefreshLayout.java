@@ -752,7 +752,7 @@ public class SwipeRefreshLayout extends ViewGroup {
 
     /**
      * set the value of {@link #mRefreshTriggerOffset}.
-     * Default value is the refresh header view height {@link #mHeaderHeight}<p/>
+     * Default value is the refresh header view height {@link #mHeaderHeight}
      * If the offset you set is smaller than {@link #mHeaderHeight} or not set,
      * using {@link #mHeaderHeight} as default value
      *
@@ -764,7 +764,7 @@ public class SwipeRefreshLayout extends ViewGroup {
 
     /**
      * set the value of {@link #mLoadMoreTriggerOffset}.
-     * Default value is the load more footer view height {@link #mFooterHeight}<p/>
+     * Default value is the load more footer view height {@link #mFooterHeight}
      * If the offset you set is smaller than {@link #mFooterHeight} or not set,
      * using {@link #mFooterHeight} as default value
      *
@@ -775,7 +775,7 @@ public class SwipeRefreshLayout extends ViewGroup {
     }
 
     /**
-     * Set the final offset you can swipe to refresh.<br/>
+     * Set the final offset you can swipe to refresh.
      * If the offset you set is 0(default value) or smaller than {@link #mRefreshTriggerOffset}
      * there no final offset
      *
@@ -786,7 +786,7 @@ public class SwipeRefreshLayout extends ViewGroup {
     }
 
     /**
-     * Set the final offset you can swipe to load more.<br/>
+     * Set the final offset you can swipe to load more.
      * If the offset you set is 0(default value) or smaller than {@link #mLoadMoreTriggerOffset},
      * there no final offset
      *
@@ -842,8 +842,6 @@ public class SwipeRefreshLayout extends ViewGroup {
     }
 
     /**
-     * set {@link @mSwipingToLoadMoreToDefaultScrollingDuration} in milliseconds
-     *
      * @param duration
      */
     public void setSwipingToLoadMoreToDefaultScrollingDuration(int duration) {
