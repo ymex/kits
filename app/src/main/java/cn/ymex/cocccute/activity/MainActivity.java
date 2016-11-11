@@ -1,6 +1,5 @@
 package cn.ymex.cocccute.activity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -75,8 +74,7 @@ public class MainActivity extends BaseActivity implements AdapterView.OnItemClic
             add(new ItemEntity("定制Toast", "自定义Toast布局，只显示最后一条"));//2
             add(new ItemEntity("Log打印", "举个栗子,在Logcat查看"));//3
             add(new ItemEntity("LoadingView", "view for loading ", LoadingActivity.class));
-            add(new ItemEntity("RecyclerView", "click , header,footer", RecyclerViewActivity.class));
-            add(new ItemEntity("RefreshLayout", "swipeLayout", RefreshLayoutActivity.class));
+            add(new ItemEntity("RecyclerViewAdapter", "添加click事件 ,自定义header, footer", RecyclerViewActivity.class));
         }
     };
 }
