@@ -248,7 +248,7 @@ public abstract class RecyclerViewAdapter<E, VH extends RecyclerViewAdapter.View
         void onItemLongClick(View itemView, int position);
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    public static class ViewHolder extends RecyclerView.ViewHolder {
         public ViewHolder(View itemView) {
             super(itemView);
         }
