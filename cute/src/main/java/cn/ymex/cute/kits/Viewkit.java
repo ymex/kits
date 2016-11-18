@@ -82,76 +82,83 @@ public class ViewKit {
 
     /**
      * find view by id from view
+     *
      * @param view
      * @param id
      * @return
      * @return: T
      */
 
-    public static <T extends View> T find(@NonNull View view,@IdRes int id) {
+    public static <T extends View> T find(@NonNull View view, @IdRes int id) {
         Optional.checkNull(view);
         return (T) view.findViewById(id);
     }
 
     /**
      * find view by id from activity
+     *
      * @param act
      * @param id
      * @return
      * @return: T
      */
-    public static <T extends View> T find(@NonNull Activity act,@IdRes  int id) {
+    public static <T extends View> T find(@NonNull Activity act, @IdRes int id) {
         Optional.checkNull(act);
         return (T) act.findViewById(id);
     }
 
     /**
      * find view and set click event for it
+     *
      * @param view
      * @param id
      * @param listener
      */
-    public static  <T extends View> T findClick(@NonNull View view, @IdRes int id, View.OnClickListener listener) {
-        T t = find(view,id);
+    public static <T extends View> T findClick(@NonNull View view, @IdRes int id, View.OnClickListener listener) {
+        T t = find(view, id);
         t.setOnClickListener(listener);
         return t;
     }
 
     /**
      * find view and set click event for it
+     *
      * @param act
      * @param id
      * @param listener
      */
-    public static  <T extends View> T findClick(@NonNull Activity act, @IdRes int id, View.OnClickListener listener) {
-        T t = find(act,id);
+    public static <T extends View> T findClick(@NonNull Activity act, @IdRes int id, View.OnClickListener listener) {
+        T t = find(act, id);
         t.setOnClickListener(listener);
         return t;
     }
 
 
-
     /**
      * inflate xml layout
+     *
      * @param context
      * @param resource
      * @return
      */
-    public static <T extends  View>View inflate(@NonNull Context context, @LayoutRes int resource) {
-        return (T)inflate(context,resource, null, false);
+    public static <T extends View> View inflate(@NonNull Context context, @LayoutRes int resource) {
+        return (T) inflate(context, resource, null, false);
     }
+
     /**
      * inflate xml layout
+     *
      * @param context
      * @param resource
      * @param viewGroup
      * @return
      */
-    public static <T extends  View>View inflate(@NonNull Context context, @NonNull int resource, ViewGroup viewGroup) {
-        return (T)inflate(context,resource,viewGroup,false);
+    public static <T extends View> View inflate(@NonNull Context context, @NonNull int resource, ViewGroup viewGroup) {
+        return (T) inflate(context, resource, viewGroup, false);
     }
 
-    public static <T extends View>View inflate(@NonNull Context context, @NonNull int resource, ViewGroup viewGroup, boolean flag) {
-        return (T) LayoutInflater.from(context).inflate(resource, viewGroup,flag);
+    public static <T extends View> View inflate(@NonNull Context context, @NonNull int resource, ViewGroup viewGroup, boolean flag) {
+        return (T) LayoutInflater.from(context).inflate(resource, viewGroup, flag);
     }
+
 }

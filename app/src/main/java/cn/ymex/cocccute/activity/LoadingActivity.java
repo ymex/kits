@@ -22,6 +22,7 @@ public class LoadingActivity extends BaseActivity {
         ViewKit.findClick(this, R.id.btn_show_error, this);
         ViewKit.findClick(this, R.id.btn_show_loading, this);
         ViewKit.findClick(this, R.id.btn_show_content, this);
+
         CheckBox checkBox =ViewKit.find(this,R.id.checkBox);
         checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
