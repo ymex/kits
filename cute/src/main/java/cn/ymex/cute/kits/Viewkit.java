@@ -107,6 +107,7 @@ public class ViewKit {
         return (T) act.findViewById(id);
     }
 
+
     /**
      * find view and set click event for it
      *
@@ -114,7 +115,7 @@ public class ViewKit {
      * @param id
      * @param listener
      */
-    public static <T extends View> T findClick(@NonNull View view, @IdRes int id, View.OnClickListener listener) {
+    public static <T extends View> T find(@NonNull View view, @IdRes int id, View.OnClickListener listener) {
         T t = find(view, id);
         t.setOnClickListener(listener);
         return t;
@@ -127,10 +128,34 @@ public class ViewKit {
      * @param id
      * @param listener
      */
-    public static <T extends View> T findClick(@NonNull Activity act, @IdRes int id, View.OnClickListener listener) {
+    public static <T extends View> T find(@NonNull Activity act, @IdRes int id, View.OnClickListener listener) {
         T t = find(act, id);
         t.setOnClickListener(listener);
         return t;
+    }
+
+    /**
+     * find view and set click event for it
+     *
+     * @param view
+     * @param id
+     * @param listener
+     * @deprecated
+     */
+    public static <T extends View> T findClick(@NonNull View view, @IdRes int id, View.OnClickListener listener) {
+        return find(view, id, listener);
+    }
+
+    /**
+     * find view and set click event for it
+     *
+     * @param act
+     * @param id
+     * @param listener
+     * @deprecated
+     */
+    public static <T extends View> T findClick(@NonNull Activity act, @IdRes int id, View.OnClickListener listener) {
+        return find(act, id, listener);
     }
 
 
