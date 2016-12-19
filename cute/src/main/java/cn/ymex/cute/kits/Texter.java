@@ -39,6 +39,9 @@ public class Texter {
      * @return
      */
     public static int toNum(CharSequence text, int defaultValue) {
+        if (Optional.isEmpty(text)) {
+            return defaultValue;
+        }
         int value = defaultValue;
         try {
             value = Integer.valueOf(text.toString());
@@ -49,6 +52,9 @@ public class Texter {
     }
 
     public static float toNum(CharSequence text, float defaultValue) {
+        if (Optional.isEmpty(text)) {
+            return defaultValue;
+        }
         float value = defaultValue;
         try {
             value = Float.valueOf(text.toString());
@@ -59,6 +65,9 @@ public class Texter {
     }
 
     public static double toNum(CharSequence text, double defaultValue) {
+        if (Optional.isEmpty(text)) {
+            return defaultValue;
+        }
         double value = defaultValue;
         try {
             value = Double.valueOf(text.toString());
