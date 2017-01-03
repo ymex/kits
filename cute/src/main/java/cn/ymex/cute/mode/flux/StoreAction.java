@@ -3,15 +3,15 @@ package cn.ymex.cute.mode.flux;
 /**
  * Copyright (c) ymexc(www.ymex.cn)
  * Email:ymex@foxmail.com
- * date 2016/10/28
- *
+ * date 2016/1/28
+ * store to view action
  * @author ymexc
  */
-public class StoreAlter<T> {
+public class StoreAction<T> {
     private Action action;
     private T result;
 
-    private StoreAlter() {
+    private StoreAction() {
         super();
     }
 
@@ -24,17 +24,17 @@ public class StoreAlter<T> {
         return action;
     }
 
-    public StoreAlter action(Action action) {
+    public StoreAction action(Action action) {
         this.action = action;
         return this;
     }
 
-    public StoreAlter result(T result) {
+    public StoreAction result(T result) {
         this.result = result;
         return this;
     }
 
-    public static StoreAlter bulid() {
-        return new StoreAlter();
+    public static StoreAction bulid() {
+        return new StoreAction();
     }
 }

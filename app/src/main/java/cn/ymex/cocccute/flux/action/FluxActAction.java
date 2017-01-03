@@ -3,8 +3,8 @@ package cn.ymex.cocccute.flux.action;
 
 import android.support.annotation.NonNull;
 
-import cn.ymex.cocccute.flux.Params;
 import cn.ymex.cute.mode.flux.Action;
+import cn.ymex.cute.mode.flux.Params;
 
 /**
  * Copyright (c) ymexc(www.ymex.cn)
@@ -34,13 +34,13 @@ public class FluxActAction extends Action<Params> {
      * @param count
      */
     public static void getTop250Movies(int start, int count) {
-        dispatch(new FluxActAction(ACTION_GET_TOP250_MOVIES, Params.bulid().with("start", start).with("count", count)));
+        dispatch(ACTION_GET_TOP250_MOVIES, Params.bulid().with("start", start).with("count", count));
     }
 
     /**
      * 取消请求
      */
     public static void cancelHttpRequest() {
-        dispatch(new FluxActAction(ACTION_CACEL_REQUEST));
+        dispatch( ACTION_CACEL_REQUEST);
     }
 }

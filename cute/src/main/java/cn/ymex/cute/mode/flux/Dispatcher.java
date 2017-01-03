@@ -5,7 +5,7 @@ import java.util.Vector;
 /**
  * Copyright (c) ymexc(www.ymex.cn)
  * Email:ymex@foxmail.com
- * date 2016/01/27
+ * date 2016/1/27
  * Flux Dispatcher
  * @author ymex
  */

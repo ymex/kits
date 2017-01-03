@@ -7,7 +7,7 @@ import cn.ymex.cute.kits.Optional;
 /**
  * Copyright (c) ymexc(www.ymex.cn)
  * Email:ymex@foxmail.com
- * date 2016/01/27
+ * date 2016/1/27
  * Flux seted event bus and inistance
  *
  * @author ymex
@@ -36,7 +36,7 @@ public final class Flux {
     }
 
     public BusAdapter getBusAdapter() {
-        Optional.checkNull(busAdapter, "Flux -> busAdapter is null ! please instance it");
+        Optional.checkNull(busAdapter, "cute.Flux -> busAdapter is null ! please instance it");
         return busAdapter;
     }
 
@@ -48,10 +48,22 @@ public final class Flux {
     }
 
     public interface BusAdapter {
+        /**
+         * register event
+         * @param target
+         */
         void register(@NonNull Object target);
 
+        /**
+         * unregister event
+         * @param target
+         */
         void unregister(@NonNull Object target);
 
+        /**
+         * post event
+         * @param alert
+         */
         void post(@NonNull Object alert);
     }
 }

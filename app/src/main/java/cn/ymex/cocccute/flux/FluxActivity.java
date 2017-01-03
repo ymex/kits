@@ -12,7 +12,9 @@ import cn.ymex.cocccute.flux.action.FluxActAction;
 import cn.ymex.cocccute.flux.action.RequestAction;
 import cn.ymex.cocccute.flux.store.MessageStore;
 import cn.ymex.cute.kits.ViewKit;
-import cn.ymex.cute.mode.flux.StoreAlter;
+import cn.ymex.cute.mode.flux.Action;
+import cn.ymex.cute.mode.flux.Store;
+import cn.ymex.cute.mode.flux.StoreAction;
 import cn.ymex.cute.widget.notice.Toaster;
 
 public class FluxActivity extends BaseActivity {
@@ -79,7 +81,7 @@ public class FluxActivity extends BaseActivity {
     }
 
     @Subscribe
-    public void onAction(StoreAlter event) {
+    public void onAction(StoreAction event) {
         switch (event.getAction().getType()) {
             case FluxActAction.ACTION_CACEL_REQUEST://取消请求
 

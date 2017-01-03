@@ -5,15 +5,15 @@ import android.support.annotation.NonNull;
 
 import java.util.ArrayList;
 
-import cn.ymex.cocccute.flux.Params;
 import cn.ymex.cocccute.flux.action.FluxActAction;
 import cn.ymex.cocccute.flux.action.RequestAction;
 import cn.ymex.cocccute.flux.store.entity.MovieEntity;
 import cn.ymex.cocccute.flux.store.service.MovieService;
 import cn.ymex.cute.log.L;
 import cn.ymex.cute.mode.flux.Action;
+import cn.ymex.cute.mode.flux.Params;
 import cn.ymex.cute.mode.flux.Store;
-import cn.ymex.cute.mode.flux.StoreAlter;
+import cn.ymex.cute.mode.flux.StoreAction;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -95,7 +95,7 @@ public class MessageStore extends Store {
             @Override
             public void onResponse(Call<MovieEntity> call, Response<MovieEntity> response) {
                 movieEntity = response.body();
-                emitStoreChange(StoreAlter.bulid().action(new FluxActAction(FluxActAction.ACTION_GET_TOP250_MOVIES, null)).result("成功"));
+                emitStoreChange(StoreAction.bulid().action(new FluxActAction(FluxActAction.ACTION_GET_TOP250_MOVIES)).result("成功"));
             }
 
             @Override
@@ -107,8 +107,8 @@ public class MessageStore extends Store {
     Observable<MovieEntity> observable;
 
     private void getMovewWithRxRetrofit(Params params) {
-        int start = (int) params.get("start");
-        int count = (int) params.get("count");
+        int start = params.integer("start");
+        int count = params.integer("count");
 
         String baseUrl = "https://api.douban.com/v2/movie/";
 
@@ -137,7 +137,7 @@ public class MessageStore extends Store {
                     public void onNext(MovieEntity entity) {
                         L.d("onNext:" + entity.getTitle());
                         movieEntity = entity;
-                        emitStoreChange(StoreAlter.bulid().action(new FluxActAction(FluxActAction.ACTION_GET_TOP250_MOVIES, null)).result("成功"));
+                        emitStoreChange(FluxActAction.bulid(FluxActAction.ACTION_GET_TOP250_MOVIES),"成功");
                     }
                 });
 
