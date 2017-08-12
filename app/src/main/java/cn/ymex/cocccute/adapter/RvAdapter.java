@@ -9,8 +9,8 @@ import java.util.List;
 
 import cn.ymex.cocccute.R;
 import cn.ymex.cocccute.entity.ItemEntity;
-import cn.ymex.cute.kits.ViewKit;
-import cn.ymex.cute.widget.adapter.RecyclerViewAdapter;
+import cn.ymex.cuteact.kits.Viewkit;
+import cn.ymex.cuteact.adapter.RecyclerViewAdapter;
 
 /**
  * Copyright (c) ymexc(www.ymex.cn)
@@ -38,7 +38,7 @@ public class RvAdapter extends RecyclerViewAdapter<ItemEntity,RvAdapter.ViewHold
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType, boolean content) {
-        return new ViewHolder(ViewKit.inflate(parent.getContext(),R.layout.rv_item_demo,parent));
+        return new ViewHolder(Viewkit.inflate(parent.getContext(),R.layout.rv_item_demo,parent));
     }
 
     @Override
@@ -57,8 +57,8 @@ public class RvAdapter extends RecyclerViewAdapter<ItemEntity,RvAdapter.ViewHold
 
         public ViewHolder(View itemView) {
             super(itemView);
-            tvTitle = ViewKit.find(itemView, R.id.tv_title);
-            tvDetail = ViewKit.find(itemView, R.id.tv_detail);
+            tvTitle = Viewkit.find(itemView, R.id.tv_title);
+            tvDetail = Viewkit.find(itemView, R.id.tv_detail);
         }
     }
 }

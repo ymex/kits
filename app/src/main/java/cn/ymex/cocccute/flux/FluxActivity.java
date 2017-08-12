@@ -11,11 +11,9 @@ import cn.ymex.cocccute.base.BaseActivity;
 import cn.ymex.cocccute.flux.action.FluxActAction;
 import cn.ymex.cocccute.flux.action.RequestAction;
 import cn.ymex.cocccute.flux.store.MessageStore;
-import cn.ymex.cute.kits.ViewKit;
-import cn.ymex.cute.mode.flux.Action;
-import cn.ymex.cute.mode.flux.Store;
-import cn.ymex.cute.mode.flux.StoreAction;
-import cn.ymex.cute.widget.notice.Toaster;
+import cn.ymex.cuteact.kits.Viewkit;
+import cn.ymex.cuteact.mode.flux.StoreAction;
+import cn.ymex.cuteact.kits.Toaster;
 
 public class FluxActivity extends BaseActivity {
     private TextView tvPlay;
@@ -23,10 +21,10 @@ public class FluxActivity extends BaseActivity {
     MessageStore store;
 
     private void init() {
-        tvPlay = ViewKit.find(this, R.id.tv_play);
-        pbLoading = ViewKit.find(this, R.id.pb_loading);
-        ViewKit.findClick(this, R.id.btn_post, this);
-        ViewKit.findClick(this, R.id.btn_cancel, this);
+        tvPlay = Viewkit.find(this, R.id.tv_play);
+        pbLoading = Viewkit.find(this, R.id.pb_loading);
+        Viewkit.findClick(this, R.id.btn_post, this);
+        Viewkit.findClick(this, R.id.btn_cancel, this);
     }
 
     private void showLoading() {

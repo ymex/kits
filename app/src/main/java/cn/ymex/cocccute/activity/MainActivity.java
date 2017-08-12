@@ -16,9 +16,9 @@ import cn.ymex.cocccute.base.BaseActivity;
 import cn.ymex.cocccute.entity.ItemEntity;
 import cn.ymex.cocccute.entity.Student;
 import cn.ymex.cocccute.flux.FluxActivity;
-import cn.ymex.cute.kits.ViewKit;
 import cn.ymex.cute.log.L;
-import cn.ymex.cute.widget.notice.Toaster;
+import cn.ymex.cuteact.kits.Toaster;
+import cn.ymex.cuteact.kits.Viewkit;
 
 public class MainActivity extends BaseActivity implements AdapterView.OnItemClickListener {
 
@@ -31,7 +31,7 @@ public class MainActivity extends BaseActivity implements AdapterView.OnItemClic
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        listView = ViewKit.find(this, R.id.lv_listview);
+        listView = Viewkit.find(this, R.id.lv_listview);
 
         listView.setOnItemClickListener(this);
         adapter = new ItemViewHolderAdapter();
@@ -73,7 +73,7 @@ public class MainActivity extends BaseActivity implements AdapterView.OnItemClic
             add(new ItemEntity("默认Toast", "Toast多次弹出，只显示最后一条"));//1
             add(new ItemEntity("定制Toast", "自定义Toast布局，只显示最后一条"));//2
             add(new ItemEntity("Log打印", "举个栗子,在Logcat查看"));//3
-            add(new ItemEntity("LoadingView", "view for loading ", LoadingActivity.class));
+//            add(new ItemEntity("LoadingView", "view for loading ", LoadingActivity.class));
             add(new ItemEntity("RecyclerViewAdapter", "添加click事件 ,自定义header, footer", RecyclerViewActivity.class));
         }
     };

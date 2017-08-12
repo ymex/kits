@@ -4,7 +4,7 @@ import android.support.annotation.NonNull;
 
 import org.greenrobot.eventbus.EventBus;
 
-import cn.ymex.cute.mode.flux.Flux;
+import cn.ymex.cuteact.mode.flux.Flux;
 
 /**
  * Copyright (c) ymexc(www.ymex.cn)

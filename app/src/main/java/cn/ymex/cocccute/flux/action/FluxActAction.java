@@ -3,8 +3,8 @@ package cn.ymex.cocccute.flux.action;
 
 import android.support.annotation.NonNull;
 
-import cn.ymex.cute.mode.flux.Action;
-import cn.ymex.cute.mode.flux.Params;
+import cn.ymex.cuteact.mode.flux.Action;
+import cn.ymex.cuteact.mode.flux.Params;
 
 /**
  * Copyright (c) ymexc(www.ymex.cn)

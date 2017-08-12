@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<cn.ymex.cute.widget.LoadingLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:cute="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/activity_loading"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    cute:lv_cancelable="true"
-    tools:context="cn.ymex.cocccute.activity.LoadingActivity">
+<cn.ymex.cuteact.widget.LoadingLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                      xmlns:cute="http://schemas.android.com/apk/res-auto"
+                                      xmlns:tools="http://schemas.android.com/tools"
+                                      android:id="@+id/activity_loading"
+                                      android:layout_width="match_parent"
+                                      android:layout_height="match_parent"
+                                      cute:lv_cancelable="true"
+                                      tools:context="cn.ymex.cocccute.activity.LoadingActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -65,4 +65,4 @@
 
 
     </LinearLayout>
-</cn.ymex.cute.widget.LoadingLayout>
+</cn.ymex.cuteact.widget.LoadingLayout>
