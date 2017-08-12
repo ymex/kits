@@ -11,7 +11,7 @@ import cn.ymex.cocccute.base.BaseActivity;
 import cn.ymex.cocccute.flux.action.FluxActAction;
 import cn.ymex.cocccute.flux.action.RequestAction;
 import cn.ymex.cocccute.flux.store.MessageStore;
-import cn.ymex.cuteact.kits.Viewkit;
+import cn.ymex.cuteact.kits.Finder;
 import cn.ymex.cuteact.mode.flux.StoreAction;
 import cn.ymex.cuteact.kits.Toaster;
 
@@ -21,10 +21,10 @@ public class FluxActivity extends BaseActivity {
     MessageStore store;
 
     private void init() {
-        tvPlay = Viewkit.find(this, R.id.tv_play);
-        pbLoading = Viewkit.find(this, R.id.pb_loading);
-        Viewkit.findClick(this, R.id.btn_post, this);
-        Viewkit.findClick(this, R.id.btn_cancel, this);
+        tvPlay = Finder.find(this, R.id.tv_play);
+        pbLoading = Finder.find(this, R.id.pb_loading);
+        Finder.find(this, R.id.btn_post, this);
+        Finder.find(this, R.id.btn_cancel, this);
     }
 
     private void showLoading() {

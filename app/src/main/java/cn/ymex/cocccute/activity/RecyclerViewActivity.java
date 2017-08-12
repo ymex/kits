@@ -12,9 +12,9 @@ import android.view.View;
 
 import cn.ymex.cocccute.R;
 import cn.ymex.cocccute.adapter.RvAdapter;
-import cn.ymex.cuteact.kits.Viewkit;
 import cn.ymex.cute.log.L;
 import cn.ymex.cuteact.adapter.RecyclerViewAdapter;
+import cn.ymex.cuteact.kits.Finder;
 import cn.ymex.cuteact.kits.Toaster;
 import cn.ymex.cuteact.widget.recycler.RecyclerViewClickSupport;
 import cn.ymex.cuteact.widget.recycler.RecyclerViewHorizontalDivider;
@@ -39,7 +39,7 @@ public class RecyclerViewActivity extends AppCompatActivity implements RecyclerV
     }
 
     private void initSrl(Activity view) {
-        srlRefresh = Viewkit.find(view, R.id.srl_refresh);
+        srlRefresh = Finder.find(view, R.id.srl_refresh);
         srlRefresh.setColorSchemeResources(android.R.color.holo_blue_bright,
                 android.R.color.holo_green_light, android.R.color.holo_orange_light, android.R.color.holo_red_light);
         srlRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
@@ -60,7 +60,7 @@ public class RecyclerViewActivity extends AppCompatActivity implements RecyclerV
 
     private RvAdapter rvAdapter;
     private void initRv(Activity view) {
-        recyclerView = Viewkit.find(view, R.id.rv_demos);
+        recyclerView = Finder.find(view, R.id.rv_demos);
         rvAdapter = new RvAdapter();
 
         rvAdapter.addFooterView(R.layout.footer_layout);

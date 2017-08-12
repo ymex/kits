@@ -11,8 +11,8 @@ import android.view.ViewGroup;
 import java.util.ArrayList;
 import java.util.List;
 
+import cn.ymex.cuteact.kits.Finder;
 import cn.ymex.cuteact.kits.Optional;
-import cn.ymex.cuteact.kits.Viewkit;
 
 /**
  * Copyright (c) ymexc(www.ymex.cn)
@@ -121,11 +121,11 @@ public abstract class RecyclerViewAdapter<E, VH extends RecyclerViewAdapter.View
     }
 
     public View getHeaderView(ViewGroup parent) {
-        return mHeaderView = Viewkit.inflate(parent.getContext(), mHeaderViewRes, parent);
+        return mHeaderView = Finder.inflate(parent.getContext(), mHeaderViewRes, parent);
     }
 
     public View getFooterView(ViewGroup parent) {
-        return mFooterView = Viewkit.inflate(parent.getContext(), mFooterViewRes, parent);
+        return mFooterView = Finder.inflate(parent.getContext(), mFooterViewRes, parent);
     }
 
     public void removeHeaderView() {

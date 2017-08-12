@@ -18,9 +18,8 @@ import android.support.annotation.NonNull;
 import cn.ymex.cuteact.kits.Device;
 import cn.ymex.cuteact.kits.Optional;
 import cn.ymex.cuteact.kits.Storage;
-import cn.ymex.cuteact.kits.Viewkit;
-import cn.ymex.cuteact.mode.flux.Flux;
 import cn.ymex.cuteact.kits.Toaster;
+import cn.ymex.cuteact.mode.flux.Flux;
 
 public final class Cuteact {
     public static String TAG_E = "cute.E";
@@ -36,7 +35,6 @@ public final class Cuteact {
 
     public static void all(Context context) {
         application = context;
-        Viewkit.init(context);
         Storage.init(context);
         Toaster.init(context);
         Device.init(context);

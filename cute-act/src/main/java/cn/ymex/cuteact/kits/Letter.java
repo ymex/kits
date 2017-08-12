@@ -15,18 +15,48 @@ import java.util.regex.Pattern;
 import android.os.Build;
 import android.util.Patterns;
 
-public class Texter {
+public class Letter {
+
+
+    public static String append(CharSequence... texts) {
+        if (texts.length <= 0) {
+            return "";
+        }
+        StringBuilder builder = new StringBuilder("");
+        for (CharSequence t : texts) {
+            if (isEmpty(t)) {
+                continue;
+            }
+            builder.append(t);
+        }
+        return builder.toString();
+    }
+
+
+    /**
+     * Description: 字符串为null或空字符串，返回true
+     *
+     * @param text
+     * @return
+     */
+    public static boolean isEmpty(CharSequence text) {
+        return text == null || text.length() == 0 ? true : false;
+    }
+
     /**
      * Returns the String value of the subsequence from the start index with suffix
+     *
      * @param text
      * @param wordCount
      * @return
      */
-    public static CharSequence substring(CharSequence text, int wordCount,CharSequence suffix) {
+    public static CharSequence substring(CharSequence text, int wordCount, CharSequence suffix) {
         StringBuilder builder = new StringBuilder(text);
         int len = builder.length();
         return len < wordCount ? builder : builder.substring(0, wordCount) + suffix;
     }
+
+
 
     /**
      * 字串转为数字
@@ -35,43 +65,85 @@ public class Texter {
      * @param defaultValue
      * @return
      */
-    public static int toNum(CharSequence text, int defaultValue) {
-        if (Optional.isEmpty(text)) {
-            return defaultValue;
+    public static int toNum(CharSequence text, int ... defaultValue) {
+        int def = 0;
+        if (defaultValue.length >= 0) {
+            def = defaultValue[0];
         }
-        int value = defaultValue;
+        if (isEmpty(text)) {
+            return def;
+        }
+
         try {
-            value = Integer.valueOf(text.toString());
+            def = Integer.valueOf(text.toString());
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return value;
+        return def;
     }
 
-    public static float toNum(CharSequence text, float defaultValue) {
-        if (Optional.isEmpty(text)) {
-            return defaultValue;
+    public static float toNum(CharSequence text, float ... defaultValue) {
+        float def = 0f;
+        if (defaultValue.length >= 0) {
+            def = defaultValue[0];
         }
-        float value = defaultValue;
+        if (isEmpty(text)) {
+            return def;
+        }
+
         try {
-            value = Float.valueOf(text.toString());
+            def = Float.valueOf(text.toString());
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return value;
+        return def;
     }
 
-    public static double toNum(CharSequence text, double defaultValue) {
-        if (Optional.isEmpty(text)) {
-            return defaultValue;
+    public static double toNum(CharSequence text, double ... defaultValue) {
+
+        double def = 0d;
+        if (defaultValue.length >= 0) {
+            def = defaultValue[0];
         }
-        double value = defaultValue;
+        if (isEmpty(text)) {
+            return def;
+        }
+
         try {
-            value = Double.valueOf(text.toString());
+            def = Double.valueOf(text.toString());
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return value;
+        return def;
+    }
+
+    public static boolean toBool(CharSequence text, boolean ...  defaultValue) {
+        boolean def = false;
+        if (defaultValue.length >= 0) {
+            def = defaultValue[0];
+        }
+        if (isEmpty(text)) {
+            return def;
+        }
+
+        try {
+            def = Boolean.valueOf(text.toString());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return def;
+    }
+
+    /**
+     * isEmpty(value) ? defvalue : value;
+     *
+     * @param value
+     * @param defvalue
+     * @return
+     */
+
+    public static CharSequence or(final CharSequence value, CharSequence defvalue) {
+        return isEmpty(value) ? defvalue : value;
     }
 
     /**
@@ -99,6 +171,7 @@ public class Texter {
 
     /**
      * web url
+     *
      * @param text
      * @return
      */

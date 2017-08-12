@@ -17,8 +17,8 @@ import cn.ymex.cocccute.entity.ItemEntity;
 import cn.ymex.cocccute.entity.Student;
 import cn.ymex.cocccute.flux.FluxActivity;
 import cn.ymex.cute.log.L;
+import cn.ymex.cuteact.kits.Finder;
 import cn.ymex.cuteact.kits.Toaster;
-import cn.ymex.cuteact.kits.Viewkit;
 
 public class MainActivity extends BaseActivity implements AdapterView.OnItemClickListener {
 
@@ -31,7 +31,8 @@ public class MainActivity extends BaseActivity implements AdapterView.OnItemClic
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        listView = Viewkit.find(this, R.id.lv_listview);
+
+        listView = Finder.builder(this).find(R.id.lv_listview);
 
         listView.setOnItemClickListener(this);
         adapter = new ItemViewHolderAdapter();

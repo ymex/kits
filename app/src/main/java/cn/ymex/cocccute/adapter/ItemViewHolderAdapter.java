@@ -8,13 +8,13 @@ import android.widget.TextView;
 import cn.ymex.cocccute.R;
 import cn.ymex.cocccute.entity.ItemEntity;
 import cn.ymex.cuteact.adapter.ViewHolderAdapter;
-import cn.ymex.cuteact.kits.Viewkit;
+import cn.ymex.cuteact.kits.Finder;
 
 public class ItemViewHolderAdapter extends ViewHolderAdapter<ItemEntity,ItemViewHolderAdapter.ViewHoder> {
 
     @Override
     public View inflateItemView(Context context) {
-        return Viewkit.inflate(context,R.layout.item_main);
+        return Finder.inflate(context,R.layout.item_main);
     }
 
     @Override
@@ -38,8 +38,8 @@ public class ItemViewHolderAdapter extends ViewHolderAdapter<ItemEntity,ItemView
 
         public ViewHoder(View convertView) {
             super(convertView);
-            tvTitle = Viewkit.find(convertView,R.id.tv_title);
-            tvDetail = Viewkit.find(convertView,R.id.tv_detail);
+            tvTitle = Finder.find(convertView,R.id.tv_title);
+            tvDetail = Finder.find(convertView,R.id.tv_detail);
         }
     }
 }

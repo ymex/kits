@@ -1,6 +1,7 @@
 package cn.ymex.cuteact.kits;
 
 import android.app.Activity;
+import android.app.Fragment;
 import android.content.Context;
 import android.support.annotation.IdRes;
 import android.support.annotation.LayoutRes;
@@ -17,95 +18,116 @@ import android.view.ViewGroup;
  * @author ymexc
  */
 public class Finder {
-    private Object hostView;
+
+    private Object hostwindow;
+
 
     private Finder() {
+        super();
+    }
+    private Finder(Object obj) {
+        this.hostwindow =obj;
     }
 
-    public static Finder build(@NonNull View view) {
+    public static Finder builder(Activity activity) {
+        return new Finder(activity);
+    }
+
+    public static Finder builder(Fragment fragment) {
+        return new Finder(fragment.getView());
+    }
+
+    public static Finder builder(android.support.v4.app.Fragment fragment) {
+        return new Finder(fragment.getView());
+    }
+
+    public static   Finder builder(View view) {
         return new Finder(view);
     }
 
-    public static Finder build(@NonNull Activity act) {
-        return new Finder(act);
-    }
-
-    public Finder(Object obj) {
-        if (obj instanceof Activity || obj instanceof View) {
-            this.hostView = obj;
-        } else {
-            throw new RuntimeException("Not allow type for Finder");
-        }
-    }
-
-    public Finder make(@NonNull View view, @IdRes int id) {
-        return make(view,id,null);
-    }
-
-    public Finder make(@NonNull View view,@IdRes int id , View.OnClickListener onClickListener) {
-        if (hostView instanceof Activity) {
-            view = find((Activity) hostView, id);
-        } else if (hostView instanceof View){
-            view = find((View)hostView,id);
-        }
-        if (onClickListener != null && view != null) {
-            view.setOnClickListener(onClickListener);
-        }
-        return this;
-    }
     /**
      * find view by id from view
      *
-     * @param view
      * @param id
      * @return
      * @return: T
      */
 
-    public static <T extends View> T find(@NonNull View view, @IdRes int id) {
+    public  <T extends View> T find(@IdRes int id) {
+        Optional.checkNull(hostwindow);
+        if (hostwindow instanceof View) {
+           return  (T) ((View)hostwindow).findViewById(id);
+        } else if (hostwindow instanceof Activity) {
+            return  (T) ((Activity)hostwindow).findViewById(id);
+        }
+        return null;
+    }
+
+
+
+    /**
+     * find view and set click event for it
+     *
+     * @param id
+     * @param listener
+     */
+    public <T extends View> T find(@IdRes int id, View.OnClickListener listener) {
+        T t = find(id);
+        if (t != null) {
+            t.setOnClickListener(listener);
+        }
+        return t;
+    }
+
+
+    public static  <T extends View> T find(Activity activity ,@IdRes int id) {
+        Optional.checkNull(activity);
+        return (T) activity.findViewById(id);
+    }
+
+    public static  <T extends View> T find(Activity activity ,@IdRes int id,View.OnClickListener listener) {
+        T t = find(activity,id);
+        if (t != null) {
+            t.setOnClickListener(listener);
+        }
+        return t;
+    }
+
+    public static  <T extends View> T find(Fragment fragment ,@IdRes int id) {
+        Optional.checkNull(fragment);
+        return find(fragment.getView(), id);
+    }
+
+
+    public static  <T extends View> T find(Fragment fragment ,@IdRes int id,View.OnClickListener listener) {
+        T t = find(fragment,id);
+        if (t != null) {
+            t.setOnClickListener(listener);
+        }
+        return t;
+    }
+
+
+    public static  <T extends View> T find(android.support.v4.app.Fragment fragment , @IdRes int id) {
+        Optional.checkNull(fragment);
+        return find(fragment.getView(), id);
+    }
+
+
+
+    public static  <T extends View> T find(android.support.v4.app.Fragment fragment , @IdRes int id, View.OnClickListener listener) {
+        T t = find(fragment,id);
+        if (t != null) {
+            t.setOnClickListener(listener);
+        }
+        return t;
+    }
+
+
+    public static  <T extends View> T find(View view ,@IdRes int id) {
         Optional.checkNull(view);
         return (T) view.findViewById(id);
     }
-
-    /**
-     * find view by id from activity
-     *
-     * @param act
-     * @param id
-     * @return
-     * @return: T
-     */
-    public static <T extends View> T find(@NonNull Activity act, @IdRes int id) {
-        Optional.checkNull(act);
-        return (T) act.findViewById(id);
-    }
-
-    /**
-     * find view and set click event for it
-     *
-     * @param view
-     * @param id
-     * @param listener
-     */
-    public static <T extends View> T find(@NonNull View view, @IdRes int id, View.OnClickListener listener) {
-        T t = find(view, id);
-        t.setOnClickListener(listener);
-        return t;
-    }
-
-    /**
-     * find view and set click event for it
-     *
-     * @param act
-     * @param id
-     * @param listener
-     */
-    public static <T extends View> T find(@NonNull Activity act, @IdRes int id, View.OnClickListener listener) {
-        T t = find(act, id);
-        t.setOnClickListener(listener);
-        return t;
-    }
-
 
     /**
      * inflate xml layout
@@ -133,4 +155,5 @@ public class Finder {
     public static <T extends View> View inflate(@NonNull Context context, @NonNull int resource, ViewGroup viewGroup, boolean flag) {
         return (T) LayoutInflater.from(context).inflate(resource, viewGroup, flag);
     }
+
 }
