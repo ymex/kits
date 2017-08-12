@@ -34,7 +34,7 @@ dependencies {
 
     compile 'org.greenrobot:eventbus:3.0.0'
 
-    compile project(':cuteact')
+    compile project(':cute-act')
     compile 'cn.ymex:cute.L:1.0.0'
     compile 'com.squareup:otto:1.3.8'
     compile 'com.squareup.picasso:picasso:2.5.2'
