@@ -6,10 +6,8 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
-import cn.ymex.cocccute.R;
-import cn.ymex.cuteact.kits.Finder;
+import cn.ymex.kits.Finder;
 
 /**
  * Created by ymexc on 2017/8/12.

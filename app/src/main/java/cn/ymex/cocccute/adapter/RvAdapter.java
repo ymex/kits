@@ -9,8 +9,8 @@ import java.util.List;
 
 import cn.ymex.cocccute.R;
 import cn.ymex.cocccute.entity.ItemEntity;
-import cn.ymex.cuteact.adapter.RecyclerViewAdapter;
-import cn.ymex.cuteact.kits.Finder;
+import cn.ymex.kits.adapter.RecyclerViewAdapter;
+import cn.ymex.kits.Finder;
 
 /**
  * Copyright (c) ymexc(www.ymex.cn)

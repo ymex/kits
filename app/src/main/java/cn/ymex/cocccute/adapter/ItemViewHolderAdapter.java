@@ -7,8 +7,8 @@ import android.widget.TextView;
 
 import cn.ymex.cocccute.R;
 import cn.ymex.cocccute.entity.ItemEntity;
-import cn.ymex.cuteact.adapter.ViewHolderAdapter;
-import cn.ymex.cuteact.kits.Finder;
+import cn.ymex.kits.adapter.ViewHolderAdapter;
+import cn.ymex.kits.Finder;
 
 public class ItemViewHolderAdapter extends ViewHolderAdapter<ItemEntity,ItemViewHolderAdapter.ViewHoder> {
 

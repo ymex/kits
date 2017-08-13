@@ -11,9 +11,9 @@ import cn.ymex.cocccute.base.BaseActivity;
 import cn.ymex.cocccute.flux.action.FluxActAction;
 import cn.ymex.cocccute.flux.action.RequestAction;
 import cn.ymex.cocccute.flux.store.MessageStore;
-import cn.ymex.cuteact.kits.Finder;
-import cn.ymex.cuteact.mode.flux.StoreAction;
-import cn.ymex.cuteact.kits.Toaster;
+import cn.ymex.kits.Finder;
+import cn.ymex.kits.mode.flux.StoreAction;
+import cn.ymex.kits.widget.Toaster;
 
 public class FluxActivity extends BaseActivity {
     private TextView tvPlay;

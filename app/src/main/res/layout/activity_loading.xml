@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<cn.ymex.cuteact.widget.LoadingLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<cn.ymex.kits.widget.LoadingLayout xmlns:android="http://schemas.android.com/apk/res/android"
                                       xmlns:cute="http://schemas.android.com/apk/res-auto"
                                       xmlns:tools="http://schemas.android.com/tools"
                                       android:id="@+id/activity_loading"
@@ -65,4 +65,4 @@
 
 
     </LinearLayout>
-</cn.ymex.cuteact.widget.LoadingLayout>
+</cn.ymex.kits.widget.LoadingLayout>

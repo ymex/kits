@@ -1,8 +1,8 @@
 package cn.ymex.cocccute;
 
 import cn.ymex.cocccute.flux.eventbus.OttoBusAdapter;
-import cn.ymex.cuteact.AppContent;
-import cn.ymex.cuteact.Cuteact;
+import cn.ymex.kits.AppContent;
+import cn.ymex.kits.Kits;
 
 /**
  * Copyright (c) 2015. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
@@ -22,7 +22,7 @@ public class AppContext extends AppContent {
     @Override
     public void onCreate() {
         super.onCreate();
-        Cuteact.create(this);//实例化相关类
-        Cuteact.setFluxBusAdapter(OttoBusAdapter.get());//使用flux框架
+        Kits.create(this);//实例化相关类
+        Kits.setFluxBusAdapter(OttoBusAdapter.get());//使用flux框架
     }
 }

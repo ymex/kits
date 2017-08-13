@@ -13,12 +13,12 @@ import android.view.View;
 import cn.ymex.cocccute.R;
 import cn.ymex.cocccute.adapter.RvAdapter;
 import cn.ymex.cute.log.L;
-import cn.ymex.cuteact.adapter.RecyclerViewAdapter;
-import cn.ymex.cuteact.kits.Finder;
-import cn.ymex.cuteact.kits.Toaster;
-import cn.ymex.cuteact.widget.recycler.RecyclerViewClickSupport;
-import cn.ymex.cuteact.widget.recycler.RecyclerViewHorizontalDivider;
-import cn.ymex.cuteact.widget.recycler.RecyclerViewVerticalDivider;
+import cn.ymex.kits.adapter.RecyclerViewAdapter;
+import cn.ymex.kits.Finder;
+import cn.ymex.kits.widget.Toaster;
+import cn.ymex.kits.widget.recycler.RecyclerViewClickSupport;
+import cn.ymex.kits.widget.recycler.RecyclerViewHorizontalDivider;
+import cn.ymex.kits.widget.recycler.RecyclerViewVerticalDivider;
 
 public class RecyclerViewActivity extends AppCompatActivity implements RecyclerViewClickSupport.OnItemClickListener {
     RecyclerView recyclerView;

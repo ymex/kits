@@ -3,7 +3,7 @@ package cn.ymex.cocccute.flux.eventbus;
 import com.squareup.otto.Bus;
 import com.squareup.otto.ThreadEnforcer;
 
-import cn.ymex.cuteact.mode.flux.Flux;
+import cn.ymex.kits.mode.flux.Flux;
 
 
 /**

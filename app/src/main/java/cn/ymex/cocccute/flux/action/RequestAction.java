@@ -2,7 +2,7 @@ package cn.ymex.cocccute.flux.action;
 
 import android.support.annotation.NonNull;
 
-import cn.ymex.cuteact.mode.flux.Action;
+import cn.ymex.kits.mode.flux.Action;
 
 /**
  * Copyright (c) ymexc(www.ymex.cn)
