@@ -1,5 +1,10 @@
 package cn.ymex.kits;
 
+import android.content.Context;
+import android.os.Environment;
+import android.os.StatFs;
+import android.util.Log;
+
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
@@ -9,11 +14,6 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-
-import android.content.Context;
-import android.os.Environment;
-import android.os.StatFs;
-import android.util.Log;
 
 /**
  * @author ymex@foxmail.com
@@ -136,7 +136,7 @@ public class FileKit {
      * @return
      */
     public static String getFileName(String filePath) {
-        if (Optional.isEmpty(filePath))
+        if (Letter.isEmpty(filePath))
             return "";
         return filePath.substring(filePath.lastIndexOf(File.separator) + 1);
     }
@@ -148,7 +148,7 @@ public class FileKit {
      * @return
      */
     public static String getFileNameNoFormat(String filePath) {
-        if (Optional.isEmpty(filePath)) {
+        if (Letter.isEmpty(filePath)) {
             return "";
         }
         int point = filePath.lastIndexOf('.');
@@ -163,7 +163,7 @@ public class FileKit {
      * @return
      */
     public static String getFileFormat(String fileName) {
-        if (Optional.isEmpty(fileName))
+        if (Letter.isEmpty(fileName))
             return "";
 
         int point = fileName.lastIndexOf('.');
