@@ -17,7 +17,11 @@ import android.util.Patterns;
 
 public class Letter {
 
-
+    /**
+     * 拼接字符串
+     * @param texts 可变参数
+     * @return 
+     */
     public static String append(CharSequence... texts) {
         if (texts.length <= 0) {
             return "";
