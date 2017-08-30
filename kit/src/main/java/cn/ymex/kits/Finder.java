@@ -6,9 +6,12 @@ import android.content.Context;
 import android.support.annotation.IdRes;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.NonNull;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import java.lang.reflect.Field;
 
 /**
  * Copyright (c) ymexc(www.ymex.cn)
@@ -25,8 +28,9 @@ public class Finder {
     private Finder() {
         super();
     }
+
     private Finder(Object obj) {
-        this.hostwindow =obj;
+        this.hostwindow = obj;
     }
 
     public static Finder builder(Activity activity) {
@@ -41,7 +45,7 @@ public class Finder {
         return new Finder(fragment.getView());
     }
 
-    public static   Finder builder(View view) {
+    public static Finder builder(View view) {
         return new Finder(view);
     }
 
@@ -53,16 +57,15 @@ public class Finder {
      * @return: T
      */
 
-    public  <T extends View> T find(@IdRes int id) {
+    public <T extends View> T find(@IdRes int id) {
         Optional.checkNull(hostwindow);
         if (hostwindow instanceof View) {
-           return  (T) ((View)hostwindow).findViewById(id);
+            return (T) ((View) hostwindow).findViewById(id);
         } else if (hostwindow instanceof Activity) {
-            return  (T) ((Activity)hostwindow).findViewById(id);
+            return (T) ((Activity) hostwindow).findViewById(id);
         }
         return null;
     }
-
 
 
     /**
@@ -80,27 +83,27 @@ public class Finder {
     }
 
 
-    public static  <T extends View> T find(Activity activity ,@IdRes int id) {
+    public static <T extends View> T find(Activity activity, @IdRes int id) {
         Optional.checkNull(activity);
         return (T) activity.findViewById(id);
     }
 
-    public static  <T extends View> T find(Activity activity ,@IdRes int id,View.OnClickListener listener) {
-        T t = find(activity,id);
+    public static <T extends View> T find(Activity activity, @IdRes int id, View.OnClickListener listener) {
+        T t = find(activity, id);
         if (t != null) {
             t.setOnClickListener(listener);
         }
         return t;
     }
 
-    public static  <T extends View> T find(Fragment fragment ,@IdRes int id) {
+    public static <T extends View> T find(Fragment fragment, @IdRes int id) {
         Optional.checkNull(fragment);
         return find(fragment.getView(), id);
     }
 
 
-    public static  <T extends View> T find(Fragment fragment ,@IdRes int id,View.OnClickListener listener) {
-        T t = find(fragment,id);
+    public static <T extends View> T find(Fragment fragment, @IdRes int id, View.OnClickListener listener) {
+        T t = find(fragment, id);
         if (t != null) {
             t.setOnClickListener(listener);
         }
@@ -108,15 +111,14 @@ public class Finder {
     }
 
 
-    public static  <T extends View> T find(android.support.v4.app.Fragment fragment , @IdRes int id) {
+    public static <T extends View> T find(android.support.v4.app.Fragment fragment, @IdRes int id) {
         Optional.checkNull(fragment);
         return find(fragment.getView(), id);
     }
 
 
-
-    public static  <T extends View> T find(android.support.v4.app.Fragment fragment , @IdRes int id, View.OnClickListener listener) {
-        T t = find(fragment,id);
+    public static <T extends View> T find(android.support.v4.app.Fragment fragment, @IdRes int id, View.OnClickListener listener) {
+        T t = find(fragment, id);
         if (t != null) {
             t.setOnClickListener(listener);
         }
@@ -124,7 +126,7 @@ public class Finder {
     }
 
 
-    public static  <T extends View> T find(View view ,@IdRes int id) {
+    public static <T extends View> T find(View view, @IdRes int id) {
         Optional.checkNull(view);
         return (T) view.findViewById(id);
     }
@@ -154,6 +156,32 @@ public class Finder {
 
     public static <T extends View> View inflate(@NonNull Context context, @NonNull int resource, ViewGroup viewGroup, boolean flag) {
         return (T) LayoutInflater.from(context).inflate(resource, viewGroup, flag);
+    }
+
+
+    /**
+     * 获取资源id
+     * @param c 类
+     * @param strId id
+     * @return 实际id
+     */
+
+    public static int resId(Class c, String strId) {
+        if (c == null || TextUtils.isEmpty(strId)) {
+            return -1;
+        }
+        int lastDotIndex = strId.lastIndexOf(".");
+        String variableName = strId;
+        if (lastDotIndex >= 0) {
+            variableName = strId.substring(lastDotIndex+1, strId.length());
+        }
+        try {
+            Field idField = c.getDeclaredField(variableName);
+            return idField.getInt(idField);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return -1;
     }
 
 }

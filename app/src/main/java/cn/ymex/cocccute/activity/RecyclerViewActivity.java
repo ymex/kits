@@ -39,7 +39,7 @@ public class RecyclerViewActivity extends AppCompatActivity implements RecyclerV
     }
 
     private void initSrl(Activity view) {
-        srlRefresh = Finder.find(view, R.id.srl_refresh);
+        srlRefresh = Finder.find(view, Finder.resId(R.id.class, "R.id.srl_refresh"));
         srlRefresh.setColorSchemeResources(android.R.color.holo_blue_bright,
                 android.R.color.holo_green_light, android.R.color.holo_orange_light, android.R.color.holo_red_light);
         srlRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
