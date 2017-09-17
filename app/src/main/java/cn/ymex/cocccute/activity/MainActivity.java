@@ -16,9 +16,10 @@ import cn.ymex.cocccute.base.BaseActivity;
 import cn.ymex.cocccute.entity.ItemEntity;
 import cn.ymex.cocccute.entity.Student;
 import cn.ymex.cocccute.flux.FluxActivity;
-import cn.ymex.cute.log.L;
+
 import cn.ymex.kits.Finder;
 import cn.ymex.kits.widget.Toaster;
+import cn.ymex.log.L;
 
 public class MainActivity extends BaseActivity implements AdapterView.OnItemClickListener {
 
