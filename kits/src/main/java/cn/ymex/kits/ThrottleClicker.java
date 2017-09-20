@@ -4,11 +4,7 @@ import android.view.View;
 
 /**
  * 防止重复点击
- * button.setOnClickListener(ThrottleClicker.click(new View.OnClickListener() {
- *
- * @Override public void onClick(View view) {
- *
- * }}));
+ * button.setOnClickListener(ThrottleClicker.click(onclick));
  */
 
 public class ThrottleClicker implements View.OnClickListener {
