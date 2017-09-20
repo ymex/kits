@@ -2,25 +2,25 @@
 
 android 便捷库，日常开发常用工具。
 
-##包含的工具
+##包含的工具类和库
+```
+compile 'cn.ymex:pure-adapter:1.0.0'
+compile 'cn.ymex:kson:1.2.0'
+compile 'cn.ymex:log.L:1.2.0'
+compile 'cn.ymex:textlabel:1.1.0'
+compile 'cn.ymex:popup-dialog:1.2.1'
+```
 
 ### log 
-```
-L.w("this is String type!");
-L.d(Data.object());
-L.e(Data.array());
-```
 
-### ViewHolderAdapter
-继承于BaseAdapter,使开发listview 更简单。
+### Adapter
+
+### PopupDialog
+v1.3.0 todo:
+1. 修复PopupDialog 应先消失再响应点击事件后。
+
+
 
 ### Toaster
-单例toast
-
-### webkit
-
 
 ###permission
-
-###RecyclerViewAdapter
-使RecyclerView可添加onItemClick 事件,并可添加头部和尾部。

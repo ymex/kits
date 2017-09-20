@@ -49,6 +49,8 @@ dependencies {
     compile 'cn.ymex:pure-adapter:1.0.0'
     compile 'cn.ymex:kson:1.2.0'
     compile 'cn.ymex:log.L:1.2.0'
+    compile 'cn.ymex:textlabel:1.1.0'
+    compile 'cn.ymex:popup-dialog:1.2.1'
     compile 'com.android.support:appcompat-v7:26.+'
     compile 'com.android.support:recyclerview-v7:26.+'
 }
