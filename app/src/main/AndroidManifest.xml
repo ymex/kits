@@ -1,27 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="cn.ymex.cocccute">
+    package="cn.ymex.sample">
 
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
-        android:name=".AppContext"
+        android:name="cn.ymex.sample.ApplicationContext"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.MainActivity">
+        <activity android:name="cn.ymex.sample.activity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.BrowserActivity" />
-        <activity android:name=".flux.FluxActivity" />
-        <activity android:name=".activity.RecyclerViewActivity" />
+        <activity android:name="cn.ymex.sample.activity.BrowserActivity" />
+        <activity android:name="cn.ymex.sample.flux.FluxActivity" />
+        <activity android:name="cn.ymex.sample.activity.RecyclerViewActivity" />
     </application>
 
 </manifest>

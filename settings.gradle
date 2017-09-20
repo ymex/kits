@@ -1,2 +1,2 @@
 //by ymex@foxmail.com
-include ':app', ':kitlib'
+include ':app', ':kits'
