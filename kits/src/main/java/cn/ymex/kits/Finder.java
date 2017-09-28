@@ -3,10 +3,12 @@ package cn.ymex.kits;
 import android.app.Activity;
 import android.app.Fragment;
 import android.content.Context;
+import android.content.res.Resources;
 import android.support.annotation.IdRes;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -131,6 +133,14 @@ public class Finder {
         return (T) view.findViewById(id);
     }
 
+    public static <T extends View> T find(View view, @IdRes int id, View.OnClickListener listener) {
+        T t = find(view, id);
+        if (t != null) {
+            t.setOnClickListener(listener);
+        }
+        return (T) view.findViewById(id);
+    }
+
     /**
      * inflate xml layout
      *
@@ -161,19 +171,20 @@ public class Finder {
 
     /**
      * 获取资源id
-     * @param c 类
+     *
+     * @param c     类
      * @param strId id
      * @return 实际id
      */
 
-    public static int resId(Class c, String strId) {
+    public static int resId(Class c, String strId,int defstrid) {
         if (c == null || TextUtils.isEmpty(strId)) {
-            return -1;
+            return defstrid;
         }
         int lastDotIndex = strId.lastIndexOf(".");
         String variableName = strId;
         if (lastDotIndex >= 0) {
-            variableName = strId.substring(lastDotIndex+1, strId.length());
+            variableName = strId.substring(lastDotIndex + 1, strId.length());
         }
         try {
             Field idField = c.getDeclaredField(variableName);
@@ -181,7 +192,7 @@ public class Finder {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return -1;
+        return defstrid;
     }
 
 }

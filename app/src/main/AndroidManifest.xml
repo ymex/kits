@@ -2,7 +2,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="cn.ymex.sample">
 
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
@@ -21,7 +20,6 @@
         </activity>
         <activity android:name="cn.ymex.sample.activity.BrowserActivity" />
         <activity android:name="cn.ymex.sample.flux.FluxActivity" />
-        <activity android:name="cn.ymex.sample.activity.RecyclerViewActivity" />
     </application>
 
 </manifest>

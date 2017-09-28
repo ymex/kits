@@ -31,10 +31,14 @@ public final class Kits {
     }
 
     public static void all(Context context) {
-        application = context;
-        Storage.init(context);
-        Toaster.init(context);
-        Device.init(context);
+        if (application instanceof Application) {
+            application = context;
+        }else {
+            application = context.getApplicationContext();
+        }
+        Storage.init(application);
+        Toaster.init(application);
+        Device.init(application);
     }
 
     /**

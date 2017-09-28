@@ -1,6 +1,9 @@
 package cn.ymex.sample.activity;
 
+import android.content.ClipData;
+import android.content.res.Resources;
 import android.os.Bundle;
+import android.util.TypedValue;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -10,6 +13,7 @@ import com.google.gson.Gson;
 import java.util.ArrayList;
 import java.util.List;
 
+import cn.ymex.kits.Device;
 import cn.ymex.sample.R;
 import cn.ymex.sample.adapter.ItemListViewAdapter;
 import cn.ymex.sample.base.BaseActivity;
@@ -69,14 +73,16 @@ public class MainActivity extends BaseActivity implements AdapterView.OnItemClic
         L.w(new Exception("--ht"));
     }
 
+    private int px = 32;
+
+
     List<ItemEntity> items = new ArrayList() {
         {
             add(new ItemEntity("Flux For Android", "使用Flux模式设计App", FluxActivity.class));
             add(new ItemEntity("默认Toast", "Toast多次弹出，只显示最后一条"));//1
             add(new ItemEntity("定制Toast", "自定义Toast布局，只显示最后一条"));//2
             add(new ItemEntity("Log打印", "举个栗子,在Logcat查看"));//3
-//            add(new ItemEntity("LoadingView", "view for loading ", LoadingActivity.class));
-            //add(new ItemEntity("RecyclerViewAdapter", "添加click事件 ,自定义header, footer", RecyclerViewActivity.class));
+            add(new ItemEntity("px and dp","px2dip:"+ Device.px2dip(px)+"  dp2px:"+Device.dip2px(px)));
         }
     };
 }

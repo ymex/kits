@@ -11,14 +11,19 @@
 package cn.ymex.kits;
 
 import android.content.Context;
+import android.content.pm.ActivityInfo;
+import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
+import android.content.res.Resources;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
+import android.os.Bundle;
 import android.provider.Settings;
 import android.telephony.TelephonyManager;
 import android.util.DisplayMetrics;
+import android.util.TypedValue;
 import android.view.View;
 import android.view.WindowManager;
 
@@ -28,15 +33,8 @@ import android.view.WindowManager;
 public class Device {
     private static boolean sInitialed;
     private static Context mContext;
-
-
-    public static int SCREEN_WIDTH_PX;
-    public static int SCREEN_HEIGHT_PX;
-    public static float SCREEN_DENSITY;
-    public static int SCREEN_WIDTH_DP;
-    public static int SCREEN_HEIGHT_DP;
-
-    private static RuntimeException exception = new RuntimeException("mContext is null , pulese call Kits onCreate() in application onCreate()");
+    private static DisplayMetrics DISPLAYMETRICS = Resources.getSystem().getDisplayMetrics();
+    private static RuntimeException exception = new RuntimeException("Context is null , pulese call Kits onCreate() in application onCreate()");
 
     private Device() {
     }
@@ -49,50 +47,51 @@ public class Device {
         mContext = context;
         sInitialed = true;
 
-        DisplayMetrics dm = new DisplayMetrics();
-        WindowManager wm = (WindowManager) context
-                .getSystemService(Context.WINDOW_SERVICE);
-        wm.getDefaultDisplay().getMetrics(dm);
-        SCREEN_WIDTH_PX = dm.widthPixels;
-        SCREEN_HEIGHT_PX = dm.heightPixels;
-        SCREEN_DENSITY = dm.density;
-        SCREEN_WIDTH_DP = (int) (SCREEN_WIDTH_PX / dm.density);
-        SCREEN_HEIGHT_DP = (int) (SCREEN_HEIGHT_PX / dm.density);
-
     }
 
     /**
-     * @param dp to px
-     * @return
+     * 屏幕高度
+     * @return px
      */
-    public static int dp2px(float dp) {
-        final float scale = SCREEN_DENSITY;
-        return (int) (dp * scale + 0.5f);
+    public static int getScreenHeight() {
+        return DISPLAYMETRICS.heightPixels;
     }
 
-    public static int designedDP2px(float designedDp) {
-        // density = 160 时 w=320 * h 480 1dp = 1px
-        if (SCREEN_WIDTH_DP != 320) {
-            designedDp = designedDp * SCREEN_WIDTH_DP / 320f;
-        }
-        return dp2px(designedDp);
+    /**
+     * 屏幕宽度
+     * @return px
+     */
+    public static int getScreenWidth() {
+        return DISPLAYMETRICS.widthPixels;
     }
 
-    public static float px2dp(int px) {
-        final float scale = SCREEN_DENSITY;
-        return (px / scale + 0.5f);
+    /**
+     * dp to px
+     * @param dp dip
+     * @return int
+     */
+    public static int dip2px(int dp) {
+        return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp,
+                Resources.getSystem().getDisplayMetrics());
     }
 
-    public static void setPadding(final View view, float left, float top,
-                                  float right, float bottom) {
-        view.setPadding(designedDP2px(left), dp2px(top), designedDP2px(right),
-                dp2px(bottom));
+    /**
+     * px to dip
+     * @param px px
+     * @return float
+     */
+    public static float px2dip(int px) {
+        return (px / DISPLAYMETRICS.density + 0.5f);
     }
 
-    private static PackageInfo getPackageInfo(int flag) {
+    private static void checkIns() {
         if (mContext == null) {
             throw exception;
         }
+    }
+
+    private static PackageInfo getPackageInfo(int flag) {
+        checkIns();
         PackageManager packageManager = mContext.getPackageManager();
         PackageInfo packageInfo = null;
         try {
@@ -140,9 +139,7 @@ public class Device {
      * @return
      */
     public static String getAndroidId() {
-        if (mContext == null) {
-            throw exception;
-        }
+        checkIns();
         String id = Settings.Secure.getString(mContext.getContentResolver(), Settings.Secure.ANDROID_ID);
         return id;
     }
@@ -168,6 +165,7 @@ public class Device {
      * @return
      */
     public static String getIMEI() {
+        checkIns();
         return ((TelephonyManager) mContext.getSystemService(Context.TELEPHONY_SERVICE)).getDeviceId();
     }
 
@@ -177,8 +175,27 @@ public class Device {
      * @return
      */
     public static String getMac() {
+        checkIns();
         WifiManager wifi = (WifiManager) mContext.getSystemService(Context.WIFI_SERVICE);
         WifiInfo info = wifi.getConnectionInfo();
         return info.getMacAddress().replaceAll(":", "");//MAC 地址
     }
+
+
+    /**
+     * 获取app metadata
+     * @return
+     */
+    public static Bundle getAppMetaData() {
+
+        ApplicationInfo  appInfo = null;
+        try {
+            appInfo = mContext.getPackageManager().getApplicationInfo(mContext.getPackageName(), PackageManager.GET_META_DATA);
+        } catch (NameNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        return appInfo!=null?appInfo.metaData:null;
+    }
+    
 }
