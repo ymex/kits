@@ -25,7 +25,7 @@ import java.lang.reflect.Field;
 public class Finder {
 
     private Object hostwindow;
-
+    private static String ERRORUSE = "Fragment build must after onCreateView. it's a good idea use in onViewCreated.";
 
     private Finder() {
         super();
@@ -35,19 +35,31 @@ public class Finder {
         this.hostwindow = obj;
     }
 
-    public static Finder builder(Activity activity) {
+    public static Finder build(Activity activity) {
+        Optional.checkNull(activity);
         return new Finder(activity);
     }
 
-    public static Finder builder(Fragment fragment) {
-        return new Finder(fragment.getView());
+    public static Finder build(Fragment fragment) {
+        Optional.checkNull(fragment);
+        View view = fragment.getView();
+        if (view == null) {
+            throw  new IllegalArgumentException(ERRORUSE);
+        }
+        return new Finder(view);
     }
 
-    public static Finder builder(android.support.v4.app.Fragment fragment) {
-        return new Finder(fragment.getView());
+    public static Finder build(android.support.v4.app.Fragment fragment) {
+        Optional.checkNull(fragment);
+        View view = fragment.getView();
+        if (view == null) {
+            throw new IllegalArgumentException(ERRORUSE);
+        }
+        return new Finder(view);
     }
 
-    public static Finder builder(View view) {
+    public static Finder build(View view) {
+        Optional.checkNull(view);
         return new Finder(view);
     }
 
@@ -100,6 +112,7 @@ public class Finder {
 
     public static <T extends View> T find(Fragment fragment, @IdRes int id) {
         Optional.checkNull(fragment);
+        Optional.checkNull(fragment.getView(),ERRORUSE);
         return find(fragment.getView(), id);
     }
 
@@ -115,6 +128,7 @@ public class Finder {
 
     public static <T extends View> T find(android.support.v4.app.Fragment fragment, @IdRes int id) {
         Optional.checkNull(fragment);
+        Optional.checkNull(fragment.getView(),ERRORUSE);
         return find(fragment.getView(), id);
     }
 

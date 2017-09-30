@@ -37,7 +37,7 @@ public class MainActivity extends BaseActivity implements AdapterView.OnItemClic
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        listView = Finder.builder(this).find(R.id.lv_listview);
+        listView = Finder.build(this).find(R.id.lv_listview);
 
         listView.setOnItemClickListener(this);
         adapter = new ItemListViewAdapter();
