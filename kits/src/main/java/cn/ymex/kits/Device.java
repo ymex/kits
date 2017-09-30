@@ -70,7 +70,7 @@ public class Device {
      * @param dp dip
      * @return int
      */
-    public static int dip2px(int dp) {
+    public static int dip2px(float dp) {
         return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp,
                 Resources.getSystem().getDisplayMetrics());
     }
