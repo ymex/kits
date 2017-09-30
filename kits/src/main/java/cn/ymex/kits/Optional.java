@@ -7,6 +7,16 @@ package cn.ymex.kits;
 public class Optional {
 
     /**
+     * Description: 字符串为null或空字符串，返回true
+     *
+     * @param text
+     * @return
+     */
+    public static boolean isEmpty(CharSequence text) {
+        return Letter.isEmpty(text);
+    }
+
+    /**
      * 检查对象是否为空，为空抛出 NullPointerException
      *
      * @param notice 提示信息
