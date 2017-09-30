@@ -17,7 +17,7 @@ public class BaseFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        Finder finder = Finder.builder(this);
+        Finder finder = Finder.build(this);
 
         return super.onCreateView(inflater, container, savedInstanceState);
     }

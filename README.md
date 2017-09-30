@@ -26,4 +26,7 @@ compile 'cn.ymex:banner:1.6.1'
 
 ### Toaster
 
-###permission
+### permission
+
+### finder
+组件查找工具,方便在activity , fragment 和view上查找控件。
