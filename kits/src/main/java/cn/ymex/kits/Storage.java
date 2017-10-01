@@ -11,6 +11,7 @@ import java.util.Set;
 /**
  * SharedPreferences 帮助类
  * Created by ymexc on 2016/6/16.
+ * todo:加密
  */
 public final class Storage {
 

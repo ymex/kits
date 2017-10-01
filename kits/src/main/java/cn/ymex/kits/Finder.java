@@ -19,7 +19,7 @@ import java.lang.reflect.Field;
  * Copyright (c) ymexc(www.ymex.cn)
  * Email:ymex@foxmail.com
  * date 2016/11/18
- *
+ * 组件查找工具,方便在activity , fragment 和view上查找控件。
  * @author ymexc
  */
 public class Finder {

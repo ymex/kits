@@ -21,7 +21,7 @@ public class ThrottleClicker implements View.OnClickListener {
     /**
      * @param time     点击间隔
      * @param listener 实际回调
-     * @return
+     * @return ThrottleClicker
      */
     public static ThrottleClicker click(long time, View.OnClickListener listener) {
         return new ThrottleClicker(time, listener);
@@ -30,8 +30,8 @@ public class ThrottleClicker implements View.OnClickListener {
     /**
      * 默认 间隔时间 600 ms
      *
-     * @param listener
-     * @return
+     * @param listener View.OnClickListener
+     * @return ThrottleClicker
      */
     public static ThrottleClicker click(View.OnClickListener listener) {
         return new ThrottleClicker(DEF_TIME_OUT, listener);
