@@ -5,7 +5,7 @@
 android 便捷库，日常开发常用工具。
 
 ```
-compile 'cn.ymex:kits:1.1.1'
+compile 'cn.ymex:kits:1.1.2'
 ```
 
 ##包含的工具类和库
@@ -19,14 +19,19 @@ compile 'cn.ymex:banner:1.6.1'
 ```
 
 ### log 
+日志打印
 
 ### Adapter
+数据绑定
 
 ### PopupDialog
+窗口
 
 ### Toaster
+Toast
 
 ### permission
+权限相关
 
 ### finder
 组件查找工具,方便在activity , fragment 和view上查找控件。
