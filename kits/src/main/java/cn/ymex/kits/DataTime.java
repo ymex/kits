@@ -22,7 +22,7 @@ import java.util.TimeZone;
  * 提供有限的 时间/单体格式相关转换
  */
 @SuppressLint("SimpleDateFormat")
-public class TimeKit {
+public class DataTime {
     private static String DEFAULT_TIME_ZONE = "GMT+08";
 
     /**
@@ -244,7 +244,7 @@ public class TimeKit {
         return Long.parseLong(curDate);
     }
 
-    public static long currentTimeMillis() {
+    public static long now() {
         return System.currentTimeMillis();
     }
 }
