@@ -80,43 +80,67 @@ public class TimeKit {
 
 
     /**
-     * 将日期转换为 格式 ：yyyy-MM-dd HH:mm:ss 的字串
+     * 格式化日期时间
      *
-     * @param date
-     * @return
+     * @param date Date
+     * @return yyyy-MM-dd HH:mm:ss
      */
     public static String formatDateTime(Date date) {
         return dateFormaterWithTime.get().format(date);
     }
 
     /**
-     * 将日期时间转换为 格式 ：yyyy-MM-dd HH:mm:ss 的字串
+     * 格式化日期时间
      *
-     * @return
+     * @param milliseconds milliseconds
+     * @return yyyy-MM-dd HH:mm:ss
      */
     public static String formatDateTime(long milliseconds) {
         return dateFormaterWithTime.get().format(new Date(milliseconds));
     }
 
+    /**
+     * 格式化日期时间
+     *
+     * @param milliseconds String
+     * @return yyyy-MM-dd HH:mm:ss
+     */
+    public static String formatDateTime(String milliseconds) {
+        long time = Letter.toNum(milliseconds, 0L);
+        return formatDateTime(time);
+    }
 
     /**
-     * 将日期转换为 格式 ：yyyy-MM-dd HH:mm:ss 的字串
+     * 格式化日期
      *
-     * @param date
-     * @return
+     * @param date Date
+     * @return yyyy-MM-dd
      */
     public static String formatDate(Date date) {
         return dateFormater.get().format(date);
     }
 
     /**
-     * 将日期时间转换为 格式 ：yyyy-MM-dd HH:mm:ss 的字串
+     * 格式化日期
      *
-     * @return
+     * @param milliseconds long
+     * @return yyyy-MM-dd
      */
     public static String formatDate(long milliseconds) {
         return dateFormater.get().format(new Date(milliseconds));
     }
+
+    /**
+     * 格式化日期
+     *
+     * @param milliseconds String
+     * @return yyyy-MM-dd
+     */
+    public static String formatDate(String milliseconds) {
+        long time = Letter.toNum(milliseconds, 0L);
+        return formatDate(time);
+    }
+
     /**
      * 将字符串转为日期类型
      *

@@ -103,6 +103,23 @@ public class Letter {
         return def;
     }
 
+    public static long toNum(CharSequence text, long ... defaultValue) {
+        long def = 0L;
+        if (defaultValue.length >= 0) {
+            def = defaultValue[0];
+        }
+        if (isEmpty(text)) {
+            return def;
+        }
+
+        try {
+            def = Long.valueOf(text.toString());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return def;
+    }
+
     public static double toNum(CharSequence text, double ... defaultValue) {
 
         double def = 0d;
