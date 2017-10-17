@@ -3,12 +3,10 @@ package cn.ymex.kits;
 import android.app.Activity;
 import android.app.Fragment;
 import android.content.Context;
-import android.content.res.Resources;
 import android.support.annotation.IdRes;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
-import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,6 +18,7 @@ import java.lang.reflect.Field;
  * Email:ymex@foxmail.com
  * date 2016/11/18
  * 组件查找工具,方便在activity , fragment 和view上查找控件。
+ *
  * @author ymexc
  */
 public class Finder {
@@ -44,7 +43,7 @@ public class Finder {
         Optional.checkNull(fragment);
         View view = fragment.getView();
         if (view == null) {
-            throw  new IllegalArgumentException(ERRORUSE);
+            throw new IllegalArgumentException(ERRORUSE);
         }
         return new Finder(view);
     }
@@ -112,7 +111,7 @@ public class Finder {
 
     public static <T extends View> T find(Fragment fragment, @IdRes int id) {
         Optional.checkNull(fragment);
-        Optional.checkNull(fragment.getView(),ERRORUSE);
+        Optional.checkNull(fragment.getView(), ERRORUSE);
         return find(fragment.getView(), id);
     }
 
@@ -128,7 +127,7 @@ public class Finder {
 
     public static <T extends View> T find(android.support.v4.app.Fragment fragment, @IdRes int id) {
         Optional.checkNull(fragment);
-        Optional.checkNull(fragment.getView(),ERRORUSE);
+        Optional.checkNull(fragment.getView(), ERRORUSE);
         return find(fragment.getView(), id);
     }
 
@@ -191,7 +190,7 @@ public class Finder {
      * @return 实际id
      */
 
-    public static int resId(Class c, String strId,int defstrid) {
+    public static int resId(Class c, String strId, int defstrid) {
         if (c == null || TextUtils.isEmpty(strId)) {
             return defstrid;
         }
