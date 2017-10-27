@@ -1,14 +1,3 @@
-/*
- * Copyright (c) 2015. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
- * Morbi non lorem porttitor neque feugiat blandit. Ut vitae ipsum eget quam lacinia accumsan.
- * Etiam sed turpis ac ipsum condimentum fringilla. Maecenas magna.
- * Proin dapibus sapien vel ante. Aliquam erat volutpat. Pellentesque sagittis ligula eget metus.
- * Vestibulum commodo. Ut rhoncus gravida arcu.
- * <p>
- * Email:ymex@foxmail.com  (www.ymex.cn)
- * @author ymex
- * date: 16/4/21
- */
 package cn.ymex.kits;
 
 import android.annotation.SuppressLint;
@@ -56,12 +45,6 @@ public class NetworkStatus {
         listeners = new ArrayList<>();
     }
 
-    public int size() {
-        for (SoftReference<NetworkStatusListener> l : listeners) {
-            System.out.println("--::--::  " + l.get().getClass().getName());
-        }
-        return listeners.size();
-    }
 
     public static NetworkStatus getInstance() {
         return thisInstance;
@@ -87,12 +70,12 @@ public class NetworkStatus {
                     mState = State.CONNECTED;
                     message.what = State.CONNECTED.VALUE;
                 } else {
-                    mState = State.NOT_CONNECTED;
-                    message.what = State.NOT_CONNECTED.VALUE;
+                    mState = State.CONNECTED_BREAK;
+                    message.what = State.CONNECTED_BREAK.VALUE;
                 }
             } else {
-                mState = State.NOT_CONNECTED;
-                message.what = State.NOT_CONNECTED.VALUE;
+                mState = State.CONNECTED_BREAK;
+                message.what = State.CONNECTED_BREAK.VALUE;
             }
             mOtherNetworkInfo = (NetworkInfo) intent
                     .getParcelableExtra(ConnectivityManager.EXTRA_OTHER_NETWORK_INFO);
@@ -167,7 +150,7 @@ public class NetworkStatus {
             if (mNetworkInfo != null && mNetworkInfo.isAvailable()) {
                 return State.CONNECTED;
             } else {
-                return State.NOT_CONNECTED;
+                return State.CONNECTED_BREAK;
             }
         }
         return State.UNKNOWN;
@@ -198,7 +181,7 @@ public class NetworkStatus {
     }
 
     public enum State {
-        UNKNOWN(1), CONNECTED(2), NOT_CONNECTED(3);
+        UNKNOWN(1), CONNECTED(2), CONNECTED_BREAK(3);
         public int VALUE;
 
         State(int value) {
@@ -273,7 +256,7 @@ public class NetworkStatus {
             super.handleMessage(msg);
 
             int what = msg.what;
-            if (what == State.NOT_CONNECTED.VALUE) {
+            if (what == State.CONNECTED_BREAK.VALUE) {
                 for (SoftReference<NetworkStatusListener> l : listeners) {
                     if (l.get() != null) {
                         l.get().onNetworkBreak(mNetworkInfo);

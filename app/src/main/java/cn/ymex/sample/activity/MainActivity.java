@@ -13,7 +13,6 @@ import java.util.List;
 
 import cn.ymex.kits.Device;
 import cn.ymex.kits.Finder;
-import cn.ymex.kits.NetworkStatus;
 import cn.ymex.kits.widget.Toaster;
 import cn.ymex.log.L;
 import cn.ymex.sample.R;
@@ -89,7 +88,6 @@ public class MainActivity extends BaseActivity
     @Override
     public void onNetworkConnected(NetworkInfo networkInfo, boolean isWIFI) {
         super.onNetworkConnected(networkInfo, isWIFI);
-        System.out.println("--::--::  Connected "+ NetworkStatus.getInstance().size());
     }
 
 }
