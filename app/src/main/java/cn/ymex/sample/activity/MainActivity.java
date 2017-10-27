@@ -1,9 +1,7 @@
 package cn.ymex.sample.activity;
 
-import android.content.ClipData;
-import android.content.res.Resources;
+import android.net.NetworkInfo;
 import android.os.Bundle;
-import android.util.TypedValue;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -14,6 +12,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import cn.ymex.kits.Device;
+import cn.ymex.kits.Finder;
+import cn.ymex.kits.NetworkStatus;
+import cn.ymex.kits.widget.Toaster;
+import cn.ymex.log.L;
 import cn.ymex.sample.R;
 import cn.ymex.sample.adapter.ItemListViewAdapter;
 import cn.ymex.sample.base.BaseActivity;
@@ -21,14 +23,12 @@ import cn.ymex.sample.entity.ItemEntity;
 import cn.ymex.sample.entity.Student;
 import cn.ymex.sample.flux.FluxActivity;
 
-import cn.ymex.kits.Finder;
-import cn.ymex.kits.widget.Toaster;
-import cn.ymex.log.L;
-
-public class MainActivity extends BaseActivity implements AdapterView.OnItemClickListener {
+public class MainActivity extends BaseActivity
+        implements AdapterView.OnItemClickListener{
 
     private ListView listView;
     private ItemListViewAdapter adapter;
+
 
     private static int toastClickCount = 0;
 
@@ -36,7 +36,6 @@ public class MainActivity extends BaseActivity implements AdapterView.OnItemClic
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         listView = Finder.build(this).find(R.id.lv_listview);
 
         listView.setOnItemClickListener(this);
@@ -82,7 +81,15 @@ public class MainActivity extends BaseActivity implements AdapterView.OnItemClic
             add(new ItemEntity("默认Toast", "Toast多次弹出，只显示最后一条"));//1
             add(new ItemEntity("定制Toast", "自定义Toast布局，只显示最后一条"));//2
             add(new ItemEntity("Log打印", "举个栗子,在Logcat查看"));//3
-            add(new ItemEntity("px and dp","px2dip:"+ Device.px2dip(px)+"  dp2px:"+Device.dip2px(px)));
+            add(new ItemEntity("px and dp", "px2dip:" + Device.px2dip(px) + "  dp2px:" + Device.dip2px(px)));
         }
     };
+
+
+    @Override
+    public void onNetworkConnected(NetworkInfo networkInfo, boolean isWIFI) {
+        super.onNetworkConnected(networkInfo, isWIFI);
+        System.out.println("--::--::  Connected "+ NetworkStatus.getInstance().size());
+    }
+
 }

@@ -1,5 +1,6 @@
 package cn.ymex.sample;
 
+import cn.ymex.kits.NetworkStatus;
 import cn.ymex.sample.flux.eventbus.OttoBusAdapter;
 import cn.ymex.kits.ApplicationContent;
 import cn.ymex.kits.Kits;
@@ -23,6 +24,12 @@ public class ApplicationContext extends ApplicationContent {
     public void onCreate() {
         super.onCreate();
         Kits.create(this);//实例化相关类
+        NetworkStatus.init(this);
         Kits.setFluxBusAdapter(OttoBusAdapter.get());//使用flux框架
+    }
+
+    @Override
+    public int getCheckDelay() {
+        return 500;
     }
 }

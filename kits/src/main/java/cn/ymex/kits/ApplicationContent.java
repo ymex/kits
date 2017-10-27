@@ -19,6 +19,10 @@ public class ApplicationContent extends Application implements Application.Activ
     private CheckHandler handler;
 
 
+    /**
+     * 检测app进入前后台时间间隔
+     * @return ms
+     */
     public int getCheckDelay() {
         return 700;
     }
