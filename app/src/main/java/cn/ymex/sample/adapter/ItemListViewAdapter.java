@@ -4,10 +4,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import cn.ymex.adapter.pure.ListViewAdapter;
 import cn.ymex.sample.R;
 import cn.ymex.sample.entity.ItemEntity;
 import cn.ymex.kits.Finder;
-import cn.ymex.pure.adapter.ListViewAdapter;
+//import cn.ymex.pure.adapter.ListViewAdapter;
 
 public class ItemListViewAdapter extends ListViewAdapter<ItemEntity,ItemListViewAdapter.ViewHoder> {
 
