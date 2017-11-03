@@ -5,14 +5,14 @@
 android 便捷库，日常开发常用工具。
 
 ```
-compile 'cn.ymex:kits:1.1.4'
+compile 'cn.ymex:kits:1.1.6'
 ```
 
 ##包含的工具类和库
 ```
+compile 'cn.ymex:log.L:1.2.0'
 compile 'cn.ymex:pure-adapter:1.0.0'
 compile 'cn.ymex:kson:1.2.0'
-compile 'cn.ymex:log.L:1.2.0'
 compile 'cn.ymex:textlabel:1.1.0'
 compile 'cn.ymex:popup-dialog:1.2.2'
 compile 'cn.ymex:banner:1.6.1'
@@ -26,11 +26,20 @@ compile 'cn.ymex:permission-request:1.2.0'
 ### Adapter
 数据绑定
 
+### kson
+json数据解析
+
+### textlabel
+textview 标签化， 格式化及简单图文混排
+
 ### PopupDialog
-窗口
+弹出窗口
 
 ### Toaster
 Toast
+
+### banner
+banner 引导图
 
 ### permission
 权限相关
