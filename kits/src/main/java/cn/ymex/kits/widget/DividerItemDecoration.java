@@ -22,20 +22,10 @@ import android.view.View;
 /**
  * RecyclerView item Divider 暂时只支持LinearLayoutManager,GridLayoutManager
  * https://github.com/binbinqq86/DividerItemDecoration
- * <p>
  * <pre>
- *  //item_divider.xml
- * <?xml version="1.0" encoding="utf-8"?>
- * <shape xmlns:android="http://schemas.android.com/apk/res/android"
- *      android:shape="rectangle">
- *      <solid android:color="#ffefefef" />
- *      <size android:height="1dp" android:width="1dp" />
- * </shape>
- *
- *
- *  mDividerItemDecoration = new DividerItemDecoration(recyclerView.getContext()
- *  ,R.drawable.item_divider);
- *  recyclerView.addItemDecoration(mDividerItemDecoration);
+ * mDividerItemDecoration = new DividerItemDecoration(recyclerView.getContext()
+ * ,R.drawable.item_divider);
+ * recyclerView.addItemDecoration(mDividerItemDecoration);
  * </pre>
  */
 public class DividerItemDecoration extends RecyclerView.ItemDecoration {
