@@ -27,7 +27,7 @@ dependencies {
     testCompile 'junit:junit:4.12'
 
     compile 'cn.ymex:pure-adapter:1.2.0'
-    compile 'cn.ymex:kson:1.2.0'
+    compile 'cn.ymex:kson:1.2.1'
     compile 'cn.ymex:log.L:1.2.0'
     compile 'cn.ymex:textlabel:1.1.0'
     compile 'cn.ymex:popup-dialog:1.2.2'
