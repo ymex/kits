@@ -37,7 +37,7 @@ import cn.ymex.kits.R;
 
 /**
  * A {@link RecyclerView.LayoutManager} which displays a regular grid (i.e. all cells are the same
- * size) and allows simultaneous row & column spanning.
+ * size) and allows simultaneous row and column spanning.
  */
 public class SpannedGridLayoutManager extends RecyclerView.LayoutManager {
 
