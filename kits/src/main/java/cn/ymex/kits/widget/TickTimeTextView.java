@@ -148,7 +148,7 @@ public class TickTimeTextView extends android.support.v7.widget.AppCompatTextVie
             return formtDownTime(day, hour, minute, second);
         }
 
-        private String fillZero(int num) {
+        public String fillZero(int num) {
             if (num < 10) {
                 return "0" + num;
             }
