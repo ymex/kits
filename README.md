@@ -10,10 +10,10 @@ compile 'cn.ymex:kits:1.1.8'
 
 ##包含的工具类和库
 ```
-compile 'cn.ymex:log.L:1.2.0'
-compile 'cn.ymex:pure-adapter:1.0.0'
+compile 'cn.ymex:pure-adapter:1.2.2'
 compile 'cn.ymex:kson:1.2.1'
-compile 'cn.ymex:textlabel:1.1.0'
+compile 'cn.ymex:log.L:1.2.0'
+compile 'cn.ymex:textlabel:1.1.1'
 compile 'cn.ymex:popup-dialog:1.2.2'
 compile 'cn.ymex:banner:1.6.2'
 compile 'cn.ymex:refresh-layout:1.2.0'
