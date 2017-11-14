@@ -16,6 +16,7 @@ import java.util.List;
 
 /**
  * 网络状态 ， 及其变化事件监听
+ * todo:过滤抖动
  */
 @SuppressLint("HandlerLeak")
 public class NetworkStatus {

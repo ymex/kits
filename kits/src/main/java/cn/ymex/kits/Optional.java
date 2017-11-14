@@ -71,17 +71,15 @@ public class Optional {
     }
 
     /**
+     * isNull(value) ? defValue : value;
      * 对象是否为空， 返回默认值。不为空将返回原值。
      *
-     * @param value
-     * @param defValue
-     * @param <T>
-     * @return
+     * @param value  value
+     * @param defValue default Value
+     * @param <T> type
+     * @return  type obj
      */
     public static <T> T or(final T value, T defValue) {
-        if (isNull(value)) {
-            return defValue;
-        }
-        return value;
+        return isNull(value) ? defValue : value;
     }
 }

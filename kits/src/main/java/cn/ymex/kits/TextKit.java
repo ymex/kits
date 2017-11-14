@@ -10,16 +10,12 @@
  */
 package cn.ymex.kits;
 
-import java.util.regex.Pattern;
-
 import android.os.Build;
 import android.util.Patterns;
 
-/**
- * please use {# TextKit}
- * @deprecated
- */
-public class Letter {
+import java.util.regex.Pattern;
+
+public class TextKit {
 
     /**
      * 拼接字符串
