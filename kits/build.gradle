@@ -44,7 +44,7 @@ publish {
     userOrg = 'ymex'
     groupId = 'cn.ymex'
     artifactId = 'kits'
-    publishVersion = '1.1.9'
+    publishVersion = '1.2.0'
     desc = 'Android rapid development library'
     website = 'https://github.com/ymex/kits'
 }
