@@ -5,7 +5,7 @@
 android 便捷库，日常开发常用工具。
 
 ```
-compile 'cn.ymex:kits:1.2.0'
+compile 'cn.ymex:kits:1.2.1'
 ```
 
 ##包含的工具类和库
@@ -15,7 +15,7 @@ compile 'cn.ymex:log.L:1.2.0'
 compile 'cn.ymex:kson:1.2.1'
 compile 'cn.ymex:permission-request:1.2.0'
 compile 'cn.ymex:popup-dialog:1.2.3'
-compile 'cn.ymex:pure-adapter:1.2.2'
+compile 'cn.ymex:pure-adapter:1.3.0'
 compile 'cn.ymex:refresh-layout:1.2.0'
 compile 'cn.ymex:textlabel:1.1.1'
 ```
