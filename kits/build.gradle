@@ -8,8 +8,8 @@ android {
     defaultConfig {
         minSdkVersion 14
         targetSdkVersion 26
-        versionCode 121
-        versionName "1.2.1"
+        versionCode 122
+        versionName "1.2.2"
     }
     buildTypes {
         release {
@@ -26,7 +26,7 @@ dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     testCompile 'junit:junit:4.12'
 
-    compile 'cn.ymex:banner:1.6.2'
+    compile 'cn.ymex:banner:1.6.3'
     compile 'cn.ymex:log.L:1.2.0'
     compile 'cn.ymex:kson:1.2.1'
     compile 'cn.ymex:permission-request:1.2.0'
@@ -44,7 +44,7 @@ publish {
     userOrg = 'ymex'
     groupId = 'cn.ymex'
     artifactId = 'kits'
-    publishVersion = '1.2.1'
+    publishVersion = '1.2.2'
     desc = 'Android rapid development library'
     website = 'https://github.com/ymex/kits'
 }

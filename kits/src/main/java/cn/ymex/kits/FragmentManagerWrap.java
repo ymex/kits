@@ -10,35 +10,44 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- * fragment显示与隐藏管理类
+ * fragment manager
  */
-
 public class FragmentManagerWrap {
 
     private List<Fragment> mFragments;
-    private FragmentManager fragmentManager;
+    private FragmentManager supportManager;
+    private int containerViewId = 0;
+    private boolean lazyInit = true;//延迟初始化
 
     private FragmentManagerWrap(FragmentManager manager) {
-        this.fragmentManager = manager;
+        this.supportManager = manager;
     }
 
     public static FragmentManagerWrap build(FragmentManager manager) {
         return new FragmentManagerWrap(manager);
     }
 
-
     /**
-     * 是否已经存在依附的fragment
-     * @return
+     * Optional identifier of the container this fragment is
+     * to be placed in.
+     *
+     * @param containerViewId id
+     * @return this
      */
+    public FragmentManagerWrap setContainerViewId(@IdRes int containerViewId) {
+        this.containerViewId = containerViewId;
+        return this;
+    }
+
     public boolean attached() {
-        return this.getFragmentsSize() > 0;
+        return getFragments().size() > 0;
     }
 
     /**
-     * 添加新的fragment 到FragmentManagerWrap中
-     * @param fragments
-     * @return
+     * add fragment to manager
+     *
+     * @param fragments need manage fragment
+     * @return this
      */
     public FragmentManagerWrap add(Fragment... fragments) {
         if (fragments.length <= 0) {
@@ -56,25 +65,21 @@ public class FragmentManagerWrap {
         return this;
     }
 
+
     public void restore() {
-        if (fragmentManager == null) {
-            throw new IllegalArgumentException("fragmentManager is null");
+        if (supportManager == null) {
+            throw new IllegalArgumentException("supportManager is null");
         }
-        add(fragmentManager.getFragments().toArray(new Fragment[fragmentManager.getFragments().size()]));
-
+        add(getFragments().toArray(new Fragment[getFragments().size()]));
     }
 
-    public int getFragmentsSize() {
-        return fragmentManager.getFragments().size();
-    }
 
     /**
-     * 切换显示指定fragment 序列，添加顺序
+     * 切换显示指定fragment 序列
      *
-     * @param index
+     * @param index 添加时的顺序
      */
     public void showFragment(int index) {
-
         this.showFragment(getFragments().get(index));
     }
 
@@ -84,35 +89,63 @@ public class FragmentManagerWrap {
      * @param fragment
      */
     public void showFragment(Fragment fragment) {
-        FragmentTransaction transaction = fragmentManager.beginTransaction();
+        FragmentTransaction transaction = supportManager.beginTransaction();
         for (Fragment fg : mFragments) {
             if (fg == fragment) {
-                transaction.show(fg);
+                if (fg.isAdded()) {
+                    transaction.show(fg);
+                } else {
+                    transaction.add(containerViewId, fragment).show(fragment);
+                }
             } else {
-                transaction.hide(fg);
+                if (fg.isAdded()) {
+                    transaction.hide(fg);
+                }
             }
         }
         transaction.commit();
     }
 
+    public void attach() {
+        this.attach(0);
+    }
+
     /**
-     * 把fragment 依附于view 并显示列表中第一个Fragment
+     * fragment 依附于view 并显示列表中第 index Fragment
      *
-     * @param containerViewId
+     * @param index index
      */
-    public void attach(@IdRes int containerViewId) {
+    public void attach(int index) {
+        if (containerViewId <= 0) {
+            throw new IllegalArgumentException("Fragment attach id is null");
+        }
+
         if (getFragments().size() <= 0) {
             throw new IllegalArgumentException("Fragment list is null");
         }
-        FragmentTransaction transaction = fragmentManager.beginTransaction();
-        for (Fragment fg : getFragments()) {
-            transaction.add(containerViewId, fg).hide(fg);
+        if (index < 0) {
+            return;
         }
-        transaction.show(getFirst()).commit();
+        FragmentTransaction transaction = supportManager.beginTransaction();
+        if (lazyInit) {
+            transaction.add(containerViewId, getFragment(index));
+        } else {
+            for (Fragment fg : getFragments()) {
+                transaction.add(containerViewId, fg).hide(fg);
+            }
+        }
+        transaction.show(getFragment(index)).commit();
     }
 
-    public Fragment getFirst() {
-        return getFragments().size() > 0 ? getFragments().get(0) : null;
+    public Fragment getFragment(int index) {
+        if (getFragments().size() < 0) {
+            return null;
+        }
+        if (index >= getFragments().size()) {
+            return getFragments().get(getFragments().size() - 1);
+        }
+
+        return getFragments().get(index <= 0 ? 0 : index);
     }
 
     private List<Fragment> getFragments() {
@@ -120,6 +153,15 @@ public class FragmentManagerWrap {
     }
 
     public FragmentManager getFragmentManager() {
-        return fragmentManager;
+        return supportManager;
+    }
+
+    public boolean isLazyInit() {
+        return lazyInit;
+    }
+
+    public FragmentManagerWrap setLazyInit(boolean lazyInit) {
+        this.lazyInit = lazyInit;
+        return this;
     }
 }
