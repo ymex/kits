@@ -6,6 +6,7 @@ import android.content.Context;
 import android.support.annotation.IdRes;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.NonNull;
+import android.support.v4.content.res.ResourcesCompat;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -206,6 +207,22 @@ public class Finder {
             e.printStackTrace();
         }
         return defstrid;
+    }
+
+    /**
+     * Return a resource identifier for the given resource name.
+     * Note: use of this function is discouraged.  It is much more
+     * efficient to retrieve resources by identifier than by name.
+     *
+     * int applogoId = getIdentifier(R.mipmap.class,"app_logo")
+     *
+     * @param name The name of the desired resource.
+     *
+     * @return int The associated resource identifier.  Returns 0 if no such
+     *         resource was found.  (0 is not a valid resource ID.)
+     */
+    public static int getIdentifier(Class typeClass, String name) {
+        return resId(typeClass, name, 0);
     }
 
 }
