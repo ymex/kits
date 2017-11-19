@@ -26,7 +26,7 @@ dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     testCompile 'junit:junit:4.12'
 
-    compile 'cn.ymex:banner:1.6.3'
+    compile 'cn.ymex:banner:1.6.4'
     compile 'cn.ymex:log.L:1.2.0'
     compile 'cn.ymex:kson:1.2.1'
     compile 'cn.ymex:permission-request:1.2.0'

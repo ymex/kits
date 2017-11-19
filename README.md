@@ -5,12 +5,12 @@
 android 便捷库，日常开发常用工具。
 
 ```
-compile 'cn.ymex:kits:1.2.2'
+compile 'cn.ymex:kits:1.2.3'
 ```
 
 ##包含的工具类和库
 ```
-compile 'cn.ymex:banner:1.6.3'
+compile 'cn.ymex:banner:1.6.4'
 compile 'cn.ymex:log.L:1.2.0'
 compile 'cn.ymex:kson:1.2.1'
 compile 'cn.ymex:permission-request:1.2.0'
