@@ -8,8 +8,8 @@ android {
     defaultConfig {
         minSdkVersion 14
         targetSdkVersion 26
-        versionCode 123
-        versionName "1.2.3"
+        versionCode 124
+        versionName "1.2.4"
     }
     buildTypes {
         release {
@@ -44,7 +44,7 @@ publish {
     userOrg = 'ymex'
     groupId = 'cn.ymex'
     artifactId = 'kits'
-    publishVersion = '1.2.3'
+    publishVersion = '1.2.4'
     desc = 'Android rapid development library'
     website = 'https://github.com/ymex/kits'
 }
