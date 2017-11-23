@@ -16,7 +16,7 @@ public class FragmentManagerWrap {
     private LinkedList<Fragment> mFragments;
     private FragmentManager supportManager;
     private int containerViewId = 0;
-    private boolean lazyInit = true;//延迟初始化
+    private boolean lazyInit = false;//lazy init fragment
 
     private FragmentManagerWrap(FragmentManager manager) {
         this.supportManager = manager;
@@ -38,8 +38,12 @@ public class FragmentManagerWrap {
         return this;
     }
 
-    public void getFragment(int index, Fragment fragment) {
-        fragment = getFragment(index);
+    public <T extends Fragment> T getLastFragment(int index) {
+        return getFragment(getFragments().size() - 1);
+    }
+
+    public <T extends Fragment> T getFirstFragment(int index) {
+        return getFragment(0);
     }
 
     public <T extends Fragment> T getFragment(int index) {
@@ -73,7 +77,7 @@ public class FragmentManagerWrap {
      * @param index fragment index
      */
     public void showFragment(int index) {
-        this.showFragment(getFragments().get(index), false);
+        this.showFragment(index, false);
     }
 
 
@@ -84,7 +88,7 @@ public class FragmentManagerWrap {
      * @param commitNow commit now
      */
     public void showFragment(int index, boolean commitNow) {
-        this.showFragment(getFragments().get(index), commitNow);
+        this.showFragment(getFragment(index), commitNow);
     }
 
     /**
@@ -109,7 +113,7 @@ public class FragmentManagerWrap {
                 if (fg.isAdded()) {
                     transaction.show(fg);
                 } else {
-                    transaction.add(containerViewId, fg, getFragmentTag(fg)).show(fragment);
+                    transaction.add(containerViewId, fg, getFragmentTag(fg));
                 }
             } else {
                 if (fg.isAdded()) {
@@ -117,6 +121,7 @@ public class FragmentManagerWrap {
                 }
             }
         }
+        transaction.show(fragment);
         if (commitNow) {
             transaction.commitNow();
         } else {
@@ -126,7 +131,8 @@ public class FragmentManagerWrap {
 
     /**
      * instance in Activity.onCreate() function
-     * @param fragments  fragments
+     *
+     * @param fragments fragments
      * @return this
      */
     public FragmentManagerWrap attach(Fragment... fragments) {
