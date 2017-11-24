@@ -18,6 +18,7 @@ public class FragmentManagerWrap {
     private int containerViewId = 0;
     private boolean lazyInit = false;//lazy init fragment
 
+
     private FragmentManagerWrap(FragmentManager manager) {
         this.supportManager = manager;
     }
@@ -77,19 +78,20 @@ public class FragmentManagerWrap {
      * @param index fragment index
      */
     public void showFragment(int index) {
-        this.showFragment(index, false);
+        this.showFragment(index, COMMIT);
     }
 
 
     /**
      * show fragment
      *
-     * @param index     fragment index
-     * @param commitNow commit now
+     * @param index fragment index
+     * @param type  type
      */
-    public void showFragment(int index, boolean commitNow) {
-        this.showFragment(getFragment(index), commitNow);
+    public void showFragment(int index, int type) {
+        this.showFragment(getFragment(index), type);
     }
+
 
     /**
      * show fragment
@@ -97,16 +99,16 @@ public class FragmentManagerWrap {
      * @param fragment fragment
      */
     public void showFragment(Fragment fragment) {
-        showFragment(fragment, false);
+        showFragment(fragment, COMMIT);
     }
 
     /**
      * show fragment
      *
-     * @param fragment  fragment
-     * @param commitNow commit now
+     * @param fragment   fragment
+     * @param commiTtype commit type
      */
-    public void showFragment(Fragment fragment, boolean commitNow) {
+    public void showFragment(Fragment fragment, int commiTtype) {
         FragmentTransaction transaction = supportManager.beginTransaction();
         for (Fragment fg : getFragments()) {
             if (fg == fragment) {
@@ -122,12 +124,30 @@ public class FragmentManagerWrap {
             }
         }
         transaction.show(fragment);
-        if (commitNow) {
-            transaction.commitNow();
-        } else {
-            transaction.commit();
+        switch (commiTtype) {
+            case COMMIT:
+                transaction.commit();
+                break;
+            case COMMIT_NOW:
+                transaction.commitNow();
+                break;
+            case COMMIT_NOW_ALLOWING_STATE_LOSS:
+                transaction.commitNowAllowingStateLoss();
+                break;
+            case COMMIT_ALLOWING_STATE_LOSS:
+                transaction.commitAllowingStateLoss();
+                break;
+            default:
+                transaction.commit();
+                break;
         }
     }
+
+    public static final int COMMIT = 0x0;
+    public static final int COMMIT_NOW = 0x1;
+    public static final int COMMIT_NOW_ALLOWING_STATE_LOSS = 0x2;
+    public static final int COMMIT_ALLOWING_STATE_LOSS = 0x3;
+
 
     /**
      * instance in Activity.onCreate() function
