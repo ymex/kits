@@ -1,10 +1,11 @@
 package cn.ymex.sample.flux.store.service;
 
 import cn.ymex.sample.flux.store.entity.MovieEntity;
+import io.reactivex.Observable;
 import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Query;
-import rx.Observable;
+
 
 /**
  * Created by ymex on 2016/10/27.

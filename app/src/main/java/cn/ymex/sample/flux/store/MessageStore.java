@@ -3,6 +3,8 @@ package cn.ymex.sample.flux.store;
 
 import android.support.annotation.NonNull;
 
+import org.reactivestreams.Subscriber;
+
 import java.util.ArrayList;
 
 import cn.ymex.sample.flux.action.FluxActAction;
@@ -14,16 +16,17 @@ import cn.ymex.kits.mode.flux.Params;
 import cn.ymex.kits.mode.flux.Store;
 import cn.ymex.kits.mode.flux.StoreAction;
 import cn.ymex.log.L;
+import io.reactivex.Observable;
+import io.reactivex.Observer;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.schedulers.Schedulers;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
-import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
+import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
-import rx.Observable;
-import rx.Subscriber;
-import rx.android.schedulers.AndroidSchedulers;
-import rx.schedulers.Schedulers;
 
 /**
  * Copyright (c) ymexc(www.ymex.cn)
@@ -115,17 +118,23 @@ public class MessageStore extends Store {
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(baseUrl)
                 .addConverterFactory(GsonConverterFactory.create())
-                .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .build();
         MovieService movieService = retrofit.create(MovieService.class);
         observable = movieService.getTopMoview(start, count);
 
         observable.subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Subscriber<MovieEntity>() {
+                .subscribe(new Observer<MovieEntity>(){
                     @Override
-                    public void onCompleted() {
-                        L.d("onCompleted....");
+                    public void onSubscribe(Disposable d) {
+
+                    }
+
+
+                    @Override
+                    public void onComplete() {
+
                     }
 
                     @Override
@@ -139,6 +148,7 @@ public class MessageStore extends Store {
                         movieEntity = entity;
                         emitStoreChange(FluxActAction.bulid(FluxActAction.ACTION_GET_TOP250_MOVIES),"成功");
                     }
+
                 });
 
     }

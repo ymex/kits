@@ -25,10 +25,11 @@ android {
 }
 
 dependencies {
+    implementation 'com.android.support.constraint:constraint-layout:1.0.2'
     compile fileTree(include: ['*.jar'], dir: 'libs')
     testCompile 'junit:junit:4.12'
 
-    compile 'com.google.code.gson:gson:2.2.4'
+    // compile 'com.google.code.gson:gson:2.2.4'
     compile 'com.android.support:appcompat-v7:26.+'
     compile 'com.android.support:design:26.+'
 
@@ -38,13 +39,7 @@ dependencies {
     compile project(':kits')
     compile 'com.squareup:otto:1.3.8'
     compile 'com.squareup.picasso:picasso:2.5.2'
-    compile 'com.squareup.okhttp3:okhttp:3.4.1'
-    compile 'com.squareup.retrofit2:retrofit:2.1.0'
-    compile 'com.squareup.retrofit2:converter-gson:2.1.0'
-    compile 'com.squareup.retrofit2:adapter-rxjava:2.1.0'
 
-    compile 'io.reactivex:rxjava:1.1.6'
-    compile 'io.reactivex:rxandroid:1.2.1'
-    compile 'com.jakewharton.rxbinding:rxbinding:0.4.0'
+    //compile 'com.jakewharton.rxbinding:rxbinding:0.4.0'
 
 }

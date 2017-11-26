@@ -21,6 +21,7 @@ import cn.ymex.sample.base.BaseActivity;
 import cn.ymex.sample.entity.ItemEntity;
 import cn.ymex.sample.entity.Student;
 import cn.ymex.sample.flux.FluxActivity;
+import cn.ymex.sample.request.QueryHttpActivity;
 
 public class MainActivity extends BaseActivity
         implements AdapterView.OnItemClickListener{
@@ -81,6 +82,8 @@ public class MainActivity extends BaseActivity
             add(new ItemEntity("定制Toast", "自定义Toast布局，只显示最后一条"));//2
             add(new ItemEntity("Log打印", "举个栗子,在Logcat查看"));//3
             add(new ItemEntity("px and dp", "px2dip:" + Device.px2dip(px) + "  dp2px:" + Device.dip2px(px)));
+            add(new ItemEntity("request", "request", QueryHttpActivity.class));
+
         }
     };
 

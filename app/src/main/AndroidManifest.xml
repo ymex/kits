@@ -3,24 +3,25 @@
     package="cn.ymex.sample">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
-        android:name="cn.ymex.sample.ApplicationContext"
+        android:name=".ApplicationContext"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="cn.ymex.sample.activity.MainActivity">
+        <activity android:name=".activity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="cn.ymex.sample.activity.BrowserActivity" />
-        <activity android:name="cn.ymex.sample.flux.FluxActivity" />
+        <activity android:name=".activity.BrowserActivity" />
+        <activity android:name=".flux.FluxActivity" />
+        <activity android:name=".request.QueryHttpActivity"></activity>
     </application>
 
 </manifest>
