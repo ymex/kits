@@ -10,11 +10,14 @@
  */
 package cn.ymex.kits;
 
+import java.util.regex.Pattern;
+
 import android.os.Build;
 import android.util.Patterns;
 
-import java.util.regex.Pattern;
-
+/**
+ *
+ */
 public class TextKit {
 
     /**

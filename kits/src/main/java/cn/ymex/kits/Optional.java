@@ -13,7 +13,7 @@ public class Optional {
      * @return
      */
     public static boolean isEmpty(CharSequence text) {
-        return Letter.isEmpty(text);
+        return TextKit.isEmpty(text);
     }
 
     /**

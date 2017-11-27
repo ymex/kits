@@ -106,7 +106,7 @@ public class DataTime {
      * @return yyyy-MM-dd HH:mm:ss
      */
     public static String formatDateTime(String milliseconds) {
-        long time = Letter.toNum(milliseconds, 0L);
+        long time = TextKit.toNum(milliseconds, 0L);
         return formatDateTime(time);
     }
 
@@ -137,7 +137,7 @@ public class DataTime {
      * @return yyyy-MM-dd
      */
     public static String formatDate(String milliseconds) {
-        long time = Letter.toNum(milliseconds, 0L);
+        long time = TextKit.toNum(milliseconds, 0L);
         return formatDate(time);
     }
 
