@@ -6,31 +6,28 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.widget.TextView;
 
-import java.util.concurrent.TimeUnit;
-
 import cn.ymex.kits.Finder;
-import cn.ymex.kits.request.BaseHttpActivity;
-import cn.ymex.kits.request.http.LogInterceptor;
-import cn.ymex.kits.request.http.ResultObserver;
-import cn.ymex.kits.request.http.T;
-import cn.ymex.kits.request.widget.SwipeRefreshNoticeView;
+import cn.ymex.rxretrofit.BaseNoticeActivity;
+import cn.ymex.rxretrofit.OkHttpBuilder;
+import cn.ymex.rxretrofit.http.ResultObserver;
+import cn.ymex.rxretrofit.http.T;
+import cn.ymex.rxretrofit.widget.SwipeRefreshNoticeView;
 import cn.ymex.sample.R;
 import cn.ymex.sample.flux.store.entity.MovieEntity;
 import cn.ymex.widget.swipe.SwipeRefreshLayout;
 import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
-import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.http.GET;
 import retrofit2.http.Query;
 
-public class QueryHttpActivity extends BaseHttpActivity {
+public class QueryHttpActivity extends BaseNoticeActivity {
 
     SwipeRefreshLayout layout;
-    TextView textView ;
+    TextView textView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,12 +44,11 @@ public class QueryHttpActivity extends BaseHttpActivity {
 
         setNoticeView(new SwipeRefreshNoticeView(layout));
 
-        provideRetrofit(provideOkHttpClient())
-                .create(TopServer.class)
-                .getTopMoview(0,10)
-                .compose(new T<MovieEntity>(this).transformer())
+        provideRetrofit().create(TopServer.class)
+                .getTopMoview(0, 10)
+                .compose(T.create(this).<MovieEntity>transformer())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new ResultObserver<MovieEntity>(){
+                .subscribe(new ResultObserver<MovieEntity>() {
                     @Override
                     public void onSubscribe(Disposable d) {
                         super.onSubscribe(d);
@@ -67,31 +63,18 @@ public class QueryHttpActivity extends BaseHttpActivity {
                 });
     }
 
-    public void startAction(Context context) {
-        Intent intent = new Intent(context, QueryHttpActivity.class);
-        context.startActivity(intent);
 
-    }
-
-    public OkHttpClient provideOkHttpClient() {
-        return new OkHttpClient.Builder()
-                .addInterceptor(new LogInterceptor())
-                .connectTimeout(20, TimeUnit.SECONDS)
-                .build();
-    }
-
-
-    public Retrofit provideRetrofit(OkHttpClient client) {
+    public Retrofit provideRetrofit() {
         String baseUrl = "https://api.douban.com/v2/movie/";
         return new Retrofit.Builder()
-                .client(client)
+                .client(OkHttpBuilder.getInstance().defaultClient())
                 .baseUrl(baseUrl)
                 .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .build();
     }
 
-    public interface TopServer{
+    public interface TopServer {
         @GET("top250")
         Observable<MovieEntity> getTopMoview(@Query("start") int start, @Query("count") int count);
     }

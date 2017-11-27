@@ -37,6 +37,7 @@ dependencies {
 
 
     compile project(':kits')
+    compile 'cn.ymex:rx-retrofit:1.0.1'
     compile 'com.squareup:otto:1.3.8'
     compile 'com.squareup.picasso:picasso:2.5.2'
 
