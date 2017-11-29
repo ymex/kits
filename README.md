@@ -18,6 +18,7 @@ compile 'cn.ymex:popup-dialog:1.2.3'
 compile 'cn.ymex:pure-adapter:1.3.1'
 compile 'cn.ymex:refresh-layout:1.2.0'
 compile 'cn.ymex:textlabel:1.1.1'
+
 ```
 
 ### kits:Toaster
@@ -55,3 +56,7 @@ https://github.com/ymex/pure-adapter
 ### textlabel
 textview 标签化， 格式化及简单图文混排
 https://github.com/ymex/textlabel
+
+
+### FragmentManagerWrap
+简单的标签切换管理，防止重叠。
