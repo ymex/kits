@@ -8,8 +8,8 @@ android {
     defaultConfig {
         minSdkVersion 14
         targetSdkVersion 26
-        versionCode 126
-        versionName "1.2.7"
+        versionCode 127
+        versionName "1.2.8"
     }
     buildTypes {
         release {
@@ -26,16 +26,6 @@ dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     testCompile 'junit:junit:4.12'
 
-    compile 'cn.ymex:banner:1.6.4'
-    compile 'cn.ymex:log.L:1.2.0'
-    compile 'cn.ymex:kson:1.2.1'
-    compile 'cn.ymex:permission-request:1.2.0'
-    compile 'cn.ymex:popup-dialog:1.2.3'
-    compile 'cn.ymex:pure-adapter:1.3.1'
-    compile 'cn.ymex:refresh-layout:1.2.0'
-    compile 'cn.ymex:textlabel:1.1.1'
-
-
     provided 'com.android.support:appcompat-v7:26.1.0'
     provided 'com.android.support:recyclerview-v7:26.1.0'
 }
@@ -44,7 +34,7 @@ publish {
     userOrg = 'ymex'
     groupId = 'cn.ymex'
     artifactId = 'kits'
-    publishVersion = '1.2.7'
+    publishVersion = '1.2.8'
     desc = 'Android rapid development library'
     website = 'https://github.com/ymex/kits'
 }
