@@ -1,5 +1,6 @@
 package cn.ymex.kits;
 
+import android.content.DialogInterface;
 import android.view.View;
 
 /**
@@ -7,8 +8,10 @@ import android.view.View;
  * button.setOnClickListener(ThrottleClicker.click(onclick));
  */
 
-public class ThrottleClicker implements View.OnClickListener {
+public class ThrottleClicker implements View.OnClickListener, DialogInterface.OnClickListener {
     View.OnClickListener onClickListener;
+    DialogInterface.OnClickListener dialogClickListener;
+
     long preClickTime = 0;
     long timeOut = DEF_TIME_OUT;//毫秒
     private final static long DEF_TIME_OUT = 600;
@@ -47,6 +50,18 @@ public class ThrottleClicker implements View.OnClickListener {
         }
         if (onClickListener != null) {
             onClickListener.onClick(view);
+        }
+        preClickTime = now;
+    }
+
+    @Override
+    public void onClick(DialogInterface dialog, int which) {
+        long now = System.currentTimeMillis();
+        if (now - preClickTime <= timeOut) {
+            return;
+        }
+        if (dialogClickListener != null) {
+            dialogClickListener.onClick(dialog, which);
         }
         preClickTime = now;
     }
