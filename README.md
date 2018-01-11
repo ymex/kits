@@ -5,7 +5,7 @@
 android 便捷库，日常开发常用工具。
 
 ```
-compile 'cn.ymex:kits:1.2.9'
+compile 'cn.ymex:kits:1.3.0'
 ```
 
 目录

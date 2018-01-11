@@ -10,8 +10,8 @@
  */
 package cn.ymex.kits;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
-import android.content.pm.ActivityInfo;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
@@ -24,8 +24,6 @@ import android.provider.Settings;
 import android.telephony.TelephonyManager;
 import android.util.DisplayMetrics;
 import android.util.TypedValue;
-import android.view.View;
-import android.view.WindowManager;
 
 /**
  * 设备相关 （系统版本号  手机屏幕 版本号）
@@ -51,6 +49,7 @@ public class Device {
 
     /**
      * 屏幕高度
+     *
      * @return px
      */
     public static int getScreenHeight() {
@@ -59,6 +58,7 @@ public class Device {
 
     /**
      * 屏幕宽度
+     *
      * @return px
      */
     public static int getScreenWidth() {
@@ -67,6 +67,7 @@ public class Device {
 
     /**
      * dp to px
+     *
      * @param dp dip
      * @return int
      */
@@ -77,6 +78,7 @@ public class Device {
 
     /**
      * px to dip
+     *
      * @param px px
      * @return float
      */
@@ -104,6 +106,7 @@ public class Device {
 
     /**
      * 得到 app 版本 号
+     *
      * @return
      */
     public static int getAppVersionCode() {
@@ -112,6 +115,7 @@ public class Device {
 
     /**
      * app 版本 名字
+     *
      * @return
      */
     public static String getAppVersionName() {
@@ -120,6 +124,7 @@ public class Device {
 
     /**
      * 系统版本名称
+     *
      * @return
      */
     public static String getOsVersionName() {
@@ -128,6 +133,7 @@ public class Device {
 
     /**
      * 系统版本号
+     *
      * @return
      */
     public static int getOsVersionCode() {
@@ -136,6 +142,7 @@ public class Device {
 
     /**
      * 获得 设备 ID
+     *
      * @return
      */
     public static String getAndroidId() {
@@ -146,6 +153,7 @@ public class Device {
 
     /**
      * 设备 品牌
+     *
      * @return
      */
     public static String getDeviceBrand() {
@@ -154,6 +162,7 @@ public class Device {
 
     /**
      * 设备 型号
+     *
      * @return
      */
     public static String getDeviceModel() {
@@ -162,8 +171,10 @@ public class Device {
 
     /**
      * 设备imei
+     *
      * @return
      */
+    @SuppressLint("MissingPermission")
     public static String getIMEI() {
         checkIns();
         return ((TelephonyManager) mContext.getSystemService(Context.TELEPHONY_SERVICE)).getDeviceId();
@@ -172,8 +183,10 @@ public class Device {
     /**
      * 设备 mac
      * request android.permission.ACCESS_WIFI_STATE
+     *
      * @return
      */
+    @SuppressLint("MissingPermission")
     public static String getMac() {
         checkIns();
         WifiManager wifi = (WifiManager) mContext.getSystemService(Context.WIFI_SERVICE);
@@ -184,18 +197,19 @@ public class Device {
 
     /**
      * 获取app metadata
+     *
      * @return
      */
     public static Bundle getAppMetaData() {
 
-        ApplicationInfo  appInfo = null;
+        ApplicationInfo appInfo = null;
         try {
             appInfo = mContext.getPackageManager().getApplicationInfo(mContext.getPackageName(), PackageManager.GET_META_DATA);
         } catch (NameNotFoundException e) {
             e.printStackTrace();
         }
 
-        return appInfo!=null?appInfo.metaData:null;
+        return appInfo != null ? appInfo.metaData : null;
     }
-    
+
 }
