@@ -101,7 +101,7 @@ public class ApplicationContent extends Application implements Application.Activ
 
 
         CheckHandler(ApplicationContent applicationContent) {
-            appRef = new WeakReference<ApplicationContent>(applicationContent);
+            appRef = new WeakReference<>(applicationContent);
         }
 
         @Override
