@@ -17,7 +17,7 @@ public class FragmentManagerWrap {
     private FragmentManager supportManager;
     private int containerViewId = 0;
     private boolean lazyInit = false;//lazy init fragment
-
+    private Fragment currentShowFragment;
 
     private FragmentManagerWrap(FragmentManager manager) {
         this.supportManager = manager;
@@ -141,6 +141,7 @@ public class FragmentManagerWrap {
                 transaction.commit();
                 break;
         }
+        currentShowFragment = fragment;
     }
 
     public static final int COMMIT = 0x0;
@@ -191,5 +192,9 @@ public class FragmentManagerWrap {
 
     public interface Alias {
         String getAlias();
+    }
+
+    public Fragment getCurrentShowFragment() {
+        return currentShowFragment;
     }
 }
