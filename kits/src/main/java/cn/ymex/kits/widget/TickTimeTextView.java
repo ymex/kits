@@ -20,10 +20,9 @@ import android.util.AttributeSet;
  */
 public class TickTimeTextView extends android.support.v7.widget.AppCompatTextView {
     private CountDownTimer mTimer;
-    private TimeFormat timeFormat;
-    private OnTickStopListener onTickStopListener;
     private final static int DEFAULT_TAG = -0x11;
-
+    private boolean countDownIng = false;
+    private boolean stopNormal = true;
 
     public TickTimeTextView(Context context) {
         super(context);
@@ -42,73 +41,144 @@ public class TickTimeTextView extends android.support.v7.widget.AppCompatTextVie
 
 
     private void initView(Context context) {
+
     }
 
     /**
-     * 设置时间并开始记时 每秒一次
-     * @param time 毫秒级
+     * 设置时间
+     *
+     * @param time 单位：毫秒
      */
     public synchronized void setTimer(long time) {
-        setTimer(time,1000, DEFAULT_TAG);
+        setTimer(time, 1000, DEFAULT_TAG);
     }
 
     /**
-     * 设置时间并开始记时
-     * @param time 毫秒级
+     * @param time
      * @param tag
      */
-    public synchronized <T> void setTimer(final long time, long countDownInterval, final T tag) {
-        cancel();
-        if (time <= 0) {
-            return;
+    public synchronized void setTimer(final long time, final long countDownInterval, final int tag) {
+        if (mTimer != null) {
+            mTimer.cancel();
         }
+        countDownIng = true;
+        stopNormal = true;
         mTimer = new CountDownTimer(time, countDownInterval) {
             @Override
             public void onTick(long millisUntilFinished) {
                 if (timeFormat != null) {
                     setText(timeFormat.formtDownTime(millisUntilFinished));
+                } else {
+                    setText(formtDownTime(millisUntilFinished / 1000));//默认格式方法
                 }
+
             }
 
             @Override
             public void onFinish() {
+                countDownIng = false;
                 if (onTickStopListener != null) {
-                    onTickStopListener.onTickStop(tag);
+                    onTickStopListener.onTickStop(tag, null, stopNormal);
                 }
             }
         };
         mTimer.start();
     }
 
+    public boolean isCountDownIng() {
+        return countDownIng;
+    }
 
-    //停止计时
-    public void cancel() {
+    /**
+     * 销毁计时器
+     */
+    public void destroyTimer() {
+        countDownIng = false;
+        setOnTickStopListener(null);
         if (mTimer != null) {
             mTimer.cancel();
         }
     }
 
-
-    public CountDownTimer getTimer() {
-        return mTimer;
+    /**
+     * 主动停止计时
+     */
+    public void stopCountDown() {
+        if (mTimer != null) {
+            countDownIng = false;
+            stopNormal = false;
+            mTimer.cancel();
+            mTimer.onFinish();
+        }
     }
+
+
+    /**
+     * 返回时间格式
+     *
+     * @param day
+     * @param hour
+     * @param minute
+     * @param second
+     * @return
+     */
+    private String formtDownTime(int day, int hour, int minute, int second) {
+        char spilt = ':';
+        StringBuilder builder = new StringBuilder();
+        builder.append(fillZero(day)).append(spilt);
+        builder.append(fillZero(hour)).append(spilt);
+        builder.append(fillZero(minute)).append(spilt);
+        builder.append(fillZero(second));
+        return builder.toString();
+    }
+
+    private String formtDownTime(long time) {
+        int second = (int) (time % 60);
+        int minute = (int) (time % 3600 / 60);
+        int hour = (int) (time / 3600 % 24);
+        int day = (int) (time / 3600 / 24);
+        return formtDownTime(day, hour, minute, second);
+    }
+
+    /**
+     * 数字填充 0
+     *
+     * @param num
+     * @return
+     */
+    private String fillZero(long num) {
+
+        if (num < 10) {
+            return "0" + num;
+        }
+        return String.valueOf(num);
+    }
+
+    private OnTickStopListener onTickStopListener;
 
     public void setOnTickStopListener(OnTickStopListener onTickStopListener) {
         this.onTickStopListener = onTickStopListener;
     }
 
-    public void setTimeFormat(TimeFormat timeFormat) {
-        this.timeFormat = timeFormat;
+    public interface OnTickStopListener {
+        /**
+         * 计时停止回调
+         *
+         * @param itag
+         * @param otag
+         * @param normalStop
+         */
+        void onTickStop(int itag, Object otag, boolean normalStop);
     }
 
+    public CountDownTimer getTimer() {
+        return mTimer;
+    }
 
-    /**
-     * 计时结束回调
-     *
-     * @param <T>
-     */
-    public interface OnTickStopListener<T> {
-        public void onTickStop(T otag);
+    private TimeFormat timeFormat;
+
+    public void setTimeFormat(TimeFormat timeFormat) {
+        this.timeFormat = timeFormat;
     }
 
     /**
@@ -116,43 +186,5 @@ public class TickTimeTextView extends android.support.v7.widget.AppCompatTextVie
      */
     public interface TimeFormat {
         String formtDownTime(long time);
-    }
-
-    /**
-     * 默认时间格式化实现类
-     */
-    public class DefaultTimeFormat implements TimeFormat {
-
-        private String formtDownTime(int day, int hour, int minute, int second) {
-            char spilt = ':';
-            StringBuilder builder = new StringBuilder();
-            builder.append(fillZero(day)).append(spilt);
-            builder.append(fillZero(hour)).append(spilt);
-            builder.append(fillZero(minute)).append(spilt);
-            builder.append(fillZero(second));
-            return builder.toString();
-        }
-
-        /**
-         * 默认时间显示格式：00:00:00:00 天:时:分:秒
-         *
-         * @param time
-         * @return
-         */
-        @Override
-        public String formtDownTime(long time) {
-            int second = (int) (time % 60);
-            int minute = (int) (time % 3600 / 60);
-            int hour = (int) (time / 3600 % 24);
-            int day = (int) (time / 3600 / 24);
-            return formtDownTime(day, hour, minute, second);
-        }
-
-        public String fillZero(int num) {
-            if (num < 10) {
-                return "0" + num;
-            }
-            return String.valueOf(num);
-        }
     }
 }
