@@ -20,8 +20,6 @@
             </intent-filter>
         </activity>
         <activity android:name=".activity.BrowserActivity" />
-        <activity android:name=".flux.FluxActivity" />
-        <activity android:name=".request.QueryHttpActivity"></activity>
     </application>
 
 </manifest>

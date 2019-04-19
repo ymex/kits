@@ -1,7 +1,6 @@
 package cn.ymex.sample;
 
-import cn.ymex.sample.flux.eventbus.OttoBusAdapter;
-import cn.ymex.kits.ApplicationContent;
+import cn.ymex.kits.AppContent;
 import cn.ymex.kits.Kits;
 
 /**
@@ -18,13 +17,11 @@ import cn.ymex.kits.Kits;
  *
  * application 实例 在 manifest.mxl 声明
  */
-public class ApplicationContext extends ApplicationContent {
+public class ApplicationContext extends AppContent {
     @Override
     public void onCreate() {
         super.onCreate();
         Kits.create(this);//实例化相关类
-        NetworkStatus.init(this);
-        Kits.setFluxBusAdapter(OttoBusAdapter.get());//使用flux框架
     }
 
     @Override

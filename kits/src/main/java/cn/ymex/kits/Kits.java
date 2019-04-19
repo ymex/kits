@@ -28,7 +28,7 @@ public final class Kits {
         all(context);
     }
 
-    public static void all(Context context) {
+    private static void all(Context context) {
         if (application instanceof Application) {
             application = context;
         } else {

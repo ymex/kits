@@ -3,13 +3,19 @@ package cn.ymex.kits;
 import android.app.Activity;
 import android.app.Fragment;
 import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.Point;
+import android.os.Build;
 import android.support.annotation.IdRes;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.NonNull;
-import android.support.v4.content.res.ResourcesCompat;
 import android.text.TextUtils;
+import android.view.Display;
+import android.view.KeyCharacterMap;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewConfiguration;
 import android.view.ViewGroup;
 
 import java.lang.reflect.Field;
@@ -22,45 +28,45 @@ import java.lang.reflect.Field;
  *
  * @author ymexc
  */
-public class Finder {
+public class ViewExt {
 
     private Object hostwindow;
     private static String ERRORUSE = "Fragment build must after onCreateView. it's a good idea use in onViewCreated.";
 
-    private Finder() {
+    private ViewExt() {
         super();
     }
 
-    private Finder(Object obj) {
+    private ViewExt(Object obj) {
         this.hostwindow = obj;
     }
 
-    public static Finder build(Activity activity) {
-        Optional.checkNull(activity);
-        return new Finder(activity);
+    public static ViewExt build(Activity activity) {
+        Empty.checkNull(activity);
+        return new ViewExt(activity);
     }
 
-    public static Finder build(Fragment fragment) {
-        Optional.checkNull(fragment);
+    public static ViewExt build(Fragment fragment) {
+        Empty.checkNull(fragment);
         View view = fragment.getView();
         if (view == null) {
             throw new IllegalArgumentException(ERRORUSE);
         }
-        return new Finder(view);
+        return new ViewExt(view);
     }
 
-    public static Finder build(android.support.v4.app.Fragment fragment) {
-        Optional.checkNull(fragment);
+    public static ViewExt build(android.support.v4.app.Fragment fragment) {
+        Empty.checkNull(fragment);
         View view = fragment.getView();
         if (view == null) {
             throw new IllegalArgumentException(ERRORUSE);
         }
-        return new Finder(view);
+        return new ViewExt(view);
     }
 
-    public static Finder build(View view) {
-        Optional.checkNull(view);
-        return new Finder(view);
+    public static ViewExt build(View view) {
+        Empty.checkNull(view);
+        return new ViewExt(view);
     }
 
     /**
@@ -72,7 +78,7 @@ public class Finder {
      */
 
     public <T extends View> T find(@IdRes int id) {
-        Optional.checkNull(hostwindow);
+        Empty.checkNull(hostwindow);
         if (hostwindow instanceof View) {
             return (T) ((View) hostwindow).findViewById(id);
         } else if (hostwindow instanceof Activity) {
@@ -98,7 +104,7 @@ public class Finder {
 
 
     public static <T extends View> T find(Activity activity, @IdRes int id) {
-        Optional.checkNull(activity);
+        Empty.checkNull(activity);
         return (T) activity.findViewById(id);
     }
 
@@ -111,8 +117,8 @@ public class Finder {
     }
 
     public static <T extends View> T find(Fragment fragment, @IdRes int id) {
-        Optional.checkNull(fragment);
-        Optional.checkNull(fragment.getView(), ERRORUSE);
+        Empty.checkNull(fragment);
+        Empty.checkNull(fragment.getView(), ERRORUSE);
         return find(fragment.getView(), id);
     }
 
@@ -127,8 +133,8 @@ public class Finder {
 
 
     public static <T extends View> T find(android.support.v4.app.Fragment fragment, @IdRes int id) {
-        Optional.checkNull(fragment);
-        Optional.checkNull(fragment.getView(), ERRORUSE);
+        Empty.checkNull(fragment);
+        Empty.checkNull(fragment.getView(), ERRORUSE);
         return find(fragment.getView(), id);
     }
 
@@ -143,7 +149,7 @@ public class Finder {
 
 
     public static <T extends View> T find(View view, @IdRes int id) {
-        Optional.checkNull(view);
+        Empty.checkNull(view);
         return (T) view.findViewById(id);
     }
 
@@ -213,16 +219,61 @@ public class Finder {
      * Return a resource identifier for the given resource name.
      * Note: use of this function is discouraged.  It is much more
      * efficient to retrieve resources by identifier than by name.
-     *
+     * <p>
      * int applogoId = getIdentifier(R.mipmap.class,"app_logo")
      *
      * @param name The name of the desired resource.
-     *
      * @return int The associated resource identifier.  Returns 0 if no such
-     *         resource was found.  (0 is not a valid resource ID.)
+     * resource was found.  (0 is not a valid resource ID.)
      */
     public static int getIdentifier(Class typeClass, String name) {
         return resId(typeClass, name, 0);
     }
 
+
+    /**
+     * 底部虚拟导航是否显示
+     * @param activity activity
+     * @return boolean
+     */
+    public static boolean isNavigationBarShow(Activity activity) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
+            Display display = activity.getWindowManager().getDefaultDisplay();
+            Point size = new Point();
+            Point realSize = new Point();
+            display.getSize(size);
+            display.getRealSize(realSize);
+            return realSize.y != size.y;
+        } else {
+            boolean menu = ViewConfiguration.get(activity).hasPermanentMenuKey();
+            boolean back = KeyCharacterMap.deviceHasKey(KeyEvent.KEYCODE_BACK);
+            if (menu || back) {
+                return false;
+            } else {
+                return true;
+            }
+        }
+    }
+
+    /**
+     * 底部虚拟导航高度
+     * @param activity activity
+     * @return hight
+     */
+    public static int getNavigationBarHeight(Activity activity) {
+        if (!isNavigationBarShow(activity)) {
+            return 0;
+        }
+        Resources resources = activity.getResources();
+        int resourceId = resources.getIdentifier("navigation_bar_height",
+                "dimen", "android");
+        //获取NavigationBar的高度
+        int height = resources.getDimensionPixelSize(resourceId);
+        return height;
+    }
+
+
+    public static int getSceenHeight(Activity activity) {
+        return activity.getWindowManager().getDefaultDisplay().getHeight() + getNavigationBarHeight(activity);
+    }
 }

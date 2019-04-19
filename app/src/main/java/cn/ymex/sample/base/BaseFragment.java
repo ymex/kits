@@ -7,7 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import cn.ymex.kits.Finder;
+import cn.ymex.kits.ViewExt;
 
 /**
  * Created by ymexc on 2017/8/12.
@@ -17,7 +17,7 @@ public class BaseFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        Finder finder = Finder.build(this);
+        ViewExt finder = ViewExt.build(this);
 
         return super.onCreateView(inflater, container, savedInstanceState);
     }

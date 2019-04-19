@@ -19,7 +19,7 @@ import java.util.Map;
  * @author ymex@foxmail.com
  *         文件操作
  */
-public class FileKit {
+public class FileExt {
     /**
      * 写文本文件 在Android系统中，文件保存在 /data/data/PACKAGE_NAME/files 目录下
      *
@@ -515,7 +515,7 @@ public class FileKit {
      * @param filePath
      */
     public static void clearFileWithPath(String filePath) {
-        List<File> files = FileKit.listPathFiles(filePath);
+        List<File> files = FileExt.listPathFiles(filePath);
         if (files.isEmpty()) {
             return;
         }

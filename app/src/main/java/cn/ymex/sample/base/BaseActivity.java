@@ -1,6 +1,5 @@
 package cn.ymex.sample.base;
 
-import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -16,9 +15,9 @@ import android.view.View;
  * Email:ymex@foxmail.com  (www.ymex.cn)
  *
  * @author ymex
- *         date: 16/4/23
+ * date: 16/4/23
  */
-public class BaseActivity extends AppCompatActivity implements View.OnClickListener, NetworkStatus.NetworkStatusListener {
+public class BaseActivity extends AppCompatActivity implements View.OnClickListener {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,23 +30,14 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     @Override
-    public void onNetworkBreak(NetworkInfo networkInfo) {
-    }
-
-    @Override
-    public void onNetworkConnected(NetworkInfo networkInfo, boolean isWIFI) {
-    }
-
-    @Override
     protected void onResume() {
         super.onResume();
-        NetworkStatus.registeStatusListener(this);
+
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        NetworkStatus.unregisteStatusListener(this);
     }
 
     @Override

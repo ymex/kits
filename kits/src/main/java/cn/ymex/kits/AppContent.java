@@ -12,7 +12,7 @@ import java.lang.ref.WeakReference;
 /**
  * 扩展Application  增加对app 进入前后台的监听
  */
-public class ApplicationContent extends Application implements Application.ActivityLifecycleCallbacks {
+public class AppContent extends Application implements Application.ActivityLifecycleCallbacks {
 
     private final static int F_EVENT = 0x1;
     private final static int B_EVENT = 0x2;
@@ -100,17 +100,17 @@ public class ApplicationContent extends Application implements Application.Activ
 
         private final static int IDLE_STATE = 0x0;
         private int preWhat = IDLE_STATE;
-        WeakReference<ApplicationContent> appRef;
+        WeakReference<AppContent> appRef;
 
 
-        CheckHandler(ApplicationContent applicationContent) {
+        CheckHandler(AppContent applicationContent) {
             appRef = new WeakReference<>(applicationContent);
         }
 
         @Override
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
-            ApplicationContent app = appRef.get();
+            AppContent app = appRef.get();
             if (app == null) {
                 return;
             }
