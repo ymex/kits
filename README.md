@@ -10,44 +10,19 @@ compile 'cn.ymex:kits:1.3.1'
 
 目录
 ```
-│  AppException.java
-│  ApplicationContent.java
-│  DataTime.java
-│  Device.java
-│  Encrypt.java
-│  FileKit.java
-│  Finder.java
-│  FragmentManagerWrap.java
-│  HttpRequest.java
-│  Kits.java
-│  NetworkStatus.java
-│  Optional.java
-│  Storage.java
-│  TextKit.java
-│  ThrottleClicker.java
-│
-├─cache
-│      DiskLruCache.java
-│      RamLruCache.java
-│
-├─mode
-│  └─flux
-│          Action.java
-│          Dispatcher.java
-│          Flux.java
-│          Params.java
-│          Store.java
-│          StoreAction.java
-│
-└─widget
-        DividerItemDecoration.java
-        SpannedGridLayoutManager.java
-        TickTimeTextView.java
-        Toaster.java
 
 ```
 
 ## 工具类
+
+### AppContent
+继承自Application 增加app 进入前后台的监听回调方法。
+
+```
+protected void applicationDidEnterBackground() //后台回调
+protected void applicationDidEnterForeground() //前台回调
+public int getCheckDelay()//进行前后台延时
+```
 
 
 ### kits:Toaster

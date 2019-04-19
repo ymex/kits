@@ -1,7 +1,6 @@
 package cn.ymex.sample.entity;
 
-import android.content.Context;
-import android.content.Intent;
+import android.view.View;
 
 /**
  * Copyright (c) 2015. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
@@ -9,7 +8,7 @@ import android.content.Intent;
  * Etiam sed turpis ac ipsum condimentum fringilla. Maecenas magna.
  * Proin dapibus sapien vel ante. Aliquam erat volutpat. Pellentesque sagittis ligula eget metus.
  * Vestibulum commodo. Ut rhoncus gravida arcu.
-
+ * <p>
  * Email:ymex@foxmail.com  (www.ymex.cn)
  *
  * @author ymex
@@ -18,19 +17,19 @@ import android.content.Intent;
 public class ItemEntity {
     private String title;
     private String detail;
-    private Class activity;
+    private View.OnClickListener onClickListener;
 
     public ItemEntity() {
     }
 
     public ItemEntity(String title, String detail) {
-        this(title,detail,null);
+        this(title, detail, null);
     }
 
-    public ItemEntity(String title, String detail, Class activity) {
+    public ItemEntity(String title, String detail, View.OnClickListener onClickListener) {
         this.title = title;
         this.detail = detail;
-        this.activity = activity;
+        this.onClickListener = onClickListener;
     }
 
     public String getTitle() {
@@ -49,11 +48,10 @@ public class ItemEntity {
         this.detail = detail;
     }
 
-    public void startActivity(Context context) {
-        if (this.activity == null) {
-            return;
+
+    public void click() {
+        if (onClickListener != null) {
+            onClickListener.onClick(null);
         }
-        Intent intent = new Intent(context, this.activity);
-        context.startActivity(intent);
     }
 }

@@ -2,6 +2,7 @@ package cn.ymex.sample;
 
 import cn.ymex.kits.AppContent;
 import cn.ymex.kits.Kits;
+import cn.ymex.sample.kits.Logger;
 
 /**
  * Copyright (c) 2015. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
@@ -27,5 +28,17 @@ public class ApplicationContext extends AppContent {
     @Override
     public int getCheckDelay() {
         return 500;
+    }
+
+    @Override
+    protected void applicationDidEnterForeground() {
+        super.applicationDidEnterForeground();
+        Logger.log(this,"app -> applicationDidEnterForeground");
+    }
+
+    @Override
+    protected void applicationDidEnterBackground() {
+        super.applicationDidEnterBackground();
+        Logger.log(this,"app -> applicationDidEnterBackground");
     }
 }

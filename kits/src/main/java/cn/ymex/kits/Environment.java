@@ -18,11 +18,11 @@ import android.telephony.TelephonyManager;
 /**
  * 设备相关 （系统版本号  手机屏幕 版本号）
  */
-public class AppInfo {
+public class Environment {
     private static boolean sInitialed;
     private static RuntimeException exception = new RuntimeException("Context is null , pulese call Kits onCreate() in application onCreate()");
 
-    private AppInfo() {
+    private Environment() {
     }
 
 
