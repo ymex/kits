@@ -13,9 +13,7 @@ package cn.ymex.kits;
 
 import android.app.Application;
 import android.content.Context;
-import android.support.annotation.NonNull;
 
-import cn.ymex.kits.mode.flux.Flux;
 import cn.ymex.kits.widget.Toaster;
 
 public final class Kits {
@@ -33,25 +31,17 @@ public final class Kits {
     public static void all(Context context) {
         if (application instanceof Application) {
             application = context;
-        }else {
+        } else {
             application = context.getApplicationContext();
         }
         Storage.init(application);
         Toaster.init(application);
-        Device.init(application);
+        AppInfo.init(application);
     }
 
-    /**
-     * 使用flux 模式开发app
-     *
-     * @param busAdapter
-     */
-    public static void setFluxBusAdapter(@NonNull Flux.BusAdapter busAdapter) {
-        Flux.instance().setBusAdapter(busAdapter);
-    }
 
     public static Application getApplication() {
-        Optional.checkNull(application, "application is null!");
+        Empty.checkNull(application, "application is null!");
         return (Application) application;
     }
 

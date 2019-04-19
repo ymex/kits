@@ -5,23 +5,25 @@ import android.view.View;
 
 /**
  * 防止重复点击
- * button.setOnClickListener(ThrottleClicker.click(onclick));
+ * btn.setOnClickListener(ClickFilter.listener(new View.OnClickListener(){
+ *
+ * }));
  */
 
-public class ThrottleClicker implements View.OnClickListener, DialogInterface.OnClickListener {
-    View.OnClickListener onClickListener;
-    DialogInterface.OnClickListener dialogClickListener;
+public class ClickFilter implements View.OnClickListener, DialogInterface.OnClickListener {
+    private View.OnClickListener onClickListener;
+    private DialogInterface.OnClickListener dialogClickListener;
 
-    long preClickTime = 0;
-    long timeOut = DEF_TIME_OUT;//毫秒
+    private long preClickTime = 0;
     private final static long DEF_TIME_OUT = 600;
+    long timeOut = DEF_TIME_OUT;//毫秒
 
-    ThrottleClicker(long time, View.OnClickListener listener) {
+    public ClickFilter(long time, View.OnClickListener listener) {
         this.timeOut = time;
         this.onClickListener = listener;
     }
 
-    ThrottleClicker(long time, DialogInterface.OnClickListener dialogClickListener) {
+    public ClickFilter(long time, DialogInterface.OnClickListener dialogClickListener) {
         this.timeOut = time;
         this.dialogClickListener = dialogClickListener;
     }
@@ -31,8 +33,8 @@ public class ThrottleClicker implements View.OnClickListener, DialogInterface.On
      * @param listener 实际回调
      * @return ThrottleClicker
      */
-    public static ThrottleClicker click(long time, View.OnClickListener listener) {
-        return new ThrottleClicker(time, listener);
+    public static ClickFilter listener(long time, View.OnClickListener listener) {
+        return new ClickFilter(time, listener);
     }
 
     /**
@@ -40,8 +42,8 @@ public class ThrottleClicker implements View.OnClickListener, DialogInterface.On
      * @param listener 实际回调
      * @return ThrottleClicker
      */
-    public static ThrottleClicker click(long time, DialogInterface.OnClickListener listener) {
-        return new ThrottleClicker(time, listener);
+    public static ClickFilter listener(long time, DialogInterface.OnClickListener listener) {
+        return new ClickFilter(time, listener);
     }
 
     /**
@@ -50,8 +52,8 @@ public class ThrottleClicker implements View.OnClickListener, DialogInterface.On
      * @param listener View.OnClickListener
      * @return ThrottleClicker
      */
-    public static ThrottleClicker click(View.OnClickListener listener) {
-        return new ThrottleClicker(DEF_TIME_OUT, listener);
+    public static ClickFilter listener(View.OnClickListener listener) {
+        return new ClickFilter(DEF_TIME_OUT, listener);
     }
 
     /**
@@ -60,8 +62,8 @@ public class ThrottleClicker implements View.OnClickListener, DialogInterface.On
      * @param listener View.OnClickListener
      * @return ThrottleClicker
      */
-    public static ThrottleClicker click(DialogInterface.OnClickListener listener) {
-        return new ThrottleClicker(DEF_TIME_OUT, listener);
+    public static ClickFilter listener(DialogInterface.OnClickListener listener) {
+        return new ClickFilter(DEF_TIME_OUT, listener);
     }
 
 

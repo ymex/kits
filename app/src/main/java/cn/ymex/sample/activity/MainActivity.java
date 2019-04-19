@@ -11,7 +11,7 @@ import com.google.gson.Gson;
 import java.util.ArrayList;
 import java.util.List;
 
-import cn.ymex.kits.Device;
+import cn.ymex.kits.AppInfo;
 import cn.ymex.kits.Finder;
 import cn.ymex.kits.widget.Toaster;
 import cn.ymex.log.L;
@@ -81,7 +81,7 @@ public class MainActivity extends BaseActivity
             add(new ItemEntity("默认Toast", "Toast多次弹出，只显示最后一条"));//1
             add(new ItemEntity("定制Toast", "自定义Toast布局，只显示最后一条"));//2
             add(new ItemEntity("Log打印", "举个栗子,在Logcat查看"));//3
-            add(new ItemEntity("px and dp", "px2dip:" + Device.px2dip(px) + "  dp2px:" + Device.dip2px(px)));
+            add(new ItemEntity("px and dp", "px2dip:" + AppInfo.px2dip(px) + "  dp2px:" + AppInfo.dip2px(px)));
             add(new ItemEntity("request", "request", QueryHttpActivity.class));
 
         }

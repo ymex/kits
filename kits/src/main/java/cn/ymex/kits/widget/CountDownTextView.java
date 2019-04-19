@@ -18,23 +18,23 @@ import android.util.AttributeSet;
 /**
  * 文本计时器控件
  */
-public class TickTimeTextView extends android.support.v7.widget.AppCompatTextView {
+public class CountDownTextView extends android.support.v7.widget.AppCompatTextView {
     private CountDownTimer mTimer;
     private final static int DEFAULT_TAG = -0x11;
     private boolean countDownIng = false;
     private boolean stopNormal = true;
 
-    public TickTimeTextView(Context context) {
+    public CountDownTextView(Context context) {
         super(context);
         initView(context);
     }
 
-    public TickTimeTextView(Context context, AttributeSet attrs) {
+    public CountDownTextView(Context context, AttributeSet attrs) {
         super(context, attrs);
         initView(context);
     }
 
-    public TickTimeTextView(Context context, AttributeSet attrs, int defStyleAttr) {
+    public CountDownTextView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         initView(context);
     }

@@ -1,10 +1,4 @@
-/*
- * Copyright (c) 2015. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
- * Morbi non lorem porttitor neque feugiat blandit. Ut vitae ipsum eget quam lacinia accumsan.
- * Etiam sed turpis ac ipsum condimentum fringilla. Maecenas magna.
- * Proin dapibus sapien vel ante. Aliquam erat volutpat. Pellentesque sagittis ligula eget metus.
- * Vestibulum commodo. Ut rhoncus gravida arcu.
- * <p>
+/**
  * Email:ymex@foxmail.com  (www.ymex.cn)
  * @author ymex
  */
@@ -16,25 +10,20 @@ import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
-import android.content.res.Resources;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
 import android.os.Bundle;
-import android.provider.Settings;
 import android.telephony.TelephonyManager;
-import android.util.DisplayMetrics;
-import android.util.TypedValue;
 
 /**
  * 设备相关 （系统版本号  手机屏幕 版本号）
  */
-public class Device {
+public class AppInfo {
     private static boolean sInitialed;
     private static Context mContext;
-    private static DisplayMetrics DISPLAYMETRICS = Resources.getSystem().getDisplayMetrics();
     private static RuntimeException exception = new RuntimeException("Context is null , pulese call Kits onCreate() in application onCreate()");
 
-    private Device() {
+    private AppInfo() {
     }
 
 
@@ -45,45 +34,6 @@ public class Device {
         mContext = context;
         sInitialed = true;
 
-    }
-
-    /**
-     * 屏幕高度
-     *
-     * @return px
-     */
-    public static int getScreenHeight() {
-        return DISPLAYMETRICS.heightPixels;
-    }
-
-    /**
-     * 屏幕宽度
-     *
-     * @return px
-     */
-    public static int getScreenWidth() {
-        return DISPLAYMETRICS.widthPixels;
-    }
-
-    /**
-     * dp to px
-     *
-     * @param dp dip
-     * @return int
-     */
-    public static int dip2px(float dp) {
-        return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp,
-                Resources.getSystem().getDisplayMetrics());
-    }
-
-    /**
-     * px to dip
-     *
-     * @param px px
-     * @return float
-     */
-    public static float px2dip(int px) {
-        return (px / DISPLAYMETRICS.density + 0.5f);
     }
 
     private static void checkIns() {
@@ -109,7 +59,7 @@ public class Device {
      *
      * @return
      */
-    public static int getAppVersionCode() {
+    public static int getVersionCode() {
         return getPackageInfo(0).versionCode;
     }
 
@@ -118,7 +68,7 @@ public class Device {
      *
      * @return
      */
-    public static String getAppVersionName() {
+    public static String getVersionName() {
         return getPackageInfo(0).versionName;
     }
 
@@ -127,7 +77,7 @@ public class Device {
      *
      * @return
      */
-    public static String getOsVersionName() {
+    public static String getOSVersionName() {
         return android.os.Build.VERSION.RELEASE;
     }
 
@@ -136,20 +86,10 @@ public class Device {
      *
      * @return
      */
-    public static int getOsVersionCode() {
+    public static int getOSVersionCode() {
         return android.os.Build.VERSION.SDK_INT;
     }
 
-    /**
-     * 获得 设备 ID
-     *
-     * @return
-     */
-    public static String getAndroidId() {
-        checkIns();
-        String id = Settings.Secure.getString(mContext.getContentResolver(), Settings.Secure.ANDROID_ID);
-        return id;
-    }
 
     /**
      * 设备 品牌

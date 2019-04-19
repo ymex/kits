@@ -1,6 +1,5 @@
 package cn.ymex.sample;
 
-import cn.ymex.kits.NetworkStatus;
 import cn.ymex.sample.flux.eventbus.OttoBusAdapter;
 import cn.ymex.kits.ApplicationContent;
 import cn.ymex.kits.Kits;

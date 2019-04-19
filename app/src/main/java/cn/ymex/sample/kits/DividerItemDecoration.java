@@ -1,4 +1,4 @@
-package cn.ymex.kits.widget;
+package cn.ymex.sample.kits;
 
 import android.content.Context;
 import android.content.res.TypedArray;
