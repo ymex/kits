@@ -11,36 +11,22 @@ import java.util.Set;
  * SharedPreferences 帮助类
  * Created by ymexc on 2016/6/16.
  */
-public final class Storage {
+public final class Preferences {
 
-    private static Context mContext;
-    private static volatile Storage instance;
-
+    private static volatile Preferences instance;
     private SharedPreferences mPreferences;
-    private static boolean sInitialed;
 
-    private Storage() {
-        mPreferences = mContext.getSharedPreferences("KITS_SP_STORAGE", Context.MODE_PRIVATE);
+    private Preferences() {
+        mPreferences = Kits.getApplication().getSharedPreferences("KITS_SP_STORAGE", Context.MODE_PRIVATE);
     }
 
-    public static void init(@NonNull Context context) {
-        if (sInitialed || context == null) {
-            throw new IllegalArgumentException("context not allow null");
-        }
-        mContext = context;
-        sInitialed = true;
-    }
-
-    public static Storage instance() {
-        if (mContext == null) {
-            throw new IllegalArgumentException("context is null, please init Storage in application!");
-        }
-        Storage sp = instance;
+    public static Preferences instance() {
+        Preferences sp = instance;
         if (sp == null) {
-            synchronized (Storage.class) {
+            synchronized (Preferences.class) {
                 sp = instance;
                 if (sp == null) {
-                    sp = new Storage();
+                    sp = new Preferences();
                     instance = sp;
                 }
             }

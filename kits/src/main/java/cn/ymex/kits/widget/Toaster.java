@@ -6,6 +6,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Toast;
 
+import cn.ymex.kits.Kits;
+
 /**
  * Copyright (c) 2015. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
  * Morbi non lorem porttitor neque feugiat blandit. Ut vitae ipsum eget quam lacinia accumsan.
@@ -20,16 +22,7 @@ import android.widget.Toast;
  * Toast 单例toast
  */
 public final class Toaster {
-
-    private static Context sApplication;
     private static Toast mToast;
-
-
-    public static void init(Context context){
-        if (null == sApplication){
-            sApplication = context;
-        }
-    }
 
     /**
      * 多次弹出时取消上次弹出，最后一次弹出为准
@@ -69,7 +62,7 @@ public final class Toaster {
      * @return
      */
     public static View inflate(int layoutId){
-        LayoutInflater inflate =(LayoutInflater)sApplication.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        LayoutInflater inflate =(LayoutInflater) Kits.getApplication().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View v = inflate.inflate(layoutId, null);
         return v;
     }
@@ -82,7 +75,7 @@ public final class Toaster {
 
     private static Toast toast(){
         if (mToast==null){
-            mToast= Toast.makeText(sApplication,"",Toast.LENGTH_SHORT);
+            mToast= Toast.makeText(Kits.getApplication(),"",Toast.LENGTH_SHORT);
         }
         return mToast;
     }
@@ -91,7 +84,7 @@ public final class Toaster {
      * @return
      */
     private static View defaultView(){
-        return Toast.makeText(sApplication,"",Toast.LENGTH_SHORT).getView();
+        return Toast.makeText(Kits.getApplication(),"",Toast.LENGTH_SHORT).getView();
     }
 
 

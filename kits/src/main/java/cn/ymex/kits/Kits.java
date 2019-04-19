@@ -13,11 +13,9 @@ package cn.ymex.kits;
 
 import android.app.Application;
 import android.content.Context;
-
-import cn.ymex.kits.widget.Toaster;
+import android.util.Log;
 
 public final class Kits {
-    public static String TAG_E = "kits.E";
     private static Context application;
 
     private Kits() {
@@ -34,9 +32,6 @@ public final class Kits {
         } else {
             application = context.getApplicationContext();
         }
-        Storage.init(application);
-        Toaster.init(application);
-        AppInfo.init(application);
     }
 
 
@@ -45,4 +40,7 @@ public final class Kits {
         return (Application) application;
     }
 
+    public static void log(String text) {
+        Log.d("Kits.E", text);
+    }
 }

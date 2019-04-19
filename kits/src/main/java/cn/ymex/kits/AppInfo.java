@@ -20,34 +20,17 @@ import android.telephony.TelephonyManager;
  */
 public class AppInfo {
     private static boolean sInitialed;
-    private static Context mContext;
     private static RuntimeException exception = new RuntimeException("Context is null , pulese call Kits onCreate() in application onCreate()");
 
     private AppInfo() {
     }
 
 
-    public static void init(Context context) {
-        if (sInitialed || context == null) {
-            throw new IllegalArgumentException("context not allow null");
-        }
-        mContext = context;
-        sInitialed = true;
-
-    }
-
-    private static void checkIns() {
-        if (mContext == null) {
-            throw exception;
-        }
-    }
-
     private static PackageInfo getPackageInfo(int flag) {
-        checkIns();
-        PackageManager packageManager = mContext.getPackageManager();
+        PackageManager packageManager = Kits.getApplication().getPackageManager();
         PackageInfo packageInfo = null;
         try {
-            packageInfo = packageManager.getPackageInfo(mContext.getPackageName(), flag);
+            packageInfo = packageManager.getPackageInfo(Kits.getApplication().getPackageName(), flag);
         } catch (NameNotFoundException e) {
             e.printStackTrace();
         }
@@ -116,8 +99,7 @@ public class AppInfo {
      */
     @SuppressLint("MissingPermission")
     public static String getIMEI() {
-        checkIns();
-        return ((TelephonyManager) mContext.getSystemService(Context.TELEPHONY_SERVICE)).getDeviceId();
+        return ((TelephonyManager) Kits.getApplication().getSystemService(Context.TELEPHONY_SERVICE)).getDeviceId();
     }
 
     /**
@@ -128,8 +110,7 @@ public class AppInfo {
      */
     @SuppressLint("MissingPermission")
     public static String getMac() {
-        checkIns();
-        WifiManager wifi = (WifiManager) mContext.getSystemService(Context.WIFI_SERVICE);
+        WifiManager wifi = (WifiManager) Kits.getApplication().getApplicationContext().getSystemService(Context.WIFI_SERVICE);
         WifiInfo info = wifi.getConnectionInfo();
         return info.getMacAddress().replaceAll(":", "");//MAC 地址
     }
@@ -144,7 +125,7 @@ public class AppInfo {
 
         ApplicationInfo appInfo = null;
         try {
-            appInfo = mContext.getPackageManager().getApplicationInfo(mContext.getPackageName(), PackageManager.GET_META_DATA);
+            appInfo = Kits.getApplication().getPackageManager().getApplicationInfo(Kits.getApplication().getPackageName(), PackageManager.GET_META_DATA);
         } catch (NameNotFoundException e) {
             e.printStackTrace();
         }
