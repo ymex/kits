@@ -1,17 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".activity.MainActivity">
 
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <cn.ymex.kits.widget.ToolBarExt
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            app:navigationIcon="@mipmap/ic_nav_back_light"
+            android:layout_height="wrap_content"
+            app:maxButtonHeight="42dip"
+            android:background="@color/colorAccent"
+            app:title="Hi"
+            app:popupTheme="@style/AppTheme.PopupOverlay" />
+
+    </android.support.design.widget.AppBarLayout>
+
     <ListView
-        android:paddingLeft="4dip"
-        android:paddingRight="4dip"
-        android:scrollbars="none"
         android:id="@+id/lv_listview"
         android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:divider="#66000000"
         android:dividerHeight="1dip"
-        android:layout_height="match_parent"/>
-</RelativeLayout>
+        android:paddingLeft="4dip"
+        android:paddingRight="4dip"
+        android:scrollbars="none" />
+</LinearLayout>

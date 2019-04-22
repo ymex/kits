@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="ToolBarExt">
+        <attr name="maxButtonWidth" format="dimension" />
+        <attr name="titleGravity">
+            <enum name="CENTER" value="0"/>
+            <enum name="LEFT" value="1"/>
+        </attr>
+    </declare-styleable>
+</resources>
