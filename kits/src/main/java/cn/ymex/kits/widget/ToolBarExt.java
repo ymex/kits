@@ -31,6 +31,7 @@ public class ToolBarExt extends Toolbar {
 
     private int mMaxButtonHeightWidth;//最大宽度
     private int mTitleGravity = 0;//标题位置
+    private boolean mPaddingStatusBar = false;
 
     public ToolBarExt(Context context) {
         this(context, null, R.attr.toolbarStyle);
@@ -47,19 +48,25 @@ public class ToolBarExt extends Toolbar {
             removeView(mTitleTextView);
         }
         setTitle(mTitleText);
+        if (mPaddingStatusBar) {
+            paddingStatusBar();
+        }
+    }
+
+    /**
+     * 填充statusbar 高度
+     */
+    public void paddingStatusBar() {
         int compatPadingTop = 0;
         // android 4.4以上将Toolbar添加状态栏高度的上边距，沉浸到状态栏下方
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
             compatPadingTop = getStatusBarHeight();
         }
-        System.out.println("----------------::bhhhh" + (getPaddingTop() + compatPadingTop));
         int left = getPaddingLeft();
         int top = getPaddingTop();
         int right = getPaddingRight();
         int bottom = getPaddingBottom();
-
         setPadding(left, top + compatPadingTop, right, bottom);
-
     }
 
     private void resolveAttr(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
@@ -76,6 +83,7 @@ public class ToolBarExt extends Toolbar {
         final TypedArray extA = context.obtainStyledAttributes(attrs, R.styleable.ToolBarExt, defStyleAttr, 0);
         mMaxButtonHeightWidth = a.getDimensionPixelSize(R.styleable.ToolBarExt_maxButtonWidth, -1);
         mTitleGravity = a.getInteger(R.styleable.ToolBarExt_titleGravity, 0);
+        mPaddingStatusBar = a.getBoolean(R.styleable.ToolBarExt_paddingStatusBar, false);
         extA.recycle();
 
         post(new Runnable() {
@@ -227,7 +235,6 @@ public class ToolBarExt extends Toolbar {
         if (resourceId > 0) {
             statusBarHeight = getResources().getDimensionPixelSize(resourceId);
         }
-        System.out.println("---------------bh:" + statusBarHeight);
         return statusBarHeight;
     }
 

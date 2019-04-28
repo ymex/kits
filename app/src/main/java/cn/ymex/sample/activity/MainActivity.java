@@ -17,7 +17,6 @@ import cn.ymex.sample.R;
 import cn.ymex.sample.adapter.ItemListViewAdapter;
 import cn.ymex.sample.base.BaseActivity;
 import cn.ymex.sample.entity.ItemEntity;
-import cn.ymex.sample.kits.Logger;
 
 public class MainActivity extends BaseActivity
         implements AdapterView.OnItemClickListener {
@@ -37,13 +36,12 @@ public class MainActivity extends BaseActivity
             localLayoutParams.flags = (WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS | localLayoutParams.flags);
         }
 
-//        ToolBarExt toolbar = findViewById(R.id.toolbar);
-//        toolbar.setPadding(toolbar.getPaddingLeft(),toolbar.getPaddingTop()+getStatusBarHeight(),
-//                toolbar.getPaddingRight(),toolbar.getPaddingBottom());
+        ToolBarExt toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+//        toolbar.paddingStatusBar();
 
 
         listView = ViewExt.build(this).find(R.id.lv_listview);
-
         listView.setOnItemClickListener(this);
         adapter = new ItemListViewAdapter();
         adapter.appendData(items);
@@ -51,21 +49,6 @@ public class MainActivity extends BaseActivity
 
     }
 
-
-    /**
-     * 获取状态栏高度
-     *
-     * @return px
-     */
-    public int getStatusBarHeight() {
-        int statusBarHeight = 0;
-        int resourceId = getResources().getIdentifier("status_bar_height", "dimen", "android");
-        if (resourceId > 0) {
-            statusBarHeight = getResources().getDimensionPixelSize(resourceId);
-        }
-        Logger.log(this, "状态栏高度：" +statusBarHeight +"     "+ Metric.px2dip(statusBarHeight) + "dp");
-        return statusBarHeight;
-    }
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -77,6 +60,7 @@ public class MainActivity extends BaseActivity
 
     }
 
+    
 
     ArrayList<ItemEntity> items = new ArrayList<ItemEntity>() {
         {

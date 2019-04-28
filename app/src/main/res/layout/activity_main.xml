@@ -15,12 +15,14 @@
         <cn.ymex.kits.widget.ToolBarExt
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
-            app:navigationIcon="@mipmap/ic_nav_back_light"
             android:layout_height="wrap_content"
-            app:maxButtonHeight="42dip"
             android:background="@color/colorAccent"
-            app:title="Hi"
-            app:popupTheme="@style/AppTheme.PopupOverlay" />
+            app:maxButtonHeight="42dip"
+            app:navigationIcon="@mipmap/ic_nav_back_light"
+            app:paddingStatusBar="true"
+            app:titleTextAppearance="@style/TextAppearance.ToolbarTitle.White"
+            app:popupTheme="@style/AppTheme.PopupOverlay"
+            app:title="ToolBar" />
 
     </android.support.design.widget.AppBarLayout>
 

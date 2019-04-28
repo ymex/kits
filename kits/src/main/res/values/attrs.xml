@@ -6,5 +6,6 @@
             <enum name="CENTER" value="0"/>
             <enum name="LEFT" value="1"/>
         </attr>
+        <attr name="paddingStatusBar" format="boolean"/>
     </declare-styleable>
 </resources>
