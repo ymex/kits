@@ -60,7 +60,7 @@ public class MainActivity extends BaseActivity
 
     }
 
-    
+
 
     ArrayList<ItemEntity> items = new ArrayList<ItemEntity>() {
         {

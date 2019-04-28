@@ -1,5 +1,6 @@
 package cn.ymex.kits.widget;
 
+import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -20,6 +21,7 @@ import android.widget.TextView;
 
 import java.lang.reflect.Field;
 
+import cn.ymex.kits.Metric;
 import cn.ymex.kits.R;
 
 public class ToolBarExt extends Toolbar {
@@ -60,7 +62,7 @@ public class ToolBarExt extends Toolbar {
         int compatPadingTop = 0;
         // android 4.4以上将Toolbar添加状态栏高度的上边距，沉浸到状态栏下方
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-            compatPadingTop = getStatusBarHeight();
+            compatPadingTop = Metric.getStatusBarHeight(getContext());
         }
         int left = getPaddingLeft();
         int top = getPaddingTop();
@@ -224,19 +226,6 @@ public class ToolBarExt extends Toolbar {
         }
     }
 
-    /**
-     * 获取状态栏高度
-     *
-     * @return px
-     */
-    public int getStatusBarHeight() {
-        int statusBarHeight = 0;
-        int resourceId = getResources().getIdentifier("status_bar_height", "dimen", "android");
-        if (resourceId > 0) {
-            statusBarHeight = getResources().getDimensionPixelSize(resourceId);
-        }
-        return statusBarHeight;
-    }
 
     /**
      * 设置返回结束页面
